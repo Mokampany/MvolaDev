@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
 .App {
   text-align: center;
+  font-family: 'Caveat Brush', cursive;
+  /* background-color: #282c34; */
+  /* color: white; */
+  /* border: 5px pink solid; */
+  background-image: url('./assets/images/bg.png');
+  background-position: center;
+  background-size: cover;
+  color: white;
+  background-repeat: no-repeat;
 }
 
 .App-logo {
@@ -14,7 +24,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;

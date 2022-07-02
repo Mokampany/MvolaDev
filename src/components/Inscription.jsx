@@ -19,9 +19,30 @@ const Container = styled.div`
     }
     @media screen and (min-width: 450px){
     }
-
 `
 const Inscription = () => {
+    const[prenom, setPrenom] = useState(null)
+    const[nom, setNom] = useState(null)
+    const[email, setEmail] = useState(null)
+    const[mdp,setMdp] = useState(null)
+    const[confirmMdp, setConfirmMdp] = useState(null)
+    const handleChangePrenom = (e) => {
+        setPrenom(e.target.value)
+    }
+    const handleChangeNom = (e) => {
+        setNom(e.target.value)
+    }
+    const handleChangeEmail = (e) => {
+        setEmail(e.target.value)
+    }
+    const handleChangeMdp = (e) => {
+        setMdp(e.target.value)
+    }
+    const handleChangeConfirmMdp = (e) => {
+        setConfirmMdp(e.target.value)
+    }
+    const handleInscription = () => {
+    }
     return (
         <Container>
             <div className="inscription">
@@ -29,22 +50,22 @@ const Inscription = () => {
                 <br />
                 <form className="form">
                     <div className="row">
-                        <input type="text" className="lastName" placeholder="prenom" />
+                        <input onChange={handleChangePrenom} type="text" className="lastName" placeholder="prenom" />
                     </div>
                     <div className="row">
-                        <input type="text" className="firstName" placeholder="nom" />
+                        <input onChange={handleChangeNom} type="text" className="firstName" placeholder="nom" />
                     </div>
                     <div className="row">
-                        <input type="email" className="email" placeholder="adresse email" />
+                        <input onChange={handleChangeEmail} type="email" className="email" placeholder="adresse email" />
                     </div>
                     <div className="row">
-                        <input type="password" className="password" placeholder="creer un mot de passe" />
+                        <input onChange={handleChangeMdp} type="password" className="password" placeholder="creer un mot de passe" />
                     </div>
                     <div className="row">
-                        <input type="password" className="password" placeholder="confirmer le mot de passe" />
+                        <input onChange={handleChangeConfirmMdp} type="password" className="password" placeholder="confirmer le mot de passe" />
                     </div>
                     <div className="row">
-                        <button className="btn btn-primary">Inscription</button>
+                        <span onClick={handleInscription} className="btn btn-primary">Inscription</span>
                     </div>
                 </form>
             </div>

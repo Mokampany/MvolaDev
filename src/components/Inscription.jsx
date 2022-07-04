@@ -70,7 +70,7 @@ const Inscription = () => {
   return (
     <Container>
       <div className="inscription">
-        <h1>Creer un compte</h1>
+        <h1>Creer votre compte</h1>
         <br />
         <form className="form">
           <div className="row">

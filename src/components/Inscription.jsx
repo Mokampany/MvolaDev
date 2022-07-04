@@ -13,7 +13,7 @@ import {
 
 const Container = styled.div`
   .inscription {
-    font-size: 1.5em;
+    font-size: 1em;
     text-align: start;
   }
   h1 {
@@ -58,13 +58,13 @@ const Inscription = () => {
     setConfirmPassword(e.target.value);
   };
   const handleInscription = async () => {
-    await addDoc(collection(db, "utilisateurs"), {
-      nom: nom,
-      prenom: prenom,
-      age: Number(age),
-      email: email,
-      password: password,
-    });
+    // await addDoc(collection(db, "utilisateurs"), {
+    //   nom: nom,
+    //   prenom: prenom,
+    //   age: Number(age),
+    //   email: email,
+    //   password: password,
+    // });
   };
 
   return (

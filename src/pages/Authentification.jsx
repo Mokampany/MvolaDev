@@ -1,12 +1,22 @@
 import styled from "@emotion/styled"
 import Inscription from "../components/Inscription";
 import Login from "../components/Login";
-import {useEffect} from "react"
-
+import { useEffect } from "react"
+import bg from "../assets/images/bg.png"
+import Nav from "../components/Nav";
 const Container = styled.div`
     #authentification{
-        padding: 10px;
+        margin: 30px;
+        padding: 20px;
         min-height: 100vh;
+        color: #282c34;
+        background-color: #e5e5e5;
+        border-radius: 10px;
+        // background-image: url(${bg});
+        // background-position: center;
+        // background-size: cover;
+        // background-repeat: no-repeat;
+        // font-size: .8em;
     }
     #auths{
         display: flex;
@@ -23,7 +33,7 @@ const Container = styled.div`
             padding: 10px;
         }
     }
-    @media screen and (min-width: 450px){
+    @media screen and (min-width: 800px){
         #auths{
             display: grid;
             grid-template-columns: 50% auto;
@@ -39,11 +49,12 @@ const Container = styled.div`
     }
 `
 const Authentification = () => {
-    useEffect(()=>{
+    useEffect(() => {
         document.title = "Authentification"
-    },[])
+    }, [])
     return (
         <Container>
+            <Nav />
             <div id="authentification">
                 <div className="za-mandresy">
                     <h1>Za mandresy</h1>

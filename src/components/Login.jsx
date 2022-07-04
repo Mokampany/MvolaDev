@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import {useState} from "react"
 const Container = styled.div`
     .login{
-        font-size: 1.5em;
+        font-size: 1em;
         text-align:start;
     }
     h1{

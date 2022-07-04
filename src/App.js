@@ -9,14 +9,12 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route
-            path="/authentification"
-            element={<Authentification />}
-          ></Route>
+          <Route path="/authentification" element={<Authentification />} />
+          {/* <Route path="/apropos" element={<Authentification />} /> */}
         </Routes>
       </Router>
     </div>
   );
 }
-
+// color : #ed00ce #282c34
 export default App;

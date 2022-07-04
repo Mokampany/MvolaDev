@@ -14,7 +14,7 @@ const Home = () => {
             <Container>
                 <Nav />
                 <div id="home">
-                    <h1>Home page</h1>
+                    Home page
                 </div>
             </Container>
         </>

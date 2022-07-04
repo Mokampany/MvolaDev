@@ -10,8 +10,9 @@ const Container = styled.div`
         padding: 20px;
         min-height: 100vh;
         color: #282c34;
-        background-color: #e5e5e5;
+        background-color: ;
         border-radius: 10px;
+
         // background-image: url(${bg});
         // background-position: center;
         // background-size: cover;
@@ -21,6 +22,12 @@ const Container = styled.div`
     #auths{
         display: flex;
         flex-flow: row wrap;
+    }
+    #inscription{
+        border-radius: 20px;
+    }
+    #login{
+        border-radius: 20px;
     }
     @media screen and (max-width: 450px){
         #auths{

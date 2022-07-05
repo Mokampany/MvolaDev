@@ -78,8 +78,9 @@ const Authentification = () => {
                 scale: 1.00,
                 scaleMobile: 1.00,
                 backgroundColor: 0x21420,
-                color1: 0xff00d1,
-                color2: 0xff00f0
+                color1: 0xff009b,
+                color2: 0xff0000,
+                colorMode: "lerpGradient"
             }))
         }
         return () => {

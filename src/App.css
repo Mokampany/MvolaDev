@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600&display=swap');
+
 .App {
   text-align: center;
   font-family: 'Hind Siliguri', sans-serif;
+  background-color: #282c34;
   /* background-color: #282c34; */
   /* color: white; */
   /* border: 5px pink solid; */
@@ -38,6 +40,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

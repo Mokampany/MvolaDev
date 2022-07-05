@@ -8,12 +8,21 @@ import CELLS from "vanta/dist/vanta.birds.min"
 import * as THREE from "three"
 
 const Container = styled.div`
+    h1{
+        font-weight: 600;
+        color: #F069AB;
+    }
+    .btn{
+        border-color:#F069AB;
+        background-color:#F069AB;
+        font-weight: bolder;
+    }
     #authentification{
-        // margin: 30px;
+        margin: 30px 30px 0 30px;
         padding: 20px;
         min-height: 100vh;
-        color: white;
-        background-color: black;
+        color: black;
+        background-color: white;
         border-radius: 10px;
 
         // background-image: url(${bg});
@@ -65,28 +74,28 @@ const Authentification = () => {
 
     const [vantaEffect, setVantaEffect] = useState(0)
     const vantaRef = useRef(null)
-    useEffect(() => {
-        if (!vantaEffect) {
-            setVantaEffect(CELLS({
-                el: vantaRef.current,
-                THREE: THREE,
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                scale: 1.00,
-                scaleMobile: 1.00,
-                backgroundColor: 0x21420,
-                color1: 0xff009b,
-                color2: 0xff0000,
-                colorMode: "lerpGradient"
-            }))
-        }
-        return () => {
-            if (vantaEffect) vantaEffect.destroy()
-        }
-    }, [vantaEffect])
+    // useEffect(() => {
+    //     if (!vantaEffect) {
+    //         setVantaEffect(CELLS({
+    //             el: vantaRef.current,
+    //             THREE: THREE,
+    //             mouseControls: true,
+    //             touchControls: true,
+    //             gyroControls: false,
+    //             minHeight: 200.00,
+    //             minWidth: 200.00,
+    //             scale: 1.00,
+    //             scaleMobile: 1.00,
+    //             backgroundColor: 0x21420,
+    //             color1: 0xff009b,
+    //             color2: 0xff0000,
+    //             colorMode: "lerpGradient"
+    //         }))
+    //     }
+    //     return () => {
+    //         if (vantaEffect) vantaEffect.destroy()
+    //     }
+    // }, [vantaEffect])
     return (
         <Container>
             <Nav />

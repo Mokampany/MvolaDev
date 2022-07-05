@@ -19,13 +19,25 @@ const Container = styled.div`
             display: none;
         }
         .nav-mobile-button{
-            display: block;
+            display: grid;
+            grid-template-columns: 40% 25% auto;
             background-color: #1E2025;
             color: white;
             min-height: 50px;
-            display: flex;
             align-items: center;
-            justify-content: end;
+            padding: 10px;
+        }
+        .logo-mobile{
+            text-align: start;
+        }
+        .entreprise-mobile{
+            text-align: start;
+            font-size: .8em;
+            font-weight: 600;
+            color: #F069AB;
+        }
+        .menu-button-mobile{
+            text-align: end;
         }
         .nav-mobile{
             display: none;
@@ -49,7 +61,7 @@ const Container = styled.div`
         }
         .nav-desktop{
             display: grid;
-            grid-template-columns: 10% auto;
+            grid-template-columns: 20% auto;
             margin:0;
             padding: 5px;
             background-color: #1E2025 ;
@@ -85,7 +97,7 @@ const Nav = () => {
             <nav className="nav-desktop">
                 <div className="nav-left-desktop">
                     <Link className="link" to="/">
-                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" />
+                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" /> <span style={{color: "#F069AB"}}>Za Mandresy</span>
                     </Link>
                 </div>
                 <div className="nav-right-desktop">
@@ -98,7 +110,17 @@ const Nav = () => {
                 </div>
             </nav>
             <nav className="nav-mobile-button">
-                <i onClick={handleDisplayMobileMenu} style={{ marginRight: "20px" }} className="fa-solid fa-bars-staggered"></i>
+                <div className="logo-mobile">
+                    <Link className="link" to="/">
+                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" />
+                    </Link>
+                </div>
+                <div className="entreprise-mobile">
+                    Za Mandresy
+                </div>
+                <div className="menu-button-mobile">
+                    <i onClick={handleDisplayMobileMenu} style={{ marginRight: "20px" }} className="fa-solid fa-bars-staggered"></i>
+                </div>
             </nav>
             <nav ref={navMobile} className={`nav-mobile`}>
                 <Link className="link" to="/">Accueil</Link>

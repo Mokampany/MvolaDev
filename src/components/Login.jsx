@@ -16,7 +16,7 @@ import {
 
 const Container = styled.div`
   .login {
-    font-size: 1.5em;
+    font-size: 1em;
     text-align: start;
   }
   h1 {
@@ -82,7 +82,7 @@ const Login = () => {
             />
           </div>
           <div className="row">
-            <span onClick={handleSubmitLogin} className="btn btn-primary">
+            <span onClick={handleSubmitLogin} className="btn btn-primary validate">
               Se connecter
             </span>
           </div>

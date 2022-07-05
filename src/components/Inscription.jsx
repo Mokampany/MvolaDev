@@ -58,19 +58,19 @@ const Inscription = () => {
     setConfirmPassword(e.target.value);
   };
   const handleInscription = async () => {
-    // await addDoc(collection(db, "utilisateurs"), {
-    //   nom: nom,
-    //   prenom: prenom,
-    //   age: Number(age),
-    //   email: email,
-    //   password: password,
-    // });
+    await addDoc(collection(db, "utilisateurs"), {
+      nom: nom,
+      prenom: prenom,
+      age: Number(age),
+      email: email,
+      password: password,
+    });
   };
 
   return (
     <Container>
       <div className="inscription">
-        <h1 style={{fontWeight: "bolder"}}>Creer un compte</h1>
+        <h1 style={{ fontWeight: "bolder" }}>Creer un compte</h1>
         <br />
         <form className="form">
           <div className="row">

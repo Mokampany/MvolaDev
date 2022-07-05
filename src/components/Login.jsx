@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { db } from "../firebase-config";
 
 import {
@@ -10,6 +11,7 @@ import {
   doc,
   deleteDoc,
   where,
+  query,
 } from "firebase/firestore";
 
 const Container = styled.div`
@@ -28,6 +30,8 @@ const Container = styled.div`
 const Login = () => {
   const [email, setEmail] = useState(null);
   const [mdp, setMdp] = useState(null);
+
+  let navigate = useNavigate();
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -39,15 +43,23 @@ const Login = () => {
   const handleSubmitLogin = () => {
     const getUtilisateurs = async () => {
       const data = await getDocs(
-        collection(
-          db,
-          "utilisateurs",
-          where("email", "=", email),
-          where("password", "=", "password")
+        query(
+          collection(db, "utilisateurs"),
+          where("email", "==", email),
+          where("password", "==", mdp)
         )
       );
-      getUtilisateurs().then((result) => {});
+
+      if (data.docs.length === 0) {
+        console.log("Non");
+        navigate("/Authentification", { replace: true });
+      } else {
+        navigate("/", { replace: true });
+        localStorage.setItem("id", data.docs[0].id);
+        console.log(data.docs[0].id);
+      }
     };
+    getUtilisateurs();
   };
   return (
     <Container>

@@ -105,8 +105,8 @@ const Nav = () => {
                 </div>
                 <div className="nav-right-desktop">
                     <Link className="link" to="/">Accueil</Link>
-                    <Link className="link" to="/">Service</Link>
-                    <Link className="link" to="/apropos">A propos de nous</Link>
+                    {/* <Link className="link" to="/">Service</Link> */}
+                    <Link className="link" to="/apropos">A propos</Link>
                     <Link className="link" to="/">Parametres</Link>
                     <Link className="link" to="/">Mon compte</Link>
                     <Link className="link" to="/authentification">Authentification</Link>
@@ -127,8 +127,8 @@ const Nav = () => {
             </nav>
             <nav ref={navMobile} className={`nav-mobile`}>
                 <Link className="link" to="/">Accueil</Link>
-                <Link className="link" to="/">Service</Link>
-                <Link className="link" to="/apropos">A propos de nous</Link>
+                {/* <Link className="link" to="/">Service</Link> */}
+                <Link className="link" to="/apropos">A propos</Link>
                 <Link className="link" to="/">Parametres</Link>
                 <Link className="link" to="/">Mon compte</Link>
                 <Link className="link" to="/authentification">Authentification</Link>

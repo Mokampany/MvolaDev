@@ -1,3 +1,9 @@
+import {
+    Route,
+    Routes,
+    useNavigate,
+} from "react-router-dom";
+
 import styled from "@emotion/styled"
 import Inscription from "../components/Inscription";
 import Login from "../components/Login";
@@ -6,6 +12,7 @@ import bg from "../assets/images/bg.png"
 import Nav from "../components/Nav";
 import CELLS from "vanta/dist/vanta.birds.min"
 import * as THREE from "three"
+import logo from "../assets/images/logo.jpg"
 
 const Container = styled.div`
     h1{
@@ -37,6 +44,9 @@ const Container = styled.div`
     }
     //MOBILE VIEW
     @media screen and (max-width: 850px){
+        .logo-auth img{
+            width: 0%;
+        }
         #auths{
             justify-content:center;
         }
@@ -52,6 +62,21 @@ const Container = styled.div`
         #auths{
             display: grid;
             grid-template-columns: 50% auto;
+        }
+        .logo-auth{
+            // background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-auth img{
+            width: 85%;
+        }
+        #auths logo-auth, #auths #inscription, #auths #login{
+            // display: flex;
+            align-items: center;
+            // width: 100%;
+            // justify-content: center;
         }
         #inscription{
             padding:50px;
@@ -74,21 +99,24 @@ const Authentification = () => {
         <Container>
             <Nav />
             <div ref={vantaRef} id="authentification">
-                <div className="za-mandresy">
-                    <h1>Za mandresy</h1>
-                </div>
-                <div className="tongasoa">
-                    <p>Tongasoa!</p>
-                    <p>Votre premier site de divertissement</p>
-                    <p>Créez votre compte ou connectez-vous!</p>
-                </div>
                 <div id="auths">
-                    <div id="inscription">
-                        <Inscription />
+                    <div className="logo-auth" style={{ position: "relative" }}>
+                        <img style={{ borderRadius: "20px" }} src={logo} alt="logo" />
                     </div>
-                    <div id="login">
-                        <Login />
-                    </div>
+                    <Routes>
+                        <Route path="inscription" element={
+                            <div id="inscription">
+                                <Inscription />
+                            </div>
+                        }></Route>
+                    </Routes>
+                    <Routes>
+                        <Route path="" element={
+                            <div id="login">
+                                <Login />
+                            </div>
+                        }></Route>
+                    </Routes>
                 </div>
             </div>
         </Container>

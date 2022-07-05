@@ -10,6 +10,7 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   .inscription {
@@ -70,7 +71,7 @@ const Inscription = () => {
   return (
     <Container>
       <div className="inscription">
-        <h1 style={{ fontWeight: "bolder" }}>Creer un compte</h1>
+        <h1 style={{ fontWeight: "bolder" }}>Créez un compte</h1>
         <br />
         <form className="form">
           <div className="row">
@@ -119,6 +120,9 @@ const Inscription = () => {
             </span>
           </div>
         </form>
+        <div className="">
+          Vous avez déjà un compte ? <Link to={"/authentification"}>Connectez-vous</Link>
+        </div>
       </div>
     </Container>
   );

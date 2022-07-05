@@ -41,13 +41,16 @@ const Container = styled.div`
     //DESKTOP VIEW
     @media screen and (min-width: 850px){
         #apropos{
-            font-size: 1em;
+            font-size: 1.2em;
+        }
+        h1,h2,h3,h4,h5,h6{
+            font-size: 1.3em;
         }
     }
     //MOBILE VIEW
     @media screen and (max-width: 850px){
         #apropos,#service{
-            font-size: .9em;
+            font-size: 1em;
         }
     }
 `

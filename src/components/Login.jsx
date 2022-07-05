@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { db } from "../firebase-config";
 
 import {
@@ -87,6 +87,9 @@ const Login = () => {
             </span>
           </div>
         </form>
+        <div className="">
+          Pas encore inscrit ? <Link to={"/authentification/inscription"}>Inscrivez-vous</Link>
+        </div>
       </div>
     </Container>
   );

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
 import { db } from "../firebase-config";
+
 import {
   collection,
   getDocs,
@@ -30,23 +31,28 @@ const Login = () => {
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
   };
+
   const handleChangeMdp = (e) => {
     setMdp(e.target.value);
   };
-  const handleSubmitLogin = () => {
-    console.log(email);
 
+  const handleSubmitLogin = () => {
     const getUtilisateurs = async () => {
-      const data = await getDocs(collection(db, "utilisateurs",where("email","=",email),where("password","=","password"))
+      const data = await getDocs(
+        collection(
+          db,
+          "utilisateurs",
+          where("email", "=", email),
+          where("password", "=", "password")
+        )
       );
-    getUtilisateurs().then((result)=>{
-        
-    });
+      getUtilisateurs().then((result) => {});
+    };
   };
   return (
     <Container>
       <div className="login">
-        <h1>Se connecter</h1>
+        <h1 style={{ fontWeight: "bolder" }}>Se connecter</h1>
         <br />
         <form className="form">
           <div className="row">

@@ -1,20 +1,26 @@
-import Iframe from "react-iframe";
-const Home = () => {
-    // let link = "https://www.youtube.com/watch?v=BVmJXTQE0Ss";
-    let link = "https://fb.watch/d-Z3gTKz6H%2Fvideos%2F447142007208593";
-    let src = "";
-    if (link.includes("fb")) {
-        src = "https://www.facebook.com/plugins/video.php?href=" + link;
-    } else if (link.includes("youtube")) {
-        src = link.replace("watch?v=", "embed/");
-    } else {
-        src = "node_upload_video_link";
+import styled from "@emotion/styled"
+import bg from "../assets/images/bg.png"
+import Nav from '../components/Nav'
+import { useEffect } from "react"
+const Container = styled.div`
+    #home{
+        padding: 10px;
+        min-height: 100vh;
+        background-color: white;
     }
+`
+const Home = () => {
+    useEffect(() => {
+        document.title = "Accueil"
+    }, [])
     return (
         <>
-            <header className="App-header">
-                <Iframe url={src} width="450px" height="300px" allow="fullscreen" />
-            </header>
+            <Container>
+                <Nav />
+                <div id="home">
+                    Home page
+                </div>
+            </Container>
         </>
     );
 }

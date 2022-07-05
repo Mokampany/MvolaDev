@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/images/logo.jpg"
 const Container = styled.div`
     .show{
         display: block;
@@ -39,24 +40,32 @@ const Container = styled.div`
         }
     }
     @media screen and (min-width: 800px){
-        .nav-desktop{
-            margin:0;
-            padding: 0;
-            background-color: #282c34 ;
-            color: white;
-            min-height: 3em;
-            left:0;
-            right: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1em;
-        }
         .nav-mobile-button{
             display: none;
         }
         .nav-mobile{
             display: none;
+        }
+        .nav-desktop{
+            display: grid;
+            grid-template-columns: 10% auto;
+            margin:0;
+            padding: 5px;
+            background-color: #282c34 ;
+            color: white;
+            min-height: 3em;
+            left:0;
+            right: 0;
+            align-items: center;
+            // justify-content: start;
+            font-size: 1em;
+        }
+        .nav-left-desktop{
+            display: flex;
+        }
+        .nav-right-desktop{
+            display: flex;
+            justify-content: end;
         }
     }
 `
@@ -73,13 +82,19 @@ const Nav = () => {
     return (
         <Container>
             <nav className="nav-desktop">
-                <Link className="link" to="/">Logo</Link>
-                <Link className="link" to="/">Accueil</Link>
-                <Link className="link" to="/">Service</Link>
-                <Link className="link" to="/">A propos de nous</Link>
-                <Link className="link" to="/">Parametres</Link>
-                <Link className="link" to="/">Mon compte</Link>
-                <Link className="link" to="/authentification">Authentification</Link>
+                <div className="nav-left-desktop">
+                    <Link className="link" to="/">
+                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" />
+                    </Link>
+                </div>
+                <div className="nav-right-desktop">
+                    <Link className="link" to="/">Accueil</Link>
+                    <Link className="link" to="/">Service</Link>
+                    <Link className="link" to="/">A propos de nous</Link>
+                    <Link className="link" to="/">Parametres</Link>
+                    <Link className="link" to="/">Mon compte</Link>
+                    <Link className="link" to="/authentification">Authentification</Link>
+                </div>
             </nav>
             <nav className="nav-mobile-button">
                 <i onClick={handleDisplayMobileMenu} style={{ marginRight: "20px" }} className="fa-solid fa-bars-staggered"></i>

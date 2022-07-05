@@ -1,6 +1,7 @@
 import styled from "@emotion/styled"
 import bg from "../assets/images/bg.png"
 import Nav from '../components/Nav'
+import { useEffect } from "react"
 const Container = styled.div`
     #home{
         padding: 10px;
@@ -9,6 +10,9 @@ const Container = styled.div`
     }
 `
 const Home = () => {
+    useEffect(() => {
+        document.title = "Accueil"
+    }, [])
     return (
         <>
             <Container>

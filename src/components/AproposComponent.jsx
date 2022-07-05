@@ -15,7 +15,7 @@ const AproposComponent = () => {
                 <h1><i class="fa-solid fa-eject"></i> A propos</h1>
                 <span className="rose">Za Mandresy</span> est une entreprise basée à Madagascar,
                 <br />
-                composée de plusieurs influenceurs Malagasy.
+                proposant des services de <span className="rose">publicité</span> à ses clients.
                 <br />
                 Nous sommes actuellement présents sur la plateforme <span className="blue">facebook</span>,
                 <br />
@@ -26,10 +26,11 @@ const AproposComponent = () => {
             </div>
             <div>
                 <h2><i class="fa-brands fa-facebook"></i> Pourquoi facebook?</h2>
-                D'après nos sources, <span className="blue">facebook</span> est la plateforme regroupant
+                D'après nos sources, <span className="blue">facebook</span> est une plateforme de réseau
+                social regroupant
                 plus de <span className="rose">3.05 millions</span> de Malagasy,
                 <br />
-                soit environ <span className="rose">10.6%</span> de la population.(C'est un gros chiffre)
+                soit environ <span className="rose">10.6%</span> de la population.(Un gros chiffre)
                 <br />
             </div>
         </Container>

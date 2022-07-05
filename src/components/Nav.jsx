@@ -14,13 +14,15 @@ const Container = styled.div`
         color: white;
         margin: 0 20px 0 20px;
     }
-    @media screen and (max-width: 800px){
+
+    //DISPLAY MOBILE
+    @media screen and (max-width: 850px){
         .nav-desktop{
             display: none;
         }
         .nav-mobile-button{
             display: grid;
-            grid-template-columns: 40% 25% auto;
+            grid-template-columns: 45% 25% auto;
             background-color: #1E2025;
             color: white;
             min-height: 50px;
@@ -52,7 +54,8 @@ const Container = styled.div`
             border-top: 1px solid grey;
         }
     }
-    @media screen and (min-width: 800px){
+    //DISPLAY DESKTOP
+    @media screen and (min-width: 850px){
         .nav-mobile-button{
             display: none;
         }

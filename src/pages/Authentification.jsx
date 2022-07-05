@@ -27,7 +27,7 @@ const Container = styled.div`
     }
     #auths{
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: column;
     }
     #inscription{
         border-radius: 20px;
@@ -35,7 +35,8 @@ const Container = styled.div`
     #login{
         border-radius: 20px;
     }
-    @media screen and (max-width: 450px){
+    //MOBILE VIEW
+    @media screen and (max-width: 850px){
         #auths{
             justify-content:center;
         }
@@ -46,7 +47,8 @@ const Container = styled.div`
             padding: 10px;
         }
     }
-    @media screen and (min-width: 800px){
+    //DESKTOP VIEW
+    @media screen and (min-width: 850px){
         #auths{
             display: grid;
             grid-template-columns: 50% auto;
@@ -68,28 +70,6 @@ const Authentification = () => {
 
     const [vantaEffect, setVantaEffect] = useState(0)
     const vantaRef = useRef(null)
-    // useEffect(() => {
-    //     if (!vantaEffect) {
-    //         setVantaEffect(CELLS({
-    //             el: vantaRef.current,
-    //             THREE: THREE,
-    //             mouseControls: true,
-    //             touchControls: true,
-    //             gyroControls: false,
-    //             minHeight: 200.00,
-    //             minWidth: 200.00,
-    //             scale: 1.00,
-    //             scaleMobile: 1.00,
-    //             backgroundColor: 0x21420,
-    //             color1: 0xff009b,
-    //             color2: 0xff0000,
-    //             colorMode: "lerpGradient"
-    //         }))
-    //     }
-    //     return () => {
-    //         if (vantaEffect) vantaEffect.destroy()
-    //     }
-    // }, [vantaEffect])
     return (
         <Container>
             <Nav />

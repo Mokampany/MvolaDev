@@ -17,7 +17,7 @@
     "react-scripts": "5.0.1",
     "styled": "^1.0.0",
     "three": "^0.124.0",
-    "vanta": "^0.5.21",
+    "vanta": "^0.5.22",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

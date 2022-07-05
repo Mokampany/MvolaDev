@@ -24,12 +24,6 @@ const Container = styled.div`
         color: black;
         background-color: white;
         border-radius: 10px;
-
-        // background-image: url(${bg});
-        // background-position: center;
-        // background-size: cover;
-        // background-repeat: no-repeat;
-        // font-size: .8em;
     }
     #auths{
         display: flex;

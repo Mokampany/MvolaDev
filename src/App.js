@@ -9,6 +9,7 @@ import Authentification from "./pages/Authentification";
 import { useEffect, useState } from "react";
 import "./assets/bootstrap/css/bootstrap.min.css";
 import "./App.css";
+import Apropos from "./pages/Apropos";
 function App() {
   return (
     <div className="App">
@@ -16,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/authentification" element={<Authentification />} />
-          {/* <Route path="/apropos" element={<Authentification />} /> */}
+          <Route path="/apropos" element={<Apropos />} />
         </Routes>
       </Router>
     </div>

@@ -28,7 +28,7 @@ const Login = () => {
     return (
         <Container>
             <div className="login">
-                <h1>Se connecter</h1>
+                <h1 style={{fontWeight: "bolder"}}>Se connecter</h1>
                 <br />
                 <form className="form">
                     <div className="row">

@@ -20,7 +20,7 @@ const Container = styled.div`
         }
         .nav-mobile-button{
             display: block;
-            background-color: #282c34;
+            background-color: #1E2025;
             color: white;
             min-height: 50px;
             display: flex;
@@ -30,7 +30,8 @@ const Container = styled.div`
         .nav-mobile{
             display: none;
             flex-flow: column;
-            background-color: #282c34;
+            // background-color: #282c34;
+            background-color: #1E2025;
             color: white;
             text-align: end;
         }
@@ -51,7 +52,7 @@ const Container = styled.div`
             grid-template-columns: 10% auto;
             margin:0;
             padding: 5px;
-            background-color: #282c34 ;
+            background-color: #1E2025 ;
             color: white;
             min-height: 3em;
             left:0;

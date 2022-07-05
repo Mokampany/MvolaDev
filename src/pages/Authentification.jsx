@@ -1,16 +1,19 @@
 import styled from "@emotion/styled"
 import Inscription from "../components/Inscription";
 import Login from "../components/Login";
-import { useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import bg from "../assets/images/bg.png"
 import Nav from "../components/Nav";
+import CELLS from "vanta/dist/vanta.birds.min"
+import * as THREE from "three"
+
 const Container = styled.div`
     #authentification{
-        margin: 30px;
+        // margin: 30px;
         padding: 20px;
         min-height: 100vh;
-        color: #282c34;
-        background-color: ;
+        color: white;
+        background-color: black;
         border-radius: 10px;
 
         // background-image: url(${bg});
@@ -59,10 +62,34 @@ const Authentification = () => {
     useEffect(() => {
         document.title = "Authentification"
     }, [])
+
+    const [vantaEffect, setVantaEffect] = useState(0)
+    const vantaRef = useRef(null)
+    useEffect(() => {
+        if (!vantaEffect) {
+            setVantaEffect(CELLS({
+                el: vantaRef.current,
+                THREE: THREE,
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                backgroundColor: 0x21420,
+                color1: 0xff00d1,
+                color2: 0xff00f0
+            }))
+        }
+        return () => {
+            if (vantaEffect) vantaEffect.destroy()
+        }
+    }, [vantaEffect])
     return (
         <Container>
             <Nav />
-            <div id="authentification">
+            <div ref={vantaRef} id="authentification">
                 <div className="za-mandresy">
                     <h1>Za mandresy</h1>
                 </div>

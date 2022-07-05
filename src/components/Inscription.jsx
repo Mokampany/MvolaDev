@@ -70,7 +70,7 @@ const Inscription = () => {
   return (
     <Container>
       <div className="inscription">
-        <h1>Creer votre compte</h1>
+        <h1 style={{fontWeight: "bolder"}}>Creer un compte</h1>
         <br />
         <form className="form">
           <div className="row">
@@ -87,14 +87,6 @@ const Inscription = () => {
               type="text"
               className="firstName"
               placeholder="nom"
-            />
-          </div>
-          <div className="row">
-            <input
-              onChange={handleChangeAge}
-              type="text"
-              className="age"
-              placeholder="age"
             />
           </div>
           <div className="row">

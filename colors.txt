@@ -1,1 +1,3 @@
-#F069AB
+rose : #F069AB
+
+bleu: #282c34

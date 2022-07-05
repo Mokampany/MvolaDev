@@ -6,15 +6,13 @@ import logo from "../assets/images/logo.jpg"
 import AproposComponent from "../components/AproposComponent";
 import ServicesComponent from "../components/ServicesComponent";
 const Container = styled.div`
-    section{
+    #apropos,#services{
         min-height:100vh;
-        padding: 50px 20px 50px 20px;
+        padding: 7%;
         background-color: white;
         margin: 30px 30px 0 30px;
         border-radius: 10px;
-    }
-    #apropos{
-        
+        border: 1px solid black;
     }
     #apropos div{
         // flex:1;
@@ -45,9 +43,7 @@ const Container = styled.div`
         #apropos{
             font-size: 1em;
         }
-        h1,h2,h3,h4,h5,h6{
-            font-size: 1.4em;
-        }
+        
     }
 `
 const Apropos = () => {
@@ -60,7 +56,7 @@ const Apropos = () => {
             <section id="apropos">
                 <AproposComponent />
             </section>
-            <section>
+            <section id="services">
                 <ServicesComponent />
             </section>
         </Container>

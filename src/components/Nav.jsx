@@ -100,7 +100,7 @@ const Nav = () => {
             <nav className="nav-desktop">
                 <div className="nav-left-desktop">
                     <Link className="link" to="/">
-                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" /> <span style={{color: "#F069AB"}}>Za Mandresy</span>
+                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" /> <span style={{fontWeight:"bolder",color: "#F069AB"}}>Za Mandresy</span>
                     </Link>
                 </div>
                 <div className="nav-right-desktop">

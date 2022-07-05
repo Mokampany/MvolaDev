@@ -1,6 +1,12 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import Authentification from "./pages/Authentification";
+import { useEffect, useState } from "react";
 import "./assets/bootstrap/css/bootstrap.min.css";
 import "./App.css";
 function App() {

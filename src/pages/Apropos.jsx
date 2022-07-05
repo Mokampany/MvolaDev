@@ -43,7 +43,12 @@ const Container = styled.div`
         #apropos{
             font-size: 1em;
         }
-        
+    }
+    //MOBILE VIEW
+    @media screen and (max-width: 850px){
+        #apropos,#service{
+            font-size: .9em;
+        }
     }
 `
 const Apropos = () => {

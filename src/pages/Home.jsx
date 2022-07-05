@@ -14,7 +14,6 @@ const Home = () => {
   let navigate = useNavigate();
   useEffect(() => {
     document.title = "Accueil";
-
     if (!localStorage.getItem("id")) {
       navigate("/Authentification");
     }

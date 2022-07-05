@@ -4,6 +4,7 @@ import {
     useNavigate,
 } from "react-router-dom";
 
+import useTestAuth from "../services/useTestAuth";
 import styled from "@emotion/styled"
 import Inscription from "../components/Inscription";
 import Login from "../components/Login";
@@ -13,6 +14,7 @@ import Nav from "../components/Nav";
 import CELLS from "vanta/dist/vanta.birds.min"
 import * as THREE from "three"
 import logo from "../assets/images/logo.jpg"
+import FourOhFour from "./FourOhFour";
 
 const Container = styled.div`
     h1{
@@ -28,8 +30,8 @@ const Container = styled.div`
         margin: 30px 30px 0 30px;
         padding: 20px;
         min-height: 100vh;
-        color: black;
-        background-color: white;
+        color: white;
+        background-color: #282c34;
         border-radius: 10px;
     }
     #auths{
@@ -71,6 +73,7 @@ const Container = styled.div`
         }
         .logo-auth img{
             width: 85%;
+            filter: drop-shadow(0px 0px 10px #282c34);
         }
         #auths logo-auth, #auths #inscription, #auths #login{
             // display: flex;
@@ -89,6 +92,7 @@ const Container = styled.div`
     }
 `
 const Authentification = () => {
+    const navigate = useNavigate()
     useEffect(() => {
         document.title = "Authentification"
     }, [])
@@ -104,16 +108,16 @@ const Authentification = () => {
                         <img style={{ borderRadius: "20px" }} src={logo} alt="logo" />
                     </div>
                     <Routes>
-                        <Route path="inscription" element={
-                            <div id="inscription">
-                                <Inscription />
+                        <Route path="" element={
+                            <div id="login">
+                                <Login />
                             </div>
                         }></Route>
                     </Routes>
                     <Routes>
-                        <Route path="" element={
-                            <div id="login">
-                                <Login />
+                        <Route path="inscription" element={
+                            <div id="inscription">
+                                <Inscription />
                             </div>
                         }></Route>
                     </Routes>

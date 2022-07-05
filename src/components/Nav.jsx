@@ -82,10 +82,16 @@ const Container = styled.div`
         .nav-right-desktop{
             display: flex;
             justify-content: end;
+            font-size: .9rem;
         }
     }
 `
 const Nav = () => {
+    const THEMES = {
+        LIGHT: "light",
+        DARK: "dark"
+    }
+
     const DISPLAYS = {
         FLEX: "flex",
         NONE: "none"
@@ -100,16 +106,19 @@ const Nav = () => {
             <nav className="nav-desktop">
                 <div className="nav-left-desktop">
                     <Link className="link" to="/">
-                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" /> <span style={{fontWeight:"bolder",color: "#F069AB"}}>Za Mandresy</span>
+                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" /> <span style={{ fontWeight: "bolder", color: "#F069AB" }}>Za Mandresy</span>
                     </Link>
                 </div>
                 <div className="nav-right-desktop">
                     <Link className="link" to="/">Accueil</Link>
                     {/* <Link className="link" to="/">Service</Link> */}
                     <Link className="link" to="/apropos">A propos</Link>
-                    <Link className="link" to="/">Parametres</Link>
+                    {/* <Link className="link" to="/">Parametres</Link> */}
                     <Link className="link" to="/">Mon compte</Link>
                     <Link className="link" to="/authentification">Authentification</Link>
+                    <div className="theme">
+                         {/* Theme */}
+                    </div>
                 </div>
             </nav>
             <nav className="nav-mobile-button">
@@ -129,7 +138,7 @@ const Nav = () => {
                 <Link className="link" to="/">Accueil</Link>
                 {/* <Link className="link" to="/">Service</Link> */}
                 <Link className="link" to="/apropos">A propos</Link>
-                <Link className="link" to="/">Parametres</Link>
+                {/* <Link className="link" to="/">Parametres</Link> */}
                 <Link className="link" to="/">Mon compte</Link>
                 <Link className="link" to="/authentification">Authentification</Link>
             </nav>

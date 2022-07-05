@@ -12,7 +12,7 @@ const AproposComponent = () => {
                 <img style={{ borderRadius: "20px" }} width="200vw" src={logo} alt="logo" />
             </div>
             <div className="">
-                <h1><i class="fa-solid fa-eject"></i> A propos</h1>
+                <h1><i className="fa-solid fa-eject"></i> A propos</h1>
                 <span className="rose">Za Mandresy</span> est une entreprise basée à Madagascar,
                 <br />
                 proposant des services de <span className="rose">publicité</span> à ses clients.
@@ -27,7 +27,7 @@ const AproposComponent = () => {
                 <br />
             </div>
             <div>
-                <h2><i class="fa-brands fa-facebook"></i> Pourquoi facebook?</h2>
+                <h2><i className="fa-brands fa-facebook"></i> Pourquoi facebook?</h2>
                 <span className="blue">Facebook</span> est une plateforme de réseau
                 social regroupant
                 plus de <span className="rose">3.05 millions</span> de Malagasy,

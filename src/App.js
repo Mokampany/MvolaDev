@@ -4,6 +4,8 @@ import {
   Routes,
   useNavigate,
 } from "react-router-dom";
+
+import FourOhFour from "./pages/FourOhFour"
 import Home from "./pages/Home";
 import Authentification from "./pages/Authentification";
 import { useEffect, useState } from "react";
@@ -18,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/authentification/*" element={<Authentification />} />
           <Route path="/apropos" element={<Apropos />} />
+          <Route path="/*" element={<FourOhFour />} />
         </Routes>
       </Router>
     </div>

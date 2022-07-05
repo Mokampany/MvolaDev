@@ -32,7 +32,7 @@ const Container = styled.div`
 const ServicesComponent = () => {
     return (
         <Container>
-            <h1><i class="fa-solid fa-handshake-angle"></i> Nos services</h1>
+            <h1><i className="fa-solid fa-handshake-angle"></i> Nos services</h1>
             <div className="services">
                 <section>
                     <div>

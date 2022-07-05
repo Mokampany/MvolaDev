@@ -39,7 +39,10 @@ const Inscription = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
-
+  useEffect(()=>{
+    document.title = "Inscription"
+  },[])
+  
   const handleChangePrenom = (e) => {
     setPrenom(e.target.value);
   };

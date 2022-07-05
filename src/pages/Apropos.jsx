@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import useTestAuth from "../services/useTestAuth"
 import Nav from "../components/Nav";
 import logo from "../assets/images/logo.jpg"
 import AproposComponent from "../components/AproposComponent";
@@ -9,10 +10,10 @@ const Container = styled.div`
     #apropos,#services{
         min-height:100vh;
         padding: 7%;
-        background-color: white;
+        background-color: #282c34;
         margin: 30px 30px 0 30px;
         border-radius: 10px;
-        border: 1px solid black;
+        color: white;
     }
     #apropos div{
         // flex:1;
@@ -55,6 +56,8 @@ const Container = styled.div`
     }
 `
 const Apropos = () => {
+    // useTestAuth()
+
     useEffect(() => {
         document.title = "A propos"
     }, [])

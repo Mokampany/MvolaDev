@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { db } from "../firebase-config";
 
@@ -30,7 +30,9 @@ const Container = styled.div`
 const Login = () => {
   const [email, setEmail] = useState(null);
   const [mdp, setMdp] = useState(null);
-
+  useEffect(()=>{
+    document.title = "Login"
+  },[])
   let navigate = useNavigate();
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);

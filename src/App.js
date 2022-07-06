@@ -7,6 +7,7 @@ import {
 
 import FourOhFour from "./pages/FourOhFour"
 import Home from "./pages/Home";
+import HomeTest from "./pages/HomeTest";
 import Authentification from "./pages/Authentification";
 import { useEffect, useState } from "react";
 import "./assets/bootstrap/css/bootstrap.min.css";
@@ -18,6 +19,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/homeTest" element={<HomeTest />}></Route>
           <Route path="/authentification/*" element={<Authentification />} />
           <Route path="/apropos" element={<Apropos />} />
           <Route path="/*" element={<FourOhFour />} />

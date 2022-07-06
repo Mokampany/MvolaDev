@@ -1,3 +1,19 @@
 //A propos
     Description de l'entreprise
-    
+    Liste des services:
+        Publicité
+        Placement de produit
+        Organisation d'évènement
+        Organisation d'émission télévisée
+
+    Retours des clients
+
+//Home page
+    Faire une demande
+        Publicité
+            
+        Placement de produit
+
+        Organisation d'évènement
+
+        Organisation d'émission télévisée

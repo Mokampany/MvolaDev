@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import Nav from "../components/Nav";
 import { useEffect } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
-import {motion} from "framer-motion"
 const Container = styled.div`
   #home {
     // margin: 30px 30px 0 30px;
@@ -22,13 +21,13 @@ const Home = () => {
     <>
       <Container>
         <Nav />
-        <motion.div id="home"
+        <div id="home"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           d
-        </motion.div>
+        </div>
       </Container>
     </>
   );

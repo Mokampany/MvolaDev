@@ -1,20 +1,14 @@
 import {
     Route,
     Routes,
-    useNavigate,
 } from "react-router-dom";
 
-import useTestAuth from "../services/useTestAuth";
 import styled from "@emotion/styled"
 import Inscription from "../components/Inscription";
 import Login from "../components/Login";
-import { useEffect, useRef, useState } from "react"
-import bg from "../assets/images/bg.png"
+import { useEffect} from "react"
 import Nav from "../components/Nav";
-import CELLS from "vanta/dist/vanta.birds.min"
-import * as THREE from "three"
 import logo from "../assets/images/logo.jpg"
-import FourOhFour from "./FourOhFour";
 
 const Container = styled.div`
     h1{
@@ -92,17 +86,13 @@ const Container = styled.div`
     }
 `
 const Authentification = () => {
-    const navigate = useNavigate()
     useEffect(() => {
         document.title = "Authentification"
     }, [])
-
-    const [vantaEffect, setVantaEffect] = useState(0)
-    const vantaRef = useRef(null)
     return (
         <Container>
             <Nav />
-            <div ref={vantaRef} id="authentification">
+            <div id="authentification">
                 <div id="auths">
                     <div className="logo-auth" style={{ position: "relative" }}>
                         <img style={{ borderRadius: "20px" }} src={logo} alt="logo" />

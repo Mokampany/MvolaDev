@@ -1,11 +1,7 @@
 import styled from "@emotion/styled";
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useTestAuth from "../services/useTestAuth"
 import Nav from "../components/Nav";
-import logo from "../assets/images/logo.jpg"
 import AproposComponent from "../components/AproposComponent";
-import ServicesComponent from "../components/ServicesComponent";
 const Container = styled.div`
     #apropos,#services{
         min-height:100vh;
@@ -76,9 +72,6 @@ const Apropos = () => {
             <section id="apropos">
                 <AproposComponent />
             </section>
-            {/* <section id="services">
-                <ServicesComponent />
-            </section> */}
         </Container>
     );
 }

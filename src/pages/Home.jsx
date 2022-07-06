@@ -28,12 +28,17 @@ const Home = () => {
 
   const responsive = {
     0: { items: 1 },
-    568: { items: 2 },
+    850: { items: 2 },
     1024: { items: 3 },
   };
 
   const items = [
     <div className="item" data-value="1">
+      <video height="400" width="300" controls>
+        <source src={videos} type="video/mp4">
+      </video>
+    </div>
+   /* <div className="item" data-value="1">
       <Iframe url={videos} width="400px" height="300px" allow="fullscreen" />
     </div>,
     <div className="item" data-value="2">
@@ -47,7 +52,7 @@ const Home = () => {
     </div>,
     <div className="item" data-value="5">
       <Iframe url={videos} width="400px" height="300px" allow="fullscreen" />
-    </div>,
+    </div>,*/
   ];
 
   return (

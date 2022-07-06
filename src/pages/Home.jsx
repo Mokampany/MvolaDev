@@ -56,6 +56,13 @@ const Home = () => {
         <Nav />
         <div id="home">
           Home page
+          <AliceCarousel mouseTracking items={items} responsive={responsive} />
+          <AliceCarousel
+            mouseTracking
+            items={items}
+            responsive={responsive}
+            controlsStrategy="alternate"
+          />
           <AliceCarousel
             mouseTracking
             items={items}

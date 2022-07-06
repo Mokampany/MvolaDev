@@ -65,8 +65,10 @@ const Home = () => {
   }, [])
 
   useEffect(()=>{
-
-  })
+    if(idUser){
+      navigate("/homeUser")
+    }
+  },[idUser,isLoading,navigate])
 
   const handleCommencer = () => {
     if (idUser && isLoading === false) {

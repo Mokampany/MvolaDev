@@ -16,15 +16,22 @@ const Container = styled.div`
 const HomeUser = () => {
     const navigate = useNavigate()
     const { idUser, isLoading } = useTestAuth()
+    useEffect(()=>{
+        if(!idUser && !isLoading){
+            navigate("/homeGuest")
+        }
+    },[idUser,isLoading,navigate])
     useEffect(() => {
         document.title = "Za Mandresy"
     }, [])
     return (
         <>
             <Container>
-                <div id="home">
-                    <h1 className="za-mandresy">Dashboard</h1>
-                </div>
+                {idUser &&
+                    <div id="home">
+                        <h1 className="za-mandresy">Tableau de bord</h1>
+                    </div>
+                }
             </Container>
         </>
     );

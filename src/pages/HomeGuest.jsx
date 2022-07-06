@@ -66,7 +66,7 @@ const Home = () => {
 
   useEffect(()=>{
     if(idUser){
-      navigate("/homeUser")
+      // navigate("/homeUser")
     }
   },[idUser,isLoading,navigate])
 

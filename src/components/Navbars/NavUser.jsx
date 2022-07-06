@@ -23,7 +23,7 @@ nav .link{
     text-decoration: none;
     margin: 0 20px 0 20px;
     color: white;
-    background-color: red;
+    background-color: #F069AB;
     padding: 10px;
     border-radius: 5px;
 }

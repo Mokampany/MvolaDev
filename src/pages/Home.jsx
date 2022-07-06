@@ -35,7 +35,7 @@ const Home = () => {
   const items = [
     <div className="item" data-value="1">
       <video height="400" width="300" controls>
-        <source src={videos} type="video/mp4">
+        <source src={videos} type="video/mp4" />
       </video>
     </div>
    /* <div className="item" data-value="1">

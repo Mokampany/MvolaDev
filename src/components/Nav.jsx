@@ -106,7 +106,7 @@ const Nav = () => {
             <nav className="nav-desktop">
                 <div className="nav-left-desktop">
                     <Link className="link" to="/">
-                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" /> <span style={{ fontWeight: "bolder", color: "#F069AB" }}>Za Mandresy</span>
+                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" /> <span style={{ fontWeight: "bolder", color: "#F069AB" }}>Za Resy</span>
                     </Link>
                 </div>
                 <div className="nav-right-desktop">
@@ -128,7 +128,7 @@ const Nav = () => {
                     </Link>
                 </div>
                 <div className="entreprise-mobile">
-                    Za Mandresy
+                    Za Resy
                 </div>
                 <div className="menu-button-mobile">
                     <i onClick={handleDisplayMobileMenu} style={{ marginRight: "20px" }} className="fa-solid fa-bars-staggered"></i>

@@ -118,7 +118,10 @@ const Inscription = () => {
             />
           </div>
           <div className="row">
-            <span onClick={handleInscription} className="btn btn-primary validate">
+            <span
+              onClick={handleInscription}
+              className="btn btn-primary validate"
+            >
               Inscription
             </span>
           </div>

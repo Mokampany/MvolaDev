@@ -13,7 +13,7 @@ const Container = styled.div`
     margin: 30px 30px 0 30px;
     padding: 10px;
     min-height: 100vh;
-    background-color: white;
+    background-color: #282c34;
     border-radius: 10px;
   }
 `;

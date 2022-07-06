@@ -59,12 +59,23 @@ const Inscription = () => {
     console.log(confirmPassword)
   };
   const handleInscription = async () => {
-    await addDoc(collection(db, "utilisateurs"), {
+    const newUser = await addDoc(collection(db, "utilisateurs"), {
       nom: nom,
       prenom: prenom,
       email: email,
       password: password,
     });
+    if(!newUser){
+      alert("Une erreur lors de l'inscription")
+      return
+    }
+    setPrenom(null)
+    setNom(null)
+    setEmail(null)
+    setPassword(null)
+    setConfirmPassword(null)
+    alert("Felicitation ! Connectez-vous avec votre nouveau compte")
+    window.location("/authentification")
   };
 
   return (

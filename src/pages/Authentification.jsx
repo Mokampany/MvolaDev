@@ -91,7 +91,7 @@ const Authentification = () => {
     }, [])
     return (
         <Container>
-            <Nav />
+            {/* <Nav /> */}
             <div id="authentification">
                 <div id="auths">
                     <div className="logo-auth" style={{ position: "relative" }}>

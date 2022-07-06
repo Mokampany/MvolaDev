@@ -15,6 +15,9 @@ nav .link{
     color: white;
     margin: 0 20px 0 20px;
 }
+.nav-desktop, .nav-mobile{
+    user-select: none;
+}
 .authentification-button{
     text-decoration: none;
     margin: 0 20px 0 20px;
@@ -93,6 +96,7 @@ nav .link{
         justify-content: end;
         font-size: .9rem;
         align-items: center;
+        font-weight: bolder;
     }
 }
 `

@@ -53,12 +53,15 @@ const Login = () => {
       );
 
       if (data.docs.length === 0) {
-        console.log("Non");
+        alert("Mauvais mot de passe")
         navigate("/Authentification", { replace: true });
       } else {
-        navigate("/", { replace: true });
         localStorage.setItem("id", data.docs[0].id);
-        console.log(data.docs[0].id);
+        setEmail(null)
+        setMdp(null)
+        console.log(data.docs[0].data())
+        // console.log(data.docs[0].id);
+        window.location = "/homeUser";
       }
     };
     getUtilisateurs();

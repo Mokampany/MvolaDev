@@ -52,23 +52,12 @@ const Container = styled.div`
     }
 `
 const Apropos = () => {
-    // const navigate = useNavigate()
-    // const { idUser, isLoading } = useTestAuth()
-    // useEffect(() => {
-    //     
-    //     if (!idUser && isLoading === false) {
-    //         navigate("/authentification")
-    //         return
-    //     } else if (idUser && isLoading === false) {
-    //         console.log(idUser)
-    //     }
-    // }, [idUser, isLoading, navigate])
     useEffect(()=>{
-        document.title = "A propos"
+        document.title = "Za Mandresy | A propos"
     },[])
     return (
         <Container>
-            <Nav />
+            {/* <Nav /> */}
             <section id="apropos">
                 <AproposComponent />
             </section>

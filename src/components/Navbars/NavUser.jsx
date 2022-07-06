@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.jpg"
 
 const Container = styled.div`
@@ -14,6 +14,9 @@ nav .link{
     text-decoration: none;
     color: white;
     margin: 0 20px 0 20px;
+}
+.nav-desktop, .nav-mobile{
+    user-select: none;
 }
 .deconnexion{
     cursor: pointer;
@@ -37,6 +40,7 @@ nav .link{
         min-height: 50px;
         align-items: center;
         padding: 10px;
+        font-weight: bolder;
     }
     .logo-mobile{
         text-align: start;
@@ -93,11 +97,11 @@ nav .link{
         justify-content: end;
         font-size: .9rem;
         align-items: center;
+        font-weight: bolder;
     }
 }
 `
 const NavUser = () => {
-    const navigate = useNavigate()
     const DISPLAYS = {
         FLEX: "flex",
         NONE: "none"
@@ -109,29 +113,29 @@ const NavUser = () => {
 
     const handleDeconnexion = () => {
         localStorage.removeItem("id")
-        navigate("/authentification")
+        window.location = "/authentification"
     }
     return (
         <Container>
             <nav className="nav-desktop">
                 <div className="nav-left-desktop">
-                    <Link className="link" to="/">
+                    <Link className="link" to="/homeUser">
                         <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" />
                         <span style={{ fontWeight: "bolder", color: "#F069AB" }}> Za Mandresy</span>
                     </Link>
                 </div>
                 <div className="nav-right-desktop">
-                    <Link className="link" to="/">Accueil</Link>
+                    <Link className="link" to="/homeUser">Accueil</Link>
                     {/* <Link className="link" to="/">Service</Link> */}
                     <Link className="link" to="/apropos">A propos</Link>
                     {/* <Link className="link" to="/">Parametres</Link> */}
-                    <Link className="link" to="/">Mon compte</Link>
+                    <Link className="link" to="/homeUser">Mon compte</Link>
                     <div className="deconnexion" onClick={handleDeconnexion}>Deconnexion</div>
                 </div>
             </nav>
             <nav className="nav-mobile-button">
                 <div className="logo-mobile">
-                    <Link className="link" to="/">
+                    <Link className="link" to="/homeUser">
                         <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" />
                     </Link>
                 </div>
@@ -143,11 +147,11 @@ const NavUser = () => {
                 </div>
             </nav>
             <nav ref={navMobile} className={`nav-mobile`}>
-                <Link className="link" to="/">Accueil</Link>
+                <Link className="link" to="/homeUser">Accueil</Link>
                 {/* <Link className="link" to="/">Service</Link> */}
                 <Link className="link" to="/apropos">A propos</Link>
                 {/* <Link className="link" to="/">Parametres</Link> */}
-                <Link className="link" to="/">Mon compte</Link>
+                <Link className="link" to="/homeUser">Mon compte</Link>
                 <div className="deconnexion" onClick={handleDeconnexion}>Deconnexion</div>
             </nav>
         </Container>

@@ -51,7 +51,7 @@ const Container = styled.div`
         }
         .nav-mobile .link{
             padding: 10px;
-            border-top: 1px solid grey;
+            border-top: 1px solid #F069AB;
         }
     }
     //DISPLAY DESKTOP

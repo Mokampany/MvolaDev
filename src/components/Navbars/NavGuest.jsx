@@ -19,10 +19,10 @@ nav .link{
     text-decoration: none;
     margin: 0 20px 0 20px;
     color: white;
-    padding: 5px;
+    padding: 10px;
     cursor:pointer;
     background-color: blue;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 //DISPLAY MOBILE
 @media screen and (max-width: 850px){

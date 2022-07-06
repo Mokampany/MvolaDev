@@ -21,8 +21,8 @@ nav .link{
     margin: 0 20px 0 20px;
     color: white;
     background-color: red;
-    padding: 5px;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 5px;
 }
 //DISPLAY MOBILE
 @media screen and (max-width: 850px){

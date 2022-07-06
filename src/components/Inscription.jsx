@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { db } from "../firebase-config";
 import {
   collection,
-  getDocs,
+  // getDocs,
   addDoc,
-  updateDoc,
-  doc,
-  deleteDoc,
+  // updateDoc,
+  // doc,
+  // deleteDoc,
 } from "firebase/firestore";
 import { Link } from "react-router-dom";
 
@@ -35,7 +35,6 @@ const Container = styled.div`
 const Inscription = () => {
   const [prenom, setPrenom] = useState(null);
   const [nom, setNom] = useState(null);
-  const [age, setAge] = useState(0);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
@@ -49,9 +48,6 @@ const Inscription = () => {
   const handleChangeNom = (e) => {
     setNom(e.target.value);
   };
-  const handleChangeAge = (e) => {
-    setAge(e.target.value);
-  };
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -60,12 +56,12 @@ const Inscription = () => {
   };
   const handleChangeConfirmPassword = (e) => {
     setConfirmPassword(e.target.value);
+    console.log(confirmPassword)
   };
   const handleInscription = async () => {
     await addDoc(collection(db, "utilisateurs"), {
       nom: nom,
       prenom: prenom,
-      age: Number(age),
       email: email,
       password: password,
     });

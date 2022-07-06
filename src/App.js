@@ -19,7 +19,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/homeTest" element={<HomeTest />}></Route>
+          <Route path="/homeGuest" element={<HomeTest />}></Route>
           <Route path="/authentification/*" element={<Authentification />} />
           <Route path="/apropos" element={<Apropos />} />
           <Route path="/*" element={<FourOhFour />} />

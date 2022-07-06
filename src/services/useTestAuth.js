@@ -1,14 +1,22 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 const useTestAuth = () => {
-    const navigate = useNavigate()
+    const[idUser, setIdUser] = useState(null)
+    const[isLoading, setIsLoading] = useState(true)
+
     useEffect(() => {
-        const test = localStorage.getItem("id") == null ? false : true
-        if (!test) {
-            navigate("/authentification")
+        const getId = localStorage.getItem("id") != null ? localStorage.getItem("id") : null
+        if (getId) {
+            setIdUser(getId)
+            setIsLoading(false)
+        }else{
+            setIsLoading(false)
+            // setIdUser(null)
         }
-    },[navigate])
+    },[])
+
+    return { idUser,isLoading }
 }
 
 export default useTestAuth;

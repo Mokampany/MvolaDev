@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useTestAuth from "../services/useTestAuth"
 import Nav from "../components/Nav";
 import logo from "../assets/images/logo.jpg"
@@ -56,20 +56,29 @@ const Container = styled.div`
     }
 `
 const Apropos = () => {
-    // useTestAuth()
-
-    useEffect(() => {
+    // const navigate = useNavigate()
+    // const { idUser, isLoading } = useTestAuth()
+    // useEffect(() => {
+    //     
+    //     if (!idUser && isLoading === false) {
+    //         navigate("/authentification")
+    //         return
+    //     } else if (idUser && isLoading === false) {
+    //         console.log(idUser)
+    //     }
+    // }, [idUser, isLoading, navigate])
+    useEffect(()=>{
         document.title = "A propos"
-    }, [])
+    },[])
     return (
         <Container>
             <Nav />
             <section id="apropos">
                 <AproposComponent />
             </section>
-            <section id="services">
+            {/* <section id="services">
                 <ServicesComponent />
-            </section>
+            </section> */}
         </Container>
     );
 }

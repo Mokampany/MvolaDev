@@ -81,7 +81,7 @@ const Inscription = () => {
   return (
     <Container>
       <div className="inscription">
-        <h1 style={{ fontWeight: "bolder" }}>Créez un compte</h1>
+        <h1 style={{ fontWeight: "bolder" }}>Creer un compte</h1>
         <br />
         <form className="form">
           <div className="row">

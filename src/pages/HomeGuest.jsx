@@ -8,7 +8,7 @@ const Container = styled.div`
   #home {
     margin: 30px 30px 0 30px;
     padding: 10px;
-    min-height: 100vh;
+    min-height: 75vh;
     background-color: #1C1D1E;
     border-radius: 10px;
     color: white;
@@ -20,22 +20,22 @@ const Container = styled.div`
   }
   .za-mandresy{
     font-weight: bolder;
-    font-size: 7em;
+    font-size: 4em;
     color:white;
   }
   .description{
-    font-size: .9em;
+    font-size: 1em;
   }
   .bar{
     border-top: 2px solid #F069AB;
-    width: 30em;
+    width: 30vw;
   }
   .commencer{
     cursor: pointer;
     padding: 20px;
     background-color: #F069AB;
     color: white;
-    border-radius: 50px;
+    // border-radius: 50px;
     font-size: 1em;
     font-weight: bolder;
     user-select: none;
@@ -47,6 +47,9 @@ const Container = styled.div`
     font-size: .9em;
     color: grey;
     opacity: .8;
+  }
+  .rose{
+    color: #F069AB;
   }
   //MOBILE VIEW BELOW 850px
   @media screen and (max-width:850px){
@@ -92,15 +95,15 @@ const Home = () => {
       <Container>
         {/* <Nav /> */}
         <div id="home">
-          <h1 className="za-mandresy">ZA MANDRESY</h1>
+          <h1 className="za-mandresy">Confiez-nous vos publicités</h1>
           <div className="bar"></div>
           <br />
           <div className="description">
-            Confiez vos publicités et placements de produit entre de bonnes mains.
+            Laissez vos <span className="rose">publicités</span> et <span className="rose">placements de produit</span> entre de bonnes mains.
           </div>
           <br />
           <div className="description2">
-            +81 000 abonnés sur facebook
+            Za Mandresy, +81 000 abonnés sur notre page facebook.
           </div>
           <br />
           <div onClick={handleCommencer} className="commencer">

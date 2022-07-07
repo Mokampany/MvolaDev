@@ -87,7 +87,7 @@ const Login = () => {
             />
           </div>
           <div className="row">
-            <span onClick={handleSubmitLogin} className="btn btn-primary validate">
+            <span onClick={handleSubmitLogin} className="btn btn-primary">
               Se connecter
             </span>
           </div>

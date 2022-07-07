@@ -18,7 +18,7 @@ const Container = styled.div`
     .btn{
         border-color:#F069AB;
         background-color:#F069AB;
-        font-weight: bolder;
+        // font-weight: bolder;
     }
     #authentification{
         margin: 30px 30px 0 30px;
@@ -76,11 +76,11 @@ const Container = styled.div`
             // justify-content: center;
         }
         #inscription{
-            padding:50px;
+            // padding:50px;
             margin: 0 30px 0 30px;
         }
         #login{
-            padding:50px;
+            // padding:50px;
             margin: 0 30px 0 30px;
         }
     }
@@ -94,7 +94,7 @@ const Authentification = () => {
             <div id="authentification">
                 <div id="auths">
                     <div className="logo-auth" style={{ position: "relative" }}>
-                        <img style={{ borderRadius: "20px" }} src={logo} alt="logo" />
+                        <img style={{borderRadius:"1%"}} src={logo} alt="logo" />
                     </div>
                     <Routes>
                         <Route path="" element={
@@ -105,7 +105,7 @@ const Authentification = () => {
                     </Routes>
                     <Routes>
                         <Route path="inscription" element={
-                            <div id="inscription">
+                            <div style={{}} id="inscription">
                                 <Inscription />
                             </div>
                         }></Route>

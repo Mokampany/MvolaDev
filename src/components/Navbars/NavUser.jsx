@@ -100,7 +100,7 @@ nav .link:hover{
     .nav-right-desktop{
         display: flex;
         justify-content: end;
-        font-size: .9rem;
+        font-size: .8rem;
         align-items: center;
         // font-weight: bolder;
     }

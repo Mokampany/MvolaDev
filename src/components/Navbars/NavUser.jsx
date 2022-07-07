@@ -15,6 +15,10 @@ nav .link{
     color: white;
     margin: 0 20px 0 20px;
 }
+nav .link:hover{
+    color : #F069AB;
+    text-decoration: underline 3px #F069AB;
+}
 .nav-desktop, .nav-mobile{
     user-select: none;
 }

@@ -38,6 +38,9 @@ const Container = styled.div`
     font-weight: bolder;
     user-select: none;
   }
+  .commencer:hover{
+    transform: scale(1.1);
+  }
   //MOBILE VIEW BELOW 850px
   @media screen and (max-width:850px){
     .za-mandresy{

@@ -29,7 +29,7 @@ const HomeUser = () => {
             <Container>
                 <div id="home">
                     {isLoading &&
-                    <h1>Loading...</h1>
+                    <div></div>
                     }
                     {idUser &&
                         <h1 className="za-mandresy">Tableau de bord</h1>

@@ -8,7 +8,7 @@ const Container = styled.div`
         margin: 30px 30px 0 30px;
         padding: 10px;
         min-height: 100vh;
-        background-color: #282c34;
+        background-color: inherit;
         border-radius: 10px;
         color: white;
     }   
@@ -32,7 +32,9 @@ const HomeUser = () => {
                     <div></div>
                     }
                     {idUser &&
-                        <h1 className="za-mandresy">Tableau de bord</h1>
+                        <h1 className="za-mandresy">
+                            Tableau de bord
+                        </h1>
                     }
                 </div>
             </Container>

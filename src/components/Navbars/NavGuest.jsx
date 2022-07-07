@@ -18,7 +18,7 @@ nav .link{
 }
 nav .link:hover{
     color : #F069AB;
-    text-decoration: underline 3px #F069AB;
+    text-decoration: #F069AB;
 }
 .nav-desktop, .nav-mobile{
     user-select: none;
@@ -29,7 +29,7 @@ nav .link:hover{
     color: white;
     padding: 10px;
     cursor:pointer;
-    background-color: blue;
+    background-color: #F069AB;
     border-radius: 5px;
 }
 //DISPLAY MOBILE
@@ -40,7 +40,7 @@ nav .link:hover{
     .nav-mobile-button{
         display: grid;
         grid-template-columns: 45% 25% auto;
-        background-color: #1E2025;
+        background-color: inherit;
         color: white;
         min-height: 50px;
         align-items: center;
@@ -62,7 +62,7 @@ nav .link:hover{
         display: none;
         flex-flow: column;
         // background-color: #282c34;
-        background-color: #1E2025;
+        background-color: inherit;
         color: white;
         text-align: end;
     }
@@ -83,9 +83,8 @@ nav .link:hover{
         display: grid;
         grid-template-columns: 20% auto;
         margin:0;
-        padding: 5px;
-        background-color: #1E2025 ;
-        color: white;
+        padding: 10px;
+        background-color: #1C1D1E ;
         min-height: 3em;
         left:0;
         right: 0;
@@ -99,9 +98,8 @@ nav .link:hover{
     .nav-right-desktop{
         display: flex;
         justify-content: end;
-        font-size: .9rem;
+        font-size: .8rem;
         align-items: center;
-        font-weight: bolder;
     }
 }
 `
@@ -119,7 +117,7 @@ const NavGuest = () => {
             <nav className="nav-desktop">
                 <div className="nav-left-desktop">
                     <Link className="link" to="/homeGuest">
-                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" /> <span style={{ fontWeight: "bolder", color: "#F069AB" }}>Za Mandresy</span>
+                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" /> <span style={{color: "#F069AB" }}>Za Mandresy</span>
                     </Link>
                 </div>
                 <div className="nav-right-desktop">

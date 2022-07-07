@@ -21,7 +21,8 @@ function App() {
       <Router>
         <Nav />
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          {/* <Route path="/" element={<Home />}></Route> */}
+          <Route path="/" element={<HomeGuest />}></Route>
           <Route path="/homeUser" element={<HomeUser />}></Route>
           <Route path="/homeGuest" element={<HomeGuest />}></Route>
           <Route path="/authentification/*" element={<Authentification />} />

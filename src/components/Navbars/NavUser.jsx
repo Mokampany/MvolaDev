@@ -17,7 +17,7 @@ nav .link{
 }
 nav .link:hover{
     color : #F069AB;
-    text-decoration: underline 3px #F069AB;
+    text-decoration: #F069AB;
 }
 .nav-desktop, .nav-mobile{
     user-select: none;
@@ -83,7 +83,7 @@ nav .link:hover{
         display: grid;
         grid-template-columns: 20% auto;
         margin:0;
-        padding: 5px;
+        padding: 10px;
         background-color: #1E2025 ;
         color: white;
         min-height: 3em;
@@ -92,6 +92,7 @@ nav .link:hover{
         align-items: center;
         // justify-content: start;
         font-size: 1em;
+        
     }
     .nav-left-desktop{
         display: flex;
@@ -101,7 +102,7 @@ nav .link:hover{
         justify-content: end;
         font-size: .9rem;
         align-items: center;
-        font-weight: bolder;
+        // font-weight: bolder;
     }
 }
 `

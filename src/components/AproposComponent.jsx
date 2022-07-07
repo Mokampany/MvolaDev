@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-import logo from "../assets/images/logo.jpg"
+import logo from "../assets/images/illustration1.png"
 
 const Container = styled.div`
 
@@ -9,7 +9,7 @@ const AproposComponent = () => {
     return (
         <Container>
             <div>
-                <img style={{ borderRadius: "20px" }} width="200vw" src={logo} alt="logo" />
+                <img style={{ borderRadius: "20px" }} width="220vw" src={logo} alt="logo" />
             </div>
             <div className="">
                 <h1><i className="fa-solid fa-eject"></i> A propos</h1>

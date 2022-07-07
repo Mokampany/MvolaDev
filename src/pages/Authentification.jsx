@@ -25,7 +25,7 @@ const Container = styled.div`
         padding: 20px;
         min-height: 100vh;
         color: white;
-        background-color: #282c34;
+        background-color: inherit;
         border-radius: 10px;
     }
     #auths{
@@ -91,7 +91,6 @@ const Authentification = () => {
     }, [])
     return (
         <Container>
-            {/* <Nav /> */}
             <div id="authentification">
                 <div id="auths">
                     <div className="logo-auth" style={{ position: "relative" }}>

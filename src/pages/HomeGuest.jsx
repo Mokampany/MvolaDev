@@ -9,7 +9,7 @@ const Container = styled.div`
     margin: 30px 30px 0 30px;
     padding: 10px;
     min-height: 100vh;
-    background-color: #282c34;
+    background-color: #1C1D1E;
     border-radius: 10px;
     color: white;
     display: flex;
@@ -20,7 +20,7 @@ const Container = styled.div`
   .za-mandresy{
     font-weight: bolder;
     font-size: 7em;
-    color: #F069AB;
+    color:white;
   }
   .description{
     font-size: 1.2em;
@@ -33,6 +33,7 @@ const Container = styled.div`
     cursor: pointer;
     padding: 20px;
     background-color: #F069AB;
+    color: white;
     border-radius: 50px;
     font-size: 1em;
     font-weight: bolder;
@@ -69,7 +70,7 @@ const Home = () => {
 
   useEffect(()=>{
     if(idUser){
-      // navigate("/homeUser")
+      navigate("/homeUser")
     }
   },[idUser,isLoading,navigate])
 
@@ -89,7 +90,7 @@ const Home = () => {
           <div className="bar"></div>
           <br />
           <div className="description">
-            Mettez vos publicités et placements de produit entre de bonnes mains.
+            Confiez vos publicités et placements de produit entre de bonnes mains.
           </div>
           <br />
           <div onClick={handleCommencer} className="commencer">

@@ -6,9 +6,9 @@ const Container = styled.div`
     #apropos,#services{
         min-height:100vh;
         padding: 7%;
-        background-color: #282c34;
+        background-color: inherit;
         margin: 30px 30px 0 30px;
-        border-radius: 10px;
+        // border-radius: 10px;
         color: white;
     }
     #apropos div{

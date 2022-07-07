@@ -39,7 +39,7 @@ nav .link:hover{
     .nav-mobile-button{
         display: grid;
         grid-template-columns: 45% 25% auto;
-        background-color: #1E2025;
+        background-color: #1C1D1E;
         color: white;
         min-height: 50px;
         align-items: center;
@@ -62,7 +62,7 @@ nav .link:hover{
         display: none;
         flex-flow: column;
         // background-color: #282c34;
-        background-color: #1E2025;
+        background-color: #1C1D1E;
         color: white;
         text-align: end;
     }
@@ -84,7 +84,7 @@ nav .link:hover{
         grid-template-columns: 20% auto;
         margin:0;
         padding: 10px;
-        background-color: #1E2025 ;
+        background-color: #1C1D1E ;
         color: white;
         min-height: 3em;
         left:0;

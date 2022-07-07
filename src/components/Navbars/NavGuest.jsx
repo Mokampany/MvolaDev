@@ -30,7 +30,7 @@ nav .link:hover{
     padding: 10px;
     cursor:pointer;
     background-color: #F069AB;
-    border-radius: 5px;
+    // border-radius: 5px;
 }
 //DISPLAY MOBILE
 @media screen and (max-width: 850px){

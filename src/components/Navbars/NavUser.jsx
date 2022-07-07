@@ -29,7 +29,7 @@ nav .link:hover{
     color: white;
     background-color: #F069AB;
     padding: 10px;
-    border-radius: 5px;
+    // border-radius: 5px;
 }
 //DISPLAY MOBILE
 @media screen and (max-width: 850px){

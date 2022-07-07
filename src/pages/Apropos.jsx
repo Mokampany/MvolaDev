@@ -28,17 +28,10 @@ const Container = styled.div`
         font-weight: bolder;
         color: blue;
     }
-    ul{
-        list-style-type: none;
-    }
-    ul li{
-        font-size: 1.5em;
-        font-weight: bolder;
-    }
     //DESKTOP VIEW
     @media screen and (min-width: 850px){
         #apropos{
-            font-size: 1.2em;
+            font-size: .9em;
         }
         h1,h2,h3,h4,h5,h6{
             font-size: 1.3em;

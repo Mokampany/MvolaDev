@@ -14,8 +14,9 @@ const Container = styled.div`
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
+    margin-top: 20vh;
   }
   .za-mandresy{
     font-weight: bolder;
@@ -23,7 +24,7 @@ const Container = styled.div`
     color:white;
   }
   .description{
-    font-size: 1.2em;
+    font-size: .9em;
   }
   .bar{
     border-top: 2px solid #F069AB;
@@ -41,6 +42,11 @@ const Container = styled.div`
   }
   .commencer:hover{
     transform: scale(1.1);
+  }
+  .description2{
+    font-size: .9em;
+    color: grey;
+    opacity: .8;
   }
   //MOBILE VIEW BELOW 850px
   @media screen and (max-width:850px){
@@ -91,6 +97,10 @@ const Home = () => {
           <br />
           <div className="description">
             Confiez vos publicités et placements de produit entre de bonnes mains.
+          </div>
+          <br />
+          <div className="description2">
+            +81 000 abonnés sur facebook
           </div>
           <br />
           <div onClick={handleCommencer} className="commencer">

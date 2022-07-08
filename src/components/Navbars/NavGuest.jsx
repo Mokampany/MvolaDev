@@ -29,8 +29,11 @@ nav .link:hover{
     color: white;
     padding: 10px;
     cursor:pointer;
+    border: 2px solid #F069AB;
+    transition: background-color .3s;
+}
+.authentification-button:hover{
     background-color: #F069AB;
-    // border-radius: 5px;
 }
 //DISPLAY MOBILE
 @media screen and (max-width: 850px){
@@ -70,6 +73,10 @@ nav .link:hover{
         padding: 10px;
         border-top: 1px solid #F069AB;
     }
+    .authentification-button{
+        background-color: #F069AB;
+        color: white;
+    }
 }
 //DISPLAY DESKTOP
 @media screen and (min-width: 850px){
@@ -102,6 +109,8 @@ nav .link:hover{
         align-items: center;
     }
 }
+.link-accueil{
+}
 `
 const NavGuest = () => {
     const DISPLAYS = {
@@ -109,6 +118,19 @@ const NavGuest = () => {
         NONE: "none"
     }
     const navMobile = useRef(null)
+    const accueilRef = useRef(null)
+    const aproposRef = useRef(null)
+    const loginRef = useRef(null)
+
+    const handleChangeColor = (ref) => {
+        // console.log(ref.current.style)
+    }
+    const handleChangeColorAccueil = () =>{
+        handleChangeColor(accueilRef)
+    }
+    const handleChangeColorAPropos = () => {
+        handleChangeColor(aproposRef)
+    }
     const handleDisplayMobileMenu = () => {
         navMobile.current.style.display = navMobile.current.style.display === DISPLAYS.FLEX ? DISPLAYS.NONE : DISPLAYS.FLEX
     }
@@ -117,13 +139,13 @@ const NavGuest = () => {
             <nav className="nav-desktop">
                 <div className="nav-left-desktop">
                     <Link className="link" to="/homeGuest">
-                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" /> <span style={{color: "#F069AB" }}>Za Mandresy</span>
+                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" /> <span style={{ color: "#F069AB" }}>Za Mandresy</span>
                     </Link>
                 </div>
                 <div className="nav-right-desktop">
-                    <Link className="link" to="/homeGuest">Accueil</Link>
-                    <Link className="link" to="/apropos">A propos</Link>
-                    <Link className="authentification-button" to="/authentification">Login/Inscription</Link>
+                    <Link ref={accueilRef} onClick={handleChangeColorAccueil} className="link link-accueil" to="/homeGuest">Accueil</Link>
+                    <Link ref={aproposRef} onClick={handleChangeColorAPropos} className="link link-apropos" to="/apropos">A propos</Link>
+                    <Link ref={loginRef} className="authentification-button" to="/authentification">Login/Inscription</Link>
                     <div className="theme">
                         {/* Theme */}
                     </div>
@@ -143,9 +165,9 @@ const NavGuest = () => {
                 </div>
             </nav>
             <nav ref={navMobile} className={`nav-mobile`}>
-                <Link className="link" to="/homeGuest">Accueil</Link>
-                <Link className="link" to="/apropos">A propos</Link>
-                <Link className="authentification-button" to="/authentification">Login/Inscription</Link>
+                <Link ref={accueilRef} className="link link-accueil" to="/homeGuest">Accueil</Link>
+                <Link ref={aproposRef} className="link link-apropos" to="/apropos">A propos</Link>
+                <Link ref={loginRef} className="authentification-button" to="/authentification">Login/Inscription</Link>
             </nav>
         </Container>
     );

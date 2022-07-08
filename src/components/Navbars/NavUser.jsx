@@ -27,9 +27,12 @@ nav .link:hover{
     text-decoration: none;
     margin: 0 20px 0 20px;
     color: white;
-    background-color: #F069AB;
+    border: 1px solid #F069AB;
     padding: 10px;
-    // border-radius: 5px;
+    transition: background-color .3s;
+}
+.deconnexion:hover{
+    background-color: #F069AB;
 }
 //DISPLAY MOBILE
 @media screen and (max-width: 850px){
@@ -69,6 +72,10 @@ nav .link:hover{
     .nav-mobile .link{
         padding: 10px;
         border-top: 1px solid #F069AB;
+    }
+    .deconnexion{
+        background-color: #F069AB;
+        color: white;
     }
 }
 //DISPLAY DESKTOP
@@ -118,7 +125,7 @@ const NavUser = () => {
 
     const handleDeconnexion = () => {
         localStorage.removeItem("id")
-        window.location = "/authentification"
+        window.location = "/"
     }
     return (
         <Container>

@@ -4,70 +4,89 @@ import { useEffect } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { useNavigate } from "react-router-dom";
 import useTestAuth from "../services/useTestAuth";
+import illustation from "../assets/images/illustration_accueil.png"
 const Container = styled.div`
   #home {
-    margin: 30px 30px 0 30px;
-    padding: 10px;
-    min-height: 75vh;
-    background-color: #1C1D1E;
-    border-radius: 10px;
+    min-height: 100vh;
     color: white;
-    display: flex;
-    flex-direction: column;
-    // justify-content: center;
-    align-items: center;
-    margin-top: 20vh;
-  }
-  .za-mandresy{
-    font-weight: bolder;
-    font-size: 4em;
-    color:white;
-  }
-  .description{
-    font-size: 1em;
-  }
-  .bar{
-    border-top: 2px solid #F069AB;
-    width: 30vw;
-  }
-  .commencer{
-    cursor: pointer;
-    padding: 20px;
-    background-color: #F069AB;
-    color: white;
-    // border-radius: 50px;
-    font-size: 1em;
-    font-weight: bolder;
-    user-select: none;
-  }
-  .commencer:hover{
-    transform: scale(1.1);
-  }
-  .description2{
-    font-size: .9em;
-    color: grey;
-    opacity: .8;
   }
   .rose{
     color: #F069AB;
   }
-  //MOBILE VIEW BELOW 850px
-  @media screen and (max-width:850px){
-    .za-mandresy{
-      font-size: 4.5em;
+  .grey{
+    color: #C6C6C6;
+  }
+  //Mobile VIEW
+  @media screen and (min-width: 50px){
+    #home{
+      display: flex;
+      // align-items: center;
+      text-align: start;
+      padding: 50px;
+    }
+    h1{
+      font-size: 40px;
+      font-weight: 800;
     }
     .bar{
-      width: 12em;
+      width: 90%;
+      border-top: 1px solid #F069AB;
+      margin: 30px 0 30px 0;
+    }
+    .mediumText{
+      color: #C6C6C6;
+      margin-bottom: 30px;
+    }
+    .commencer{
+      padding: 15px;
+      border-radius: 0px;
+      border: 2px solid #F069AB;
+      color: white;
+      margin-bottom: 30px;
+      transition: background-color .3s;
+    }
+    .commencer:hover{
+      background-color: #F069AB;
+    }
+    .sectionDivertissement{
+      color: #F069AB;
+      margin-bottom: 30px;
+    }
+    .right img{
+      width:100%;
+      height: 100%;
+    }
+  }
+
+  //Desktop VIEW
+  @media screen and (min-width:850px){
+    #home{
+      display: flex;
+      align-items: center;
+    }
+    #home .conteneur{
+      // background-color: blue;
+      display: grid;
+      grid-template-columns: 45% auto;
+      padding: 50px;
+    }
+    .conteneur .left{
+      display: inline-block;
+      justify-content: center;
+      padding-left: 10px;
+    }
+    .conteneur .right{
+      width: 100%;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+    }
+    h1{
+      font-size: 4em;
     }
   }
   //MOBILE VIEW BELOW 500px
   @media screen and (max-width:500px){
-    .za-mandresy{
-      font-size: 2em;
-    }
-    .bar{
-      width: 12em;
-    }
   }
 `;
 const Home = () => {
@@ -77,11 +96,11 @@ const Home = () => {
     document.title = "Za Mandresy | Accueil"
   }, [])
 
-  useEffect(()=>{
-    if(idUser){
+  useEffect(() => {
+    if (idUser) {
       navigate("/homeUser")
     }
-  },[idUser,isLoading,navigate])
+  }, [idUser, isLoading, navigate])
 
   const handleCommencer = () => {
     if (idUser && isLoading === false) {
@@ -94,22 +113,29 @@ const Home = () => {
     <>
       <Container>
         {/* <Nav /> */}
-        <div id="home">
-          <h1 className="za-mandresy">Confiez-nous vos publicités</h1>
-          <div className="bar"></div>
-          <br />
-          <div className="description">
-            Laissez vos <span className="rose">publicités</span> et <span className="rose">placements de produit</span> entre de bonnes mains.
+        <section id="home">
+          <div className="conteneur">
+            <div className="left">
+              <div className="bigText">
+                <h1>Confiez-nous vos <span className="rose">publicités</span></h1>
+              </div>
+              <div className="bar"></div>
+              <div className="mediumText">
+                Laissez vos <span className="rose">publicités</span> et <span className="rose">placements de produit </span>
+                entre de bonnes mains.
+              </div>
+              <div className="btn commencer">
+                Commencer maintenant
+              </div>
+              <div className="sectionDivertissement">
+                Section divertissement
+              </div>
+            </div>
+            <div className="right">
+              <img src={illustation} alt="" />
+            </div>
           </div>
-          <br />
-          <div className="description2">
-            Za Mandresy, +81 000 abonnés sur notre page facebook.
-          </div>
-          <br />
-          <div onClick={handleCommencer} className="commencer">
-            Commencez maintenant
-          </div>
-        </div>
+        </section>
       </Container>
     </>
   );

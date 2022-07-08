@@ -8,7 +8,7 @@ const Container = styled.div`
 const AproposComponent = () => {
     return (
         <Container>
-            {/* <div>
+            <div>
                 <img style={{ borderRadius: "20px" }} width="220vw" src={logo} alt="logo" />
             </div>
             <div className="">
@@ -34,7 +34,7 @@ const AproposComponent = () => {
                 <br />
                 soit environ <span className="rose">10.6%</span> de la population.(Un gros chiffre)
                 <br />
-            </div> */}
+            </div>
         </Container>
     );
 }

@@ -72,7 +72,7 @@ const AproposComponent = () => {
             <div className="content">
                 <div className="left">
                     <div className="title">
-                        <h1>A propos de <span className="rose">nous</span></h1>
+                        <h1>A propos</h1>
                     </div>
                     <div className="bar"></div>
                 </div>

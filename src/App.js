@@ -16,17 +16,17 @@ import "./App.css";
 import Apropos from "./pages/Apropos";
 import Nav from "./components/Nav";
 import styled from "@emotion/styled";
+import Footer from "./components/Footer";
 
 const Container = styled.div`
-  .link-accueil{
-    color: blue;
+  .App{
+    position: relative;
   }
 `
-
 function App() {
   return (
     <Container>
-      <div className="App">
+      <div className="App" >
         <Router>
           <Nav />
           <Routes>
@@ -38,6 +38,7 @@ function App() {
             <Route path="/apropos" element={<Apropos />} />
             <Route path="/*" element={<FourOhFour />} />
           </Routes>
+          <Footer />
         </Router>
       </div>
     </Container>

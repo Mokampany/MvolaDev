@@ -105,7 +105,7 @@ const Container = styled.div`
             font-size: 14px;
         }
         .content-service .title h2{
-            font-size: 36px;
+            font-size: 45px;
             font-weight: 700;
         }
         .content-service .bar{
@@ -119,7 +119,7 @@ const ServicesComponent = () => {
             <div className="content-service">
                 <div className="right">
                     <div className="title">
-                        <h1>Nos <span className="rose">services</span></h1>
+                        <h1>Nos services</h1>
                     </div>
                     <div className="bar"></div>
                 </div>

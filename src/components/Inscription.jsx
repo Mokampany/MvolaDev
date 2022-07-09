@@ -59,22 +59,18 @@ const Inscription = () => {
     console.log(confirmPassword)
   };
   const handleInscription = async () => {
-    const newUser = await addDoc(collection(db, "utilisateurs"), {
-      nom: nom,
-      prenom: prenom,
-      email: email,
-      password: password,
-    });
-    if(!newUser){
-      alert("Une erreur lors de l'inscription")
-      return
-    }
-    setPrenom(null)
-    setNom(null)
-    setEmail(null)
-    setPassword(null)
-    setConfirmPassword(null)
-    alert("Felicitation ! Connectez-vous avec votre nouveau compte")
+    // const newUser = await addDoc(collection(db, "utilisateurs"), {
+    //   nom: nom,
+    //   prenom: prenom,
+    //   email: email,
+    //   password: password,
+    // });
+    // if(!newUser){
+    //   alert("Une erreur lors de l'inscription")
+    //   return
+    // }
+    // alert("Felicitation ! Connectez-vous avec votre nouveau compte")
+    alert("Fonctionnalité encore en phase de développement !")
     window.location("/authentification")
   };
 

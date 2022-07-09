@@ -125,7 +125,7 @@ const Home = () => {
                 Laissez vos <span className="rose">publicités</span> et <span className="rose">placements de produit </span>
                 entre de bonnes mains.
               </div>
-              <div className="btn commencer">
+              <div onClick={handleCommencer} className="btn commencer">
                 Commencer maintenant
               </div>
               <div className="sectionDivertissement">

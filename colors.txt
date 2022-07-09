@@ -2,6 +2,7 @@ rose : #F069AB
 bleu0 : #1C1D1E
 bleu1: #282c34
 gris: #C6C6C6
+jaune : #FBF100
 
 tarif background: #272727
 tarif text gris: #8A8A8A

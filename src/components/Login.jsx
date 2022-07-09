@@ -43,28 +43,28 @@ const Login = () => {
   };
 
   const handleSubmitLogin = () => {
-    const getUtilisateurs = async () => {
-      const data = await getDocs(
-        query(
-          collection(db, "utilisateurs"),
-          where("email", "==", email),
-          where("password", "==", mdp)
-        )
-      );
+    // const getUtilisateurs = async () => {
+    //   const data = await getDocs(
+    //     query(
+    //       collection(db, "utilisateurs"),
+    //       where("email", "==", email),
+    //       where("password", "==", mdp)
+    //     )
+    //   );
 
-      if (data.docs.length === 0) {
-        alert("Mauvais mot de passe")
-        navigate("/Authentification", { replace: true });
-      } else {
-        localStorage.setItem("id", data.docs[0].id);
-        setEmail(null)
-        setMdp(null)
-        console.log(data.docs[0].data())
-        // console.log(data.docs[0].id);
-        window.location = "/homeUser";
-      }
-    };
-    getUtilisateurs();
+    //   if (data.docs.length === 0) {
+    //     alert("Mauvais mot de passe")
+    //     navigate("/Authentification", { replace: true });
+    //   } else {
+    //     localStorage.setItem("id", data.docs[0].id);
+    //     setEmail(null)
+    //     setMdp(null)
+    //     console.log(data.docs[0].data())
+    //     window.location = "/homeUser";
+    //   }
+    // };
+    // getUtilisateurs();
+    alert("Fonctionnalité encore en phase de développement !")
   };
   return (
     <Container>

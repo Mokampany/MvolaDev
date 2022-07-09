@@ -20,9 +20,10 @@ const Container = styled.div`
   @media screen and (min-width: 50px){
     #home{
       display: flex;
-      // align-items: center;
+      align-items: center;
       text-align: start;
       padding: 50px;
+      justify-content: center;
     }
     h1{
       font-size: 40px;
@@ -59,7 +60,7 @@ const Container = styled.div`
   }
 
   //Desktop VIEW
-  @media screen and (min-width:850px){
+  @media screen and (min-width:1100px){
     #home{
       display: flex;
       align-items: center;

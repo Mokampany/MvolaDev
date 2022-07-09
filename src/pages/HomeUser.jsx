@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import useTestAuth from "../services/useTestAuth";
 const Container = styled.div`
   #home {
-        margin: 30px 30px 0 30px;
         padding: 10px;
         min-height: 100vh;
         background-color: inherit;

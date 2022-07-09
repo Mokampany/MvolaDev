@@ -36,7 +36,7 @@ nav .link:hover{
     background-color: #F069AB;
 }
 //DISPLAY MOBILE
-@media screen and (max-width: 850px){
+@media screen and (min-width: 50px){
     .nav-desktop{
         display: none;
     }
@@ -79,7 +79,7 @@ nav .link:hover{
     }
 }
 //DISPLAY DESKTOP
-@media screen and (min-width: 850px){
+@media screen and (min-width: 1100px){
     .nav-mobile-button{
         display: none;
     }
@@ -107,6 +107,9 @@ nav .link:hover{
         justify-content: end;
         font-size: .8rem;
         align-items: center;
+    }
+    .authentification-button{
+        background-color: transparent;
     }
 }
 .link-accueil{

@@ -129,7 +129,7 @@ const Container = styled.div`
 
         }
         .tarifs-big-title h1{
-            font-size: 64px;
+            font-size: 50px;
         }
         
     }

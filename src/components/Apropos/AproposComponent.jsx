@@ -41,7 +41,7 @@ const Container = styled.div`
     //Desktop view
     @media screen and (min-width: 1100px){
         .content h1{
-            font-size: 64px;
+            font-size: 50px;
             font-weight: 700;
             // display: none;
         }
@@ -59,8 +59,8 @@ const Container = styled.div`
             width: 50%;
         }
         .content .text{
-            font-size: 20px;
-            line-height: 250%;
+            font-size: 18px;
+            line-height: 200%;
             text-align: start;
             padding:0 30px 0 30px;
         }

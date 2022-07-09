@@ -90,7 +90,7 @@ const Container = styled.div`
         .content-service .right{
         }
         .content-service h1{
-            font-size: 64px;
+            font-size: 50px;
             font-weight: 700;
         }
         .content-service{

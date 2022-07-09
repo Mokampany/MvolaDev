@@ -68,22 +68,27 @@ const Container = styled.div`
     #home .conteneur{
       // background-color: blue;
       display: grid;
-      grid-template-columns: 45% auto;
+      grid-template-columns: 45% 1% auto;
       padding: 50px;
     }
     .conteneur .left{
       display: inline-block;
       justify-content: center;
-      padding-left: 10px;
+      padding: 0 40px 0 10px;
     }
     .conteneur .right{
       width: 100%;
       display: flex;
       justify-content: end;
       align-items: center;
+      padding-left: 40px;
     }
     h1{
       font-size: 4em;
+    }
+    .vertical-bar{
+      border-left: 1px solid #F069AB;
+      margin: 0 10px 0 10px;
     }
   }
   //MOBILE VIEW BELOW 500px
@@ -132,10 +137,15 @@ const Home = () => {
                 Section divertissement
               </div>
             </div>
+            <div className="vertical-bar"></div>
             <div className="right">
               <img src={illustation} alt="" />
             </div>
           </div>
+          {/* <iframe
+            title="titre" src="https://www.facebook.com/plugins/video.php?href=https://web.facebook.com/ZaMandresy.Prod/videos/430659228938525/&show_text=0&width=300"
+            width="300" height="300" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true">
+          </iframe> */}
         </section>
       </Container>
     </>

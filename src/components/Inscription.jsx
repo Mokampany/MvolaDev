@@ -1,47 +1,136 @@
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
-
-import { db } from "../firebase-config";
-import {
-  collection,
-  // getDocs,
-  addDoc,
-  // updateDoc,
-  // doc,
-  // deleteDoc,
-} from "firebase/firestore";
 import { Link } from "react-router-dom";
+import logo from '../assets/images/logo.jpg'
+
+const grey = "#F1F1F1";
+
+const Star = styled.span`
+  color: red;
+  font-size: 16px;
+`
+
+const width = '350px';
+const FORM_GROUP = `
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  font-size: 14px;
+`
+const MARGIN_BOTTOM = "10px";
 
 const Container = styled.div`
-  .inscription {
-    font-size: 1em;
-    text-align: start;
-  }
-  h1 {
-    font-size: 1.5em;
-  }
-  button {
-    font-size: 0.9em;
-  }
-  .form div {
-    margin-bottom: 10px;
-  }
-  @media screen and (min-width: 20px) {
-  }
-  @media screen and (min-width: 450px) {
-  }
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  align-items: center;
+  padding-top: 60px;
 `;
+const Heading = styled.div`
+  margin-top: 20px;
+  margin-bottom: 20px;
+`
+const Logo = styled.img`
+  width: 75px;
+  border-radius: 50%;
+`
+const HeadingText = styled.div`
+`
+const Form = styled.form`
+  background-color: ${grey};
+  padding: 20px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  color: #414141;
+  width: ${width};
+`
+const Nom = styled.div`
+  ${FORM_GROUP}
+  margin-bottom: ${MARGIN_BOTTOM};
+`
+const NomLabel = styled.label`
+`
+const NomInput = styled.input`
+  width: 100%;
+`
+const Prenom = styled.div`
+  ${FORM_GROUP}
+  margin-bottom: ${MARGIN_BOTTOM};
+`
+const PrenomLabel = styled.label`
+`
+const PrenomInput = styled.input`
+  width: 100%;
+`
 
+const Email = styled.div`
+  ${FORM_GROUP};
+  margin-bottom: ${MARGIN_BOTTOM};
+`
+const EmailLabel = styled.label`
+`
+const EmailInput = styled.input`
+  width: 100%;
+`
+const Pass = styled.div`
+  ${FORM_GROUP};
+  margin-bottom: ${MARGIN_BOTTOM};
+`
+const PassLabel = styled.label`
+`
+const PassInput = styled.input`
+  width: 100%;
+`
+const ConfirmPass = styled.div`
+  ${FORM_GROUP};
+  margin-bottom:${MARGIN_BOTTOM};
+`
+const ConfirmPassLabel = styled.label`
+`
+const ConfirmPassInput = styled.input`
+  width: 100%;
+`
+const Policies = styled.div`
+  display: flex;
+  align-items: start;
+`
+const AcceptPolicies = styled.input`
+`
+const LabelAcceptPolicies = styled.label`
+  text-align: start;
+  margin-left : 10px;
+  font-size: 12px;
+`
+const InscriptionButton = styled.div`
+  border: 1px solid #F069AB;
+  margin: auto;
+  margin-top: 50px;
+  width: 75%;
+  font-size: 13px;
+  padding: 6px;
+  user-select: none;
+  color: white;
+  background-color: #F069AB;
+  &:hover{
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+  }
+`
+const ConnectToAccount = styled.div`
+  margin-top: 20px;
+  font-size: 14px;
+`
 const Inscription = () => {
   const [prenom, setPrenom] = useState(null);
   const [nom, setNom] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
-  useEffect(()=>{
-    document.title = "Inscription"
-  },[])
-  
+  useEffect(() => {
+    document.title = "Inscription | Za Mandresy"
+  }, [])
+
   const handleChangePrenom = (e) => {
     setPrenom(e.target.value);
   };
@@ -59,80 +148,54 @@ const Inscription = () => {
     console.log(confirmPassword)
   };
   const handleInscription = async () => {
-    // const newUser = await addDoc(collection(db, "utilisateurs"), {
-    //   nom: nom,
-    //   prenom: prenom,
-    //   email: email,
-    //   password: password,
-    // });
-    // if(!newUser){
-    //   alert("Une erreur lors de l'inscription")
-    //   return
-    // }
-    // alert("Felicitation ! Connectez-vous avec votre nouveau compte")
     alert("Fonctionnalité encore en phase de développement !")
     window.location("/authentification")
   };
 
   return (
     <Container>
-      <div className="inscription">
-        <h1 style={{ fontWeight: "bolder" }}>Creer un compte</h1>
-        <br />
-        <form className="form">
-          <div className="row">
-            <input
-              onChange={handleChangePrenom}
-              type="text"
-              className="lastName"
-              placeholder="prenom"
-            />
-          </div>
-          <div className="row">
-            <input
-              onChange={handleChangeNom}
-              type="text"
-              className="firstName"
-              placeholder="nom"
-            />
-          </div>
-          <div className="row">
-            <input
-              onChange={handleChangeEmail}
-              type="email"
-              className="email"
-              placeholder="adresse email"
-            />
-          </div>
-          <div className="row">
-            <input
-              onChange={handleChangePassword}
-              type="password"
-              className="password"
-              placeholder="creer un mot de passe"
-            />
-          </div>
-          <div className="row">
-            <input
-              onChange={handleChangeConfirmPassword}
-              type="password"
-              className="password"
-              placeholder="confirmer le mot de passe"
-            />
-          </div>
-          <div className="row">
-            <span
-              onClick={handleInscription}
-              className="btn btn-primary validate"
-            >
-              Inscription
-            </span>
-          </div>
-        </form>
-        <div className="">
-          Vous avez déjà un compte ? <Link to={"/authentification"}>Connectez-vous</Link>
-        </div>
-      </div>
+      <Heading>
+        <Logo src={logo} alt="logo" />
+        <HeadingText>Inscription</HeadingText>
+      </Heading>
+      <Form>
+        <Nom>
+          <NomLabel>
+            Nom <Star>*</Star>
+          </NomLabel>
+          <NomInput />
+        </Nom>
+        <Prenom>
+          <PrenomLabel>
+            Prenom <Star>*</Star>
+          </PrenomLabel>
+          <PrenomInput />
+        </Prenom>
+        <Email>
+          <EmailLabel>
+            Email <Star>*</Star>
+          </EmailLabel>
+          <EmailInput />
+        </Email>
+        <Pass>
+          <PassLabel>
+            Mot de passe <Star>*</Star>
+          </PassLabel>
+          <PassInput />
+        </Pass>
+        <ConfirmPass>
+          <ConfirmPassLabel>
+            Confirmer le mot de passe <Star>*</Star>
+          </ConfirmPassLabel>
+          <ConfirmPassInput />
+        </ConfirmPass>
+        <Policies>
+          <AcceptPolicies type="checkbox"></AcceptPolicies>
+          <LabelAcceptPolicies>En vous inscrivant, vous acceptez tous nos règles d'utilisations. <Star>*</Star></LabelAcceptPolicies>
+        </Policies>
+        <InscriptionButton onClick={handleInscription}>Inscription</InscriptionButton>
+        <ConnectToAccount>Vous avez déjà un compte ? <Link to="/authentification">Connectez-vous</Link></ConnectToAccount>
+      </Form>
     </Container>
   );
 };

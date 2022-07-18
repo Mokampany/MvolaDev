@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import bg from "../assets/images/bg.png";
 import Nav from "../components/Nav";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";

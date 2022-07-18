@@ -1,93 +1,76 @@
 import styled from "@emotion/styled";
+import bg from "../../assets/images/background.png"
 
+const rose = "#F069AB";
 const Container = styled.div`
-    .rose{
-        color: #F069AB;
+    background-image: url(${bg});
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: white;
+    display: grid;
+    grid-template-columns: 55% 1% auto;
+    align-items: center;
+    @media (max-width:1100px){
+        display: flex;
+        flex-flow: column;
+        padding: 100px 20px 0 20px;
     }
-    .content{
-        color: white;
-        min-height: 100vh;
+`
+const Left = styled.div`
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    @media (max-width:1100px){
+        margin-bottom: 50px;
     }
-    //Mobile view +
-    @media screen and (min-width: 50px){
-        .content h1{
-            font-size: 40px;
-            font-weight: 700;
-        }
-        .content{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .content .left{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .content .bar{
-            width: 75%;
-            border-top: 1px solid #F069AB;
-            margin: 10px 0 30px 0;
-            text-align:center;
-        }
-        .content .text{
-            line-height: 300%;
-            text-align: start;
-            padding:0 30px 0 30px;
-            color: #C6C6C6;
-        }
+`
+const H1 = styled.h1`
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    font-weight: 800;
+`
+const Bar = styled.div`
+    width: 75%;
+    border: 1px solid ${rose};
+`
+const VerticalBar = styled.div`
+`
+const Right = styled.div`
+`
+const Text = styled.div`
+    max-width: 30ch;
+    text-align: start;
+    line-height: 4ch;
+    font-size: 20px;
+    @media (max-width:600px){
+        font-size: 15px;
     }
-    //Desktop view
-    @media screen and (min-width: 1100px){
-        .content h1{
-            font-size: 50px;
-            font-weight: 700;
-            // display: none;
-        }
-        .content .left{
-        }
-        .content{
-            display: grid;
-            grid-template-columns: 50% 1% auto;
-        }
-        .content .vertical-bar{
-            height: 60%;
-            border-left: 1px solid #F069AB;
-        }
-        .content .bar{
-            width: 50%;
-        }
-        .content .text{
-            font-size: 18px;
-            line-height: 200%;
-            text-align: start;
-            padding:0 30px 0 30px;
-        }
-    }
+`
+const Rose = styled.span`
+    color: ${rose};
 `
 const AproposComponent = () => {
     return (
         <Container>
-            <div className="content">
-                <div className="left">
-                    <div className="title">
-                        <h1>A propos</h1>
-                    </div>
-                    <div className="bar"></div>
-                </div>
-                <div className="vertical-bar"></div>
-                <div className="right">
-                    <div className="text">
-                        <span className="rose">Za Mandresy</span> est une entreprise basée à <span className="rose">Madagascar</span>, proposant
-                        des services de <span className="rose">publicité</span> et de
-                        <span className="rose"> placement de produit</span> à ses clients.
-                        Nous sommes actuellement présents sur la plateforme facebook,
-                        rassemblant plus de <span className="rose">81 000 utilisateurs abonnés</span> sur
-                        la page facebook principale <span className="rose"><b>Za Mandresy</b></span> .
-                    </div>
-                </div>
-            </div>
+            <Left>
+                <H1>
+                    A propos
+                </H1>
+                <Bar></Bar>
+            </Left>
+            <VerticalBar></VerticalBar>
+            <Right>
+                <Text>
+                    <Rose>Za Mandresy</Rose> est une entreprise basée à <Rose>Madagascar</Rose>, proposant
+                    des services de <Rose>publicité</Rose> et de
+                    <Rose> placement de produit</Rose> à ses clients.
+                    Nous sommes actuellement présents sur la plateforme facebook,
+                    rassemblant plus de <Rose>81 000 utilisateurs abonnés</Rose> sur
+                    la page facebook principale <Rose><b>Za Mandresy</b></Rose>.
+                </Text>
+            </Right>
         </Container>
     );
 }

@@ -4,7 +4,7 @@ import socialMedia from "../../assets/images/Illustrations/social-media-illustra
 
 const Container = styled.div`
     .content-service{
-        color: white;
+        color: black;
         min-height: 100vh;
     }
     .content-service h1{
@@ -78,7 +78,7 @@ const Container = styled.div`
         }
         .content-service .text{
             font-size: 14px;
-            color: #C6C6C6;
+            color: #414141;
         }
         .content-service .title h2{
             font-size: 22px;

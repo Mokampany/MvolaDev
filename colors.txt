@@ -1,10 +1,13 @@
 rose : #F069AB
 bleu0 : #1C1D1E
 bleu1: #282c34
-gris: #C6C6C6
+gris: #2E2E2E
+gris2: #414141
 jaune : #FBF100
 
 tarif background: #272727
 tarif text gris: #8A8A8A
 
 Premium tarif color : #FBF100
+
+Blanc : #F1F1F1

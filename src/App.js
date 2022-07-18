@@ -38,7 +38,7 @@ function App() {
             <Route path="/apropos" element={<Apropos />} />
             <Route path="/*" element={<FourOhFour />} />
           </Routes>
-          <Footer />
+          {/* <Footer /> */}
         </Router>
       </div>
     </Container>

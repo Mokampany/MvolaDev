@@ -4,6 +4,7 @@ const Container = styled.div`
     .tarifs h1{
         font-size: 40px;
         font-weight: 700;
+        color: black;
     }
     .tarifs{
         min-height: 100vh;
@@ -32,10 +33,10 @@ const Container = styled.div`
     }
     .tarif{
         min-height: 450px;
-        background-color: #272727;
+        background-color: #F1F1F1;
         margin-bottom: 20px;
+        color: black;
         padding: 30px;
-        position: relative;
     }
     .tarif-title h2{
         font-size: 24px;

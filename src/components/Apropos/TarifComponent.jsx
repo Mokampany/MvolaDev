@@ -1,18 +1,21 @@
 import styled from "@emotion/styled";
 const rose = "#F069AB";
 const blue = "#83DDFF";
+const bgColor = "#0E102E";
 const Container = styled.div`
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    background-color: ${blue};
+    background-color: ${bgColor};
+    // color: white;
     min-height: 100vh;
     @media (max-width: 800px){
         padding: 50px 0 50px 0;
     }
 `
 const H1 = styled.h1`
+    color: white;
     font-weight: 800;
     font-size: 50px;
     @media (max-width: 800px){

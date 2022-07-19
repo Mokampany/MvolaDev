@@ -1,173 +1,97 @@
 import styled from "@emotion/styled";
-import { useRef } from "react";
-import { Link } from "react-router-dom";
-import logo from "../../assets/images/Za_Mandresy_Logos/logo.jpg"
+import { useRef, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import NavUserDesktop from "./NavUserDesktop";
 
+const rose = "#F069AB";
+const bleu = "#040735";
 const Container = styled.div`
-.show{
-    display: block;
-}
-.hide{
-    display: none;
-}
-nav .link{
-    text-decoration: none;
-    color: white;
-    margin: 0 20px 0 20px;
-}
-nav .link:hover{
-    color : #F069AB;
-    text-decoration: #F069AB;
-}
-.nav-desktop, .nav-mobile{
-    user-select: none;
-}
-.deconnexion{
-    cursor: pointer;
-    text-decoration: none;
-    margin: 0 20px 0 20px;
-    color: white;
-    border: 1px solid #F069AB;
-    padding: 10px;
-    transition: background-color .3s;
-}
-.deconnexion:hover{
-    background-color: #F069AB;
-}
-//DISPLAY MOBILE
-@media screen and (max-width: 850px){
-    .nav-desktop{
-        display: none;
-    }
-    .nav-mobile-button{
-        display: grid;
-        grid-template-columns: 45% 25% auto;
-        background-color: #1C1D1E;
-        color: white;
-        min-height: 50px;
-        align-items: center;
-        padding: 10px;
-        font-weight: bolder;
-    }
-    .logo-mobile{
-        text-align: start;
-    }
-    .entreprise-mobile{
-        text-align: start;
-        font-size: .8em;
-        font-weight: 600;
-        color: #F069AB;
-    }
-    .menu-button-mobile{
-        text-align: end;
-    }
-    .nav-mobile{
-        display: none;
-        flex-flow: column;
-        // background-color: #282c34;
-        background-color: #1C1D1E;
-        color: white;
-        text-align: end;
-    }
-    .nav-mobile .link{
-        padding: 10px;
-        border-top: 1px solid #F069AB;
-    }
-    .deconnexion{
-        background-color: #F069AB;
-        color: white;
-    }
-}
-//DISPLAY DESKTOP
-@media screen and (min-width: 850px){
-    .nav-mobile-button{
-        display: none;
-    }
-    .nav-mobile{
-        display: none;
-    }
-    .nav-desktop{
-        display: grid;
-        grid-template-columns: 20% auto;
-        margin:0;
-        padding: 10px;
-        background-color: #1C1D1E ;
-        color: white;
-        min-height: 3em;
-        left:0;
-        right: 0;
-        align-items: center;
-        // justify-content: start;
-        font-size: 1em;
-        
-    }
-    .nav-left-desktop{
-        display: flex;
-    }
-    .nav-right-desktop{
-        display: flex;
-        justify-content: end;
-        font-size: .8rem;
-        align-items: center;
-        // font-weight: bolder;
-    }
-}
+
 `
-const NavUser = () => {
-    const DISPLAYS = {
-        FLEX: "flex",
-        NONE: "none"
+const NavButton = styled.div`
+    position: fixed;
+    color: white;
+    left: 0;
+    right: 0;
+    padding: 20px 20px 0px 20px;
+    text-align: end;
+    font-size: 30px;
+    @media(min-width: 1100px){
+        display: none;
     }
-    const navMobile = useRef(null)
-    const handleDisplayMobileMenu = () => {
-        navMobile.current.style.display = navMobile.current.style.display === DISPLAYS.FLEX ? DISPLAYS.NONE : DISPLAYS.FLEX
+`
+const Icon = styled.i`
+    color:${rose};
+    &:hover{
+        cursor: pointer;
+    }
+`
+const NavUserMobile = styled.div`
+    position: fixed;
+    inset: 0;
+    transform: translateX(100%);
+    min-height: 100vh;
+    background-color: ${bleu};
+    color: white;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s;
+`
+const ExitButton = styled.div`
+    position: fixed;
+    top:0;
+    right: 0;
+    padding: 20px 40px 0px 20px;
+    text-align: end;
+    font-size: 30px;
+    &:hover{
+        cursor: pointer;
+    }
+`
+const Menu = styled.div`
+    margin: 0 0 20px 0;
+    font-weight: 900;
+    font-size: 30px;
+    user-select: none;
+    &:hover{
+        cursor: pointer;
+    }
+`
+const NavGuest = () => {
+    const navigate = useNavigate();
+    const [displayMenuMobile, setDisplayMenuMobile] = useState(false);
+
+    const reference = useRef();
+    useEffect(() => {
+        reference.current.style.transform = displayMenuMobile === true ? "translate(0%)" : "translate(100%)";
+    }, [displayMenuMobile])
+
+    const handleDisplayMenu = () => {
+        setDisplayMenuMobile(!displayMenuMobile);
     }
 
-    const handleDeconnexion = () => {
-        localStorage.removeItem("id")
-        window.location = "/"
+    const handleNavigate = (destination) =>{
+        setDisplayMenuMobile(false);
+        navigate(destination);
     }
     return (
         <Container>
-            <nav className="nav-desktop">
-                <div className="nav-left-desktop">
-                    <Link className="link" to="/homeUser">
-                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" />
-                        <span style={{ fontWeight: "bolder", color: "#F069AB" }}> Za Mandresy</span>
-                    </Link>
-                </div>
-                <div className="nav-right-desktop">
-                    <Link className="link" to="/homeUser">Accueil</Link>
-                    {/* <Link className="link" to="/">Service</Link> */}
-                    <Link className="link" to="/apropos">A propos</Link>
-                    {/* <Link className="link" to="/">Parametres</Link> */}
-                    <Link className="link" to="/homeUser">Mon compte</Link>
-                    <div className="deconnexion" onClick={handleDeconnexion}>Deconnexion</div>
-                </div>
-            </nav>
-            <nav className="nav-mobile-button">
-                <div className="logo-mobile">
-                    <Link className="link" to="/homeUser">
-                        <img style={{ borderRadius: "50%" }} width="50" height={50} src={logo} alt="Logo za mandresy" />
-                    </Link>
-                </div>
-                <div className="entreprise-mobile">
-                    Za Mandresy
-                </div>
-                <div className="menu-button-mobile">
-                    <i onClick={handleDisplayMobileMenu} style={{ marginRight: "20px" }} className="fa-solid fa-bars-staggered"></i>
-                </div>
-            </nav>
-            <nav ref={navMobile} className={`nav-mobile`}>
-                <Link className="link" to="/homeUser">Accueil</Link>
-                {/* <Link className="link" to="/">Service</Link> */}
-                <Link className="link" to="/apropos">A propos</Link>
-                {/* <Link className="link" to="/">Parametres</Link> */}
-                <Link className="link" to="/homeUser">Mon compte</Link>
-                <div className="deconnexion" onClick={handleDeconnexion}>Deconnexion</div>
-            </nav>
+            {/* NAVIGATION DESKTOP */}
+            <NavUserDesktop handleNavigate = {handleNavigate} />
+            {/* NAVIGATION MOBILE */}
+            <NavButton>
+                <Icon onClick={handleDisplayMenu} className="fa-solid fa-bars-staggered"></Icon>
+            </NavButton>
+            <NavUserMobile ref={reference}>
+                <ExitButton onClick={handleDisplayMenu} className="fa-solid fa-xmark"></ExitButton>
+                <Menu onClick={()=>handleNavigate("/")}>Accueil</Menu>
+                <Menu onClick={()=>handleNavigate("/apropos")}>A propos</Menu>
+                <Menu onClick={()=>handleNavigate("/authentification")}>Deconnexion</Menu>
+            </NavUserMobile>
         </Container>
     );
 }
 
-export default NavUser;
+export default NavGuest;

@@ -3,15 +3,19 @@ import { useEffect } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { useNavigate } from "react-router-dom";
 import useTestAuth from "../services/useTestAuth";
+const bgColor = "#0E102E";
+
 const Container = styled.div`
-  #home {
-        padding: 10px;
-        min-height: 100vh;
-        background-color: inherit;
-        border-radius: 10px;
-        color: white;
-    }   
+    padding-top: 100px;
+    min-height: 100vh;
+    background-color: ${bgColor};
+    color: white;
 `;
+const H1 = styled.h1`
+    font-weight: 900;
+    user-select: none;
+`
+
 const HomeUser = () => {
     const navigate = useNavigate()
     const { idUser, isLoading } = useTestAuth()
@@ -26,16 +30,14 @@ const HomeUser = () => {
     return (
         <>
             <Container>
-                <div id="home">
-                    {isLoading &&
+                {isLoading &&
                     <div></div>
-                    }
-                    {idUser &&
-                        <h1 className="za-mandresy">
-                            Tableau de bord
-                        </h1>
-                    }
-                </div>
+                }
+                {idUser &&
+                    <H1>
+                        Tableau de bord
+                    </H1>
+                }
             </Container>
         </>
     );

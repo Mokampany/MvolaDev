@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from '../assets/images/logo.jpg'
+import logo from '../assets/images/Za_Mandresy_Logos/logo.jpg';
 
 const grey = "#F1F1F1";
 

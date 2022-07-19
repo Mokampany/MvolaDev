@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { useEffect } from "react";
-import Nav from "../components/Nav";
 import AproposComponent from "../components/Apropos/AproposComponent";
 import ServicesComponent from "../components/Apropos/ServicesComponent";
 import TarifComponent from "../components/Apropos/TarifComponent";

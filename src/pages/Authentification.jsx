@@ -7,8 +7,6 @@ import styled from "@emotion/styled"
 import Inscription from "../components/Inscription";
 import Login from "../components/Login";
 import { useEffect} from "react"
-import Nav from "../components/Nav";
-import logo from "../assets/images/Illustrations/secure_login.png"
 
 const Container = styled.div`
     color: black;

@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
-import bg from "../../assets/images/background.png"
+import bg from "../../assets/images/Backgrounds/background1.jpg"
 
 const rose = "#F069AB";
 const Container = styled.div`
     background-image: url(${bg});
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     min-height: 100vh;
     color: white;
     display: grid;
@@ -15,6 +16,7 @@ const Container = styled.div`
         display: flex;
         flex-flow: column;
         padding: 100px 20px 0 20px;
+        background-size: auto;
     }
 `
 const Left = styled.div`
@@ -33,7 +35,7 @@ const H1 = styled.h1`
 `
 const Bar = styled.div`
     width: 75%;
-    border: 1px solid ${rose};
+    border-top: 2px solid ${rose};
 `
 const VerticalBar = styled.div`
 `

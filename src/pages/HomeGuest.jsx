@@ -1,30 +1,36 @@
 import styled from "@emotion/styled";
-import Nav from "../components/Nav";
 import { useEffect } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { useNavigate } from "react-router-dom";
 import useTestAuth from "../services/useTestAuth";
-import illustation from "../assets/images/illustration_accueil.png"
-import bg from "../assets/images/background.png"
+import bg from "../assets/images/Backgrounds/background1.jpg"
+import illustration from "../assets/images/Illustrations/cartoon.png";
+import { useRef } from "react";
 const rose = "#fd3395";
 
 const Rose = styled.span`
-  color: ${rose};
+  // color: ${rose};
 `
 
 const Container = styled.div`
-  padding-top: 100px;
+  // color: ${rose};
+  color: white;
+  padding-top: 200px;
   padding-bottom: 100px;
   display: grid;
-  grid-template-columns: 55% auto;
+  grid-template-columns: 75% auto;
   min-height: 100vh;
   background-image: url(${bg});
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: left;
   @media (max-width: 1100px){
+    padding-top: 100px;
     display: flex;
     flex-flow: column wrap;
     align-items: center;
+    background-size: auto;
   }
 `;
 const Left = styled.div`
@@ -40,7 +46,6 @@ const Left = styled.div`
 const H1 = styled.h1`
   font-weight: 800;
   font-size: 64px;
-  color: white;
   @media (max-width: 1100px){
     font-size: 40px;
   }
@@ -57,14 +62,17 @@ const Bar = styled.div`
 `
 const Description = styled.div`
   margin-bottom: 50px;
-  font-weight: 500;
+  font-size: 20px;
+  max-width: 40ch;
   color: #C6C6C6;
+  // font-weight: 700;
 `
 const Buttons = styled.div`
   display: flex;
   margin-bottom:10px;
   flex-flow: row wrap;
   justify-content: start;
+  user-select: none;
 `
 const CommencerButton = styled.div`
   background-color: ${rose};
@@ -89,7 +97,7 @@ const CommencerButton = styled.div`
   }
 `
 const AProposDeNousButton = styled.div`
-  color: ${rose};
+  color: white;
   border: 1px solid ${rose};
   padding: 10px;
   text-align: center;
@@ -99,8 +107,8 @@ const AProposDeNousButton = styled.div`
   margin-bottom: 10px;
   &:hover{
     cursor: pointer;
-    // background-color: ${rose};
-    // color: white;
+    background-color: white;
+    color: ${rose};
   }
   @media (max-width: 1100px){
     width: 100%;
@@ -121,22 +129,26 @@ const Right = styled.div`
   align-items: center;
   justify-content: center;
 `
-const Illustration = styled.img`
-  margin-top: -30px;
-  // width: 100%;
-  max-width:100%;
-  max-height:100%;
-  @media (max-width: 1100px){
-    height: 50%;
-    width: 50%;
-    margin-top: 50px;
-  }
+const Gif = styled.img`
+  width: 100%;
+`
+const Loading = styled.div`
+  position: fixed;
+  min-height: 100vh;
+  inset: 0;
+  background-color: black;
+  transition: transform .3s;
+  color: white;
 `
 const Home = () => {
   const { idUser, isLoading } = useTestAuth()
   const navigate = useNavigate()
+  const loadingRef = useRef();
   useEffect(() => {
     document.title = "Za Mandresy | Accueil"
+    setTimeout(()=>{
+      loadingRef.current.style.transform = "translate(-100%)";
+    },2000)
   }, [])
 
   useEffect(() => {
@@ -157,9 +169,12 @@ const Home = () => {
   }
   return (
     <>
+      {/* <Loading ref={loadingRef}>
+        Loading...
+      </Loading> */}
       <Container>
         <Left>
-          <H1>Confiez-nous vos <Transparent>publicités</Transparent></H1>
+          <H1>Confiez-nous vos publicités<Transparent></Transparent></H1>
           <Bar></Bar>
           <Description>Laissez vos <Rose>publicités</Rose> et <Rose>placements de produits</Rose> entre de bonnes mains.</Description>
           <Buttons>
@@ -169,9 +184,10 @@ const Home = () => {
           <Licence>
             Licences et règles d'utilisations.
           </Licence>
+          {/* <a href='https://www.freepik.com/photos/color-overlay'>Color overlay photo created by user3802032 - www.freepik.com</a> */}
         </Left>
         <Right>
-          <Illustration src={illustation} alt="" />
+          <Gif src={illustration}></Gif>
         </Right>
       </Container>
     </>

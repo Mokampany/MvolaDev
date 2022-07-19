@@ -1,6 +1,7 @@
 rose : #F069AB
 bleu0 : #1C1D1E
 bleu1: #282c34
+bleu3: #040735
 gris: #2E2E2E
 gris2: #414141
 jaune : #FBF100

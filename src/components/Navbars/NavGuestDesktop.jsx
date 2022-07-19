@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/images/logo.jpg"
+import logo from "../../assets/images/Za_Mandresy_Logos/logo.jpg"
 
 const rose = "#F069AB";
 
@@ -9,7 +9,7 @@ const Container = styled.div`
     left: 0;
     right: 0;
     color: white;
-    background-color: hsla(66, 100%, 1%, .8) ;
+    background-color: hsla(66, 100%, 1%, .6) ;
     display: flex;
     justify-content: space-between;
     align-items: start;
@@ -44,14 +44,14 @@ const Li = styled.div`
 `
 const Login = styled.button`
     margin-left: 75px;
-    background-color: ${rose};
+    background-color: transparent;
     color: white;
     padding: 10px;
     transition: background-color .3s;
     border: 1px solid ${rose};
     &:hover{
-        background-color: transparent;
-        color: ${rose};
+        background-color: ${rose};
+        color: white;
     }
 `
 const NavGuestDesktop = ({handleNavigate}) => {

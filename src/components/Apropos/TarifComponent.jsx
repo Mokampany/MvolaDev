@@ -1,213 +1,167 @@
 import styled from "@emotion/styled";
-
+const rose = "#F069AB";
+const blue = "#83DDFF";
 const Container = styled.div`
-    .tarifs h1{
-        font-size: 40px;
-        font-weight: 700;
-        color: black;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    background-color: ${blue};
+    min-height: 100vh;
+    @media (max-width: 800px){
+        padding: 50px 0 50px 0;
     }
-    .tarifs{
-        min-height: 100vh;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .tarifs .bar{
-        width: 100%;
-        border-top: 1px solid #F069AB;
-        margin: 0px 0 75px 0;
-    }
-    .tarifs-big-title{
-        display: flex;
-        flex-direction: column;
-    }
-    .rose{
-        color: #F069AB;
-    }
-    .tarifs-list{
-        display: flex;
-        flex-direction: column;
-        min-width: 250px;
-        // margin: 0 20px 0 20px;
-    }
-    .tarif{
-        min-height: 450px;
-        background-color: #F1F1F1;
-        margin-bottom: 20px;
-        color: black;
-        padding: 30px;
-    }
-    .tarif-title h2{
-        font-size: 24px;
-        font-weight: 700;
-        transition: color .3s;
-    }
-    .tarif-title h2:hover{
-        cursor: default;
-        color: #F069AB;
-    }
-    .tarif .bar{
-        margin: 30px 0 30px 0;
-    }
-    .tarif-price .montant{
+`
+const H1 = styled.h1`
+    font-weight: 800;
+    font-size: 50px;
+    @media (max-width: 800px){
         font-size: 35px;
-        font-weight: 700;
     }
-    .tarif-price{
-        margin-bottom: 50px;
-        color: #F069AB;
+`
+const Bar = styled.div`
+    width: 25%;
+    border-top: 2px solid ${rose};
+    margin-bottom: 30px;
+    @media (max-width: 800px){
+        width: 50%;
     }
-    .tarif-conditions{
-        text-align:start;
+`
+const Tarifs = styled.div`
+    display: flex;
+    justify-content: space-around;
+    min-height: 400px;
+    min-width: 75vw;
+    @media (max-width: 800px){
+        display: flex;
+        flex-flow: column;
+        min-width: 50%;
     }
-    .tarif-conditions ul{
-        list-style: none;
+`
+const Tarif = styled.div`
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background-color: hsla(360, 100%, 100%, 0.7);
+    padding: 50px 40px 50px 40px;
+    border-radius: 10px;
+    margin: 0 10px 0 10px;
+    @media (max-width: 800px){
+        margin-bottom: 30px;
     }
-    .tarif-conditions ul li:before{
-        content: "\\2022";
-        color: #F069AB;
-        font-weight: bold;
-        display: inline-block; 
-        width: 1em;
-        margin-left: -1em;
-    }
-    .tarif-conditions ul li{
-        margin-bottom: 15px;
-        font-size: 14px;
-    }
-    .acheter{
-        position: absolute;
-        left: 50px;
-        right: 50px;
-        bottom: 30px;
-        border: 1px solid #F069AB;
-        padding: 10px;
-        transition: background-color .3s;
-        font-weight: 600;
-    }
-    .acheter:hover{
-        cursor: pointer;
-        background-color: #F069AB;
-    }
-    .tarif-premium h2{
-        color: #FBF100;
-    }
-    .tarif-premium .tarif-price{
-        color: #FBF100;
-    }
-    .tarif-premium .acheter{
-        // background-color: #FBF100;
-        border: 1px solid #FBF100;
-        color: white;
-    }
-    .tarif-premium .acheter:hover{
-        background-color: #FBF100;
-        color: black;
-    }
+`
+const TarifTitle = styled.h2`
+    font-size: 30px;
+    font-weight: 700;
+`
+const TarifBar = styled.div`
+    border-top: 1px solid ${rose};
+    width: 75%;
+    margin: 20px;
+`
+const TarifPrice = styled.div`
+    margin-bottom: 20px;
+`
+const TarifMontant = styled.span`
+    font-size: 35px;
+    font-weight: 700;
 
-    //DESKTOP VIEW 850px
-    @media screen and (min-width: 850px){
-        .tarifs-list{
-            padding: 0 2% 0 2%;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-        }
-        .tarifs-list .tarif{
-        }
-        .tarif-title h2{
-            font-size: 30px;
-        }
+`
+const TarifUnite = styled.span`
+    font-size: 20px;
+`
+const TarifConditions = styled.ul`
+    text-align: start;
+    list-style: none;
+    margin-bottom: 60px;
+`
+const Condition = styled.li`
+    font-size: 18px;
+    margin-bottom: 15px;
+    &:before{
+        content: ".";
+        margin-right: 10px;
+        color:${rose};
+        font-size: 20px;
+        font-weight: 900;
     }
-    //DESKTOP VIEW 1100px
-    @media screen and (min-width: 1100px){
-        .tarifs-list{
-            width: 90%;
-        }
-        .tarif{
-
-        }
-        .tarifs-big-title h1{
-            font-size: 50px;
-        }
-        
+`
+const AcheterButton = styled.div`
+    border: 1px solid ${rose};
+    padding: 10px 30px 10px 30px;
+    user-select: none;
+    cursor: pointer;
+    transition: background-color .3s;
+    background-color: ${rose};
+    color : white;
+    &:hover{
+        background-color: transparent;
+        color: ${rose};
     }
 `
 const TarifComponent = () => {
     return (
         <Container>
-            <div className="tarifs">
-                <div className="tarifs-big-title">
-                    <div className="h1">
-                        <h1>Nos tarifs</h1>
-                    </div>
-                    <div className="bar"></div>
-                </div>
-                <div className="tarifs-list">
-                    <div className="tarif tarif-normal">
-                        <div className="tarif-title">
-                            <h2>Normal</h2>
-                        </div>
-                        <div className="bar"></div>
-                        <div className="tarif-price">
-                            <span className="montant">200 000 </span>
-                            <span className="unite">Ar TTC</span>
-                        </div>
-                        <div className="tarif-conditions">
-                            <ul>
-                                <li>1 publication</li>
-                                <li>4 photos maximum</li>
-                                <li>0 video</li>
-                            </ul>
-                        </div>
-                        <div className="acheter">
-                            Acheter
-                        </div>
-                    </div>
-                    <div className="tarif tarif-avance">
-                        <div className="tarif-title">
-                            <h2>Avancé</h2>
-                        </div>
-                        <div className="bar"></div>
-                        <div className="tarif-price">
-                            <span className="montant">350 000 </span>
-                            <span className="unite">Ar TTC</span>
-                        </div>
-                        <div className="tarif-conditions">
-                            <ul>
-                                <li>1 publication</li>
-                                <li>4 photos maximum</li>
-                                <li>0 video</li>
-                            </ul>
-                        </div>
-                        <div className="acheter">
-                            Acheter
-                        </div>
-                    </div>
-                    <div className="tarif tarif-premium">
-                        <div className="tarif-title">
-                            <h2>Premium</h2>
-                        </div>
-                        <div className="bar"></div>
-                        <div className="tarif-price">
-                            <span className="montant">500 000 </span>
-                            <span className="unite">Ar TTC</span>
-                        </div>
-                        <div className="tarif-conditions">
-                            <ul>
-                                <li>1 publication</li>
-                                <li>4 photos maximum</li>
-                                <li>0 video</li>
-                            </ul>
-                        </div>
-                        <div className="acheter">
-                            Acheter
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <H1>
+                Nos tarifs
+            </H1>
+            <Bar></Bar>
+            <Tarifs>
+                <Tarif>
+                    <TarifTitle>
+                        Normal
+                    </TarifTitle>
+                    <TarifBar></TarifBar>
+                    <TarifPrice>
+                        <TarifMontant>200 000 </TarifMontant>
+                        <TarifUnite>Ar TTC</TarifUnite>
+                    </TarifPrice>
+                    <TarifConditions>
+                        <Condition>1 publication</Condition>
+                        <Condition>4 photos maximum</Condition>
+                        <Condition>0 video</Condition>
+                    </TarifConditions>
+                    <AcheterButton>
+                        Acheter
+                    </AcheterButton>
+                </Tarif>
+                <Tarif>
+                    <TarifTitle>
+                        Avancé
+                    </TarifTitle>
+                    <TarifBar></TarifBar>
+                    <TarifPrice>
+                        <TarifMontant>350 000 </TarifMontant>
+                        <TarifUnite>Ar TTC</TarifUnite>
+                    </TarifPrice>
+                    <TarifConditions>
+                        <Condition>1 publication</Condition>
+                        <Condition>4 photos maximum</Condition>
+                        <Condition>0 video</Condition>
+                    </TarifConditions>
+                    <AcheterButton>
+                        Acheter
+                    </AcheterButton>
+                </Tarif>
+                <Tarif>
+                    <TarifTitle>
+                        Premium
+                    </TarifTitle>
+                    <TarifBar></TarifBar>
+                    <TarifPrice>
+                        <TarifMontant>500 000 </TarifMontant>
+                        <TarifUnite>Ar TTC</TarifUnite>
+                    </TarifPrice>
+                    <TarifConditions>
+                        <Condition>1 publication</Condition>
+                        <Condition>4 photos maximum</Condition>
+                        <Condition>0 video</Condition>
+                    </TarifConditions>
+                    <AcheterButton>
+                        Acheter
+                    </AcheterButton>
+                </Tarif>
+            </Tarifs>
         </Container>
     );
 }

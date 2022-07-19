@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from '../assets/images/logo.jpg'
+import logo from '../assets/images/Za_Mandresy_Logos/logo.jpg'
 
 const width = '350px';
 

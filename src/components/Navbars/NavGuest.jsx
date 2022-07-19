@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
 import { useRef, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/images/logo.jpg"
+import { useNavigate } from "react-router-dom";
 import NavGuestDesktop from "./NavGuestDesktop";
 
 const rose = "#F069AB";
-
+const bleu = "#040735";
 const Container = styled.div`
 
 `
@@ -32,8 +31,7 @@ const NavGuestMobile = styled.div`
     inset: 0;
     transform: translateX(100%);
     min-height: 100vh;
-    // background-color: #F069AB;
-    background-color: ${rose};
+    background-color: ${bleu};
     color: white;
     display: flex;
     flex-flow: column;

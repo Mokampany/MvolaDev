@@ -15,7 +15,7 @@ const Rose = styled.span`
 const Container = styled.div`
   // color: ${rose};
   color: white;
-  padding-top: 200px;
+  padding-top: 150px;
   padding-bottom: 100px;
   display: grid;
   grid-template-columns: 60% auto;
@@ -146,9 +146,9 @@ const Home = () => {
   const loadingRef = useRef();
   useEffect(() => {
     document.title = "Za Mandresy | Accueil"
-    setTimeout(()=>{
-      loadingRef.current.style.transform = "translate(-100%)";
-    },2000)
+    // setTimeout(()=>{
+    //   loadingRef.current.style.transform = "translate(-100%)";
+    // },2000)
   }, [])
 
   useEffect(() => {

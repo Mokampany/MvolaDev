@@ -18,7 +18,7 @@ const Container = styled.div`
   padding-top: 200px;
   padding-bottom: 100px;
   display: grid;
-  grid-template-columns: 75% auto;
+  grid-template-columns: 60% auto;
   min-height: 100vh;
   background-image: url(${bg});
   background-size: cover;

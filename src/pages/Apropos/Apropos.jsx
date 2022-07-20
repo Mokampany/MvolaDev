@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { useEffect } from "react";
-import AproposComponent from "../components/Apropos/AproposComponent";
-import ServicesComponent from "../components/Apropos/ServicesComponent";
-import TarifComponent from "../components/Apropos/TarifComponent";
+import AproposComponent from "../../components/Apropos/AproposComponent";
+import ServicesComponent from "../../components/Apropos/ServicesComponent";
+import TarifComponent from "../../components/Apropos/TarifComponent";
 const Container = styled.div`
 `
 const Apropos = () => {

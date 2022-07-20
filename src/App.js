@@ -2,21 +2,18 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  useNavigate,
 } from "react-router-dom";
 
-import FourOhFour from "./pages/FourOhFour"
-import Home from "./pages/Home";
-import HomeGuest from "./pages/HomeGuest";
-import HomeUser from "./pages/HomeUser";
-import Authentification from "./pages/Authentification";
-import { useEffect, useState } from "react";
+import FourOhFour from "./pages/FourOhFour/FourOhFour"
+import HomeGuest from "./pages/HomePages/HomeGuest";
+import HomeUser from "./pages/HomePages/HomeUser";
+import Authentification from "./pages/Authentification/Authentification";
 import "./assets/bootstrap/css/bootstrap.min.css";
 import "./App.css";
-import Apropos from "./pages/Apropos";
+import Apropos from "./pages/Apropos/Apropos";
 import Nav from "./components/Nav";
 import styled from "@emotion/styled";
-import Footer from "./components/Footer";
+import ChoixCommande from "./pages/Commande/ChoixCommande";
 
 const Container = styled.div`
   .App{
@@ -36,6 +33,7 @@ function App() {
             <Route path="/homeGuest" element={<HomeGuest />}></Route>
             <Route path="/authentification/*" element={<Authentification />} />
             <Route path="/apropos" element={<Apropos />} />
+            <Route path="/commander/*" element={<ChoixCommande />}/>
             <Route path="/*" element={<FourOhFour />} />
           </Routes>
           {/* <Footer /> */}

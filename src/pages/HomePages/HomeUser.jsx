@@ -2,9 +2,8 @@ import styled from "@emotion/styled";
 import { useEffect } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { useNavigate } from "react-router-dom";
-import useTestAuth from "../services/useTestAuth";
-import img from "../assets/images/Za_Mandresy_Logos/logo.jpg"
-import illustration from "../assets/images/Illustrations/cartoon.png"
+import useTestAuth from "../../services/useTestAuth";
+
 const bgColor = "#0E102E";
 const rose = "#F069AB";
 const grey = "#2E2E2E";
@@ -25,7 +24,20 @@ const H1 = styled.h1`
     font-weight: 500;
     user-select: none;
     margin-bottom: 20px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    &:after{
+        content:"";
+        width: 80%;
+        border-top: 1px solid ${rose};
+        margin: 20px 0 20px 0;
+    }
 `
+const Bar = styled.div`
+
+`
+
 const List = styled.div`
     display: flex;
     flex-flow: row wrap;
@@ -132,6 +144,10 @@ const HomeUser = () => {
     useEffect(() => {
         document.title = "Za Mandresy"
     }, [])
+
+    const handleNavigate = (path) => {
+        navigate(path)
+    }
     return (
         <>
             {isLoading &&
@@ -142,8 +158,9 @@ const HomeUser = () => {
                     <H1>
                         Vos commandes
                     </H1>
+                    <Bar></Bar>
                     <List>
-                        <CardNouvelleCommande>
+                        <CardNouvelleCommande onClick={()=>handleNavigate("/commander")}>
                             <AjouterText>
                                 +
                             </AjouterText>

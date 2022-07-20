@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
+import { useNavigate } from "react-router-dom";
 const rose = "#F069AB";
 const blue = "#83DDFF";
 const bgColor = "#0E102E";
 const Container = styled.div`
+    padding-top: 100px;
     display: flex;
     flex-flow: column;
     align-items: center;
-    justify-content: center;
     background-color: ${bgColor};
     // color: white;
     min-height: 100vh;
@@ -17,18 +18,27 @@ const Container = styled.div`
 const H1 = styled.h1`
     color: white;
     font-weight: 800;
-    font-size: 50px;
+    font-size: 40px;
+    display: flex;
+    flex-flow:column;
+    align-items: center;
     @media (max-width: 800px){
         font-size: 35px;
     }
+    &:after{
+        content: "";
+        width: 80%;
+        border-top: 1px solid ${rose};
+        margin: 20px 0 20px 0;
+    }
 `
 const Bar = styled.div`
-    width: 25%;
-    border-top: 2px solid ${rose};
-    margin-bottom: 30px;
-    @media (max-width: 800px){
-        width: 50%;
-    }
+    // width: 25%;
+    // border-top: 1px solid ${rose};
+    // margin-bottom: 40px;
+    // @media (max-width: 800px){
+    //     width: 50%;
+    // }
 `
 const Tarifs = styled.div`
     display: flex;
@@ -45,7 +55,7 @@ const Tarif = styled.div`
     display: flex;
     flex-flow: column;
     align-items: center;
-    background-color: hsla(360, 100%, 100%, 0.7);
+    background-color: white;
     padding: 50px 40px 50px 40px;
     border-radius: 10px;
     margin: 0 10px 0 10px;
@@ -60,13 +70,13 @@ const TarifTitle = styled.h2`
 const TarifBar = styled.div`
     border-top: 1px solid ${rose};
     width: 75%;
-    margin: 20px;
+    margin: 10px 0 20px 0;
 `
 const TarifPrice = styled.div`
     margin-bottom: 20px;
 `
 const TarifMontant = styled.span`
-    font-size: 35px;
+    font-size: 25px;
     font-weight: 700;
 
 `
@@ -79,8 +89,9 @@ const TarifConditions = styled.ul`
     margin-bottom: 60px;
 `
 const Condition = styled.li`
-    font-size: 18px;
+    font-size: 15px;
     margin-bottom: 15px;
+    font-weight: bold;
     &:before{
         content: ".";
         margin-right: 10px;
@@ -90,19 +101,24 @@ const Condition = styled.li`
     }
 `
 const AcheterButton = styled.div`
-    border: 1px solid ${rose};
+    border: 1px solid blue;
     padding: 10px 30px 10px 30px;
     user-select: none;
     cursor: pointer;
     transition: background-color .3s;
-    background-color: ${rose};
+    background-color: blue;
     color : white;
+    font-size: 14px;
     &:hover{
         background-color: transparent;
-        color: ${rose};
+        color: black;
     }
 `
 const TarifComponent = () => {
+    const navigate = useNavigate();
+    const handleChoix = (id) => {
+        navigate(`/commander/${id}`);
+    }
     return (
         <Container>
             <H1>
@@ -124,8 +140,8 @@ const TarifComponent = () => {
                         <Condition>4 photos maximum</Condition>
                         <Condition>0 video</Condition>
                     </TarifConditions>
-                    <AcheterButton>
-                        Acheter
+                    <AcheterButton onClick={()=>handleChoix("1")}>
+                        Choisir
                     </AcheterButton>
                 </Tarif>
                 <Tarif>
@@ -142,11 +158,11 @@ const TarifComponent = () => {
                         <Condition>4 photos maximum</Condition>
                         <Condition>0 video</Condition>
                     </TarifConditions>
-                    <AcheterButton>
-                        Acheter
+                    <AcheterButton onClick={()=>handleChoix("2")}>
+                        Choisir
                     </AcheterButton>
                 </Tarif>
-                <Tarif>
+                <Tarif style={{backgroundColor: "yellow"}}>
                     <TarifTitle>
                         Premium
                     </TarifTitle>
@@ -160,8 +176,8 @@ const TarifComponent = () => {
                         <Condition>4 photos maximum</Condition>
                         <Condition>0 video</Condition>
                     </TarifConditions>
-                    <AcheterButton>
-                        Acheter
+                    <AcheterButton onClick={()=>handleChoix("3")}>
+                        Choisir
                     </AcheterButton>
                 </Tarif>
             </Tarifs>

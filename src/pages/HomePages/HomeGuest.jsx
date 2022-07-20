@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import { useEffect } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { useNavigate } from "react-router-dom";
-import useTestAuth from "../services/useTestAuth";
-import bg from "../assets/images/Backgrounds/background1.jpg"
-import illustration from "../assets/images/Illustrations/cartoon.png";
+import useTestAuth from "../../services/useTestAuth";
+import bg from "../../assets/images/Backgrounds/background1.jpg"
+import illustration from "../../assets/images/Illustrations/cartoon.png";
 import { useRef } from "react";
 const rose = "#fd3395";
 

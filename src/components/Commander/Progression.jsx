@@ -1,14 +1,13 @@
 import styled from "@emotion/styled";
 
 const Container = styled.div`
-
 `
-const ChoixPaiement = () => {
+const Progression = ({numero}) => {
     return ( 
         <Container>
-            
+            Progression {numero}
         </Container>
      );
 }
  
-export default ChoixPaiement;
+export default Progression;

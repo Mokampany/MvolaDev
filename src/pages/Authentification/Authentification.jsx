@@ -4,8 +4,8 @@ import {
 } from "react-router-dom";
 
 import styled from "@emotion/styled"
-import Inscription from "../components/Inscription";
-import Login from "../components/Login";
+import Inscription from "../../components/Inscription";
+import Login from "../../components/Login";
 import { useEffect} from "react"
 
 const Container = styled.div`

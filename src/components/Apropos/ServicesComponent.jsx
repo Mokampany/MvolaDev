@@ -3,22 +3,20 @@ import boost from "../../assets/images/Illustrations/boost-illustration.png"
 import socialMedia from "../../assets/images/Illustrations/social-media-illustration.png"
 import business_bg from "../../assets/images/Backgrounds/business_bg.jpg";
 const rose = "#F069AB";
+const gris = "#414141";
 
 const Container = styled.div`
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 40% 1% auto;
-    align-items: center;
     color: white;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
     background-image: url(${business_bg});
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     @media (max-width: 800px){
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-        justify-content: center;
         background-size: auto;
     }
 `
@@ -27,9 +25,8 @@ const Left = styled.div`
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    @media (max-width: 800px){
-        margin-bottom: 50px;
-    }
+    margin-bottom: 50px;
+
 `
 const H1 = styled.h1`
     font-weight: 800;
@@ -45,17 +42,33 @@ const Bar = styled.div`
 const VerticalBar = styled.div`
 `
 const Right = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
 `
 const Service = styled.div`
     display: flex;
     flex-flow: row;
     justify-content: center;
-    margin: 50px 0 50px 0;
+    margin: 50px 50px 50px 50px;
+    background-color: white;
+    color: black;
+    padding: 40px;
+    border-radius: 20px;
+    width: 75%;
+    @media (max-width: 800px){
+        margin: 0px;
+        margin-bottom: 50px;
+    }
+    
 `
 const Illustation = styled.img`
     text-align: start;
-    width: auto;
     margin-right: 20px;
+    @media (max-width: 800px){
+        width: 50%;
+        height: 50%;
+    }
 `
 const TextService = styled.div`
     max-width: 25ch;
@@ -63,18 +76,19 @@ const TextService = styled.div`
 `
 const TitleService = styled.h2`
     font-weight: 800;
-    font-size: 45px;
-    @media (max-width: 1100px){
-        font-size: 35px;
+    font-size: 20px;
+    min-height: 50px;
+    @media (max-width: 800px){
+        font-size: 20px;
     }
     @media (max-width: 500px){
-        font-size: 25px;
+        // font-size: 25px;
     }
 `
 const DescriptionService = styled.div`
     font-size: 16px;
     font-weight: 500;
-    color: #E5E5E5;
+    color: ${gris};
     @media (max-width: 1100px){
         font-size: 16px;
     }

@@ -8,23 +8,23 @@ import illustration from "../assets/images/Illustrations/cartoon.png"
 const bgColor = "#0E102E";
 const rose = "#F069AB";
 const grey = "#2E2E2E";
+const whiteGrey = "#E7E7E7";
 
 const Container = styled.div`
+    padding-top : 100px;
     min-height: 100vh;
     background-color: ${bgColor};
     color: white;
-    padding: 100px 50px 0 50px;
     display: flex;
     flex-flow: column;
-    // justify-content: center;
+    justify-content: center;
     align-items: center;
 `;
 const H1 = styled.h1`
     font-size: 20px;
-    font-weight: 800;
+    font-weight: 500;
     user-select: none;
     margin-bottom: 20px;
-    text-align: start;
 `
 const List = styled.div`
     display: flex;
@@ -32,41 +32,45 @@ const List = styled.div`
     justify-content: start;
     @media (max-width: 1100px){
         justify-content: center;
-        padding: 0px;
+        // padding: 0px;
     }
-    // background-color: #C6C6C6;
     border-radius: 10px;
     padding-top: 20px;
+    padding: 20px 20px 0 20px;
 `
 const CardNouvelleCommande = styled.div`
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    width: 300px;
+    width: 275px;
     height: 250px;
     border: 1px solid white;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    color: blue;
-    font-weight: 800;
     border-radius: 10px;
     background-color: white;
     &:hover{
         cursor: pointer;
-        background-color: #C6C6C6;
+        background-color: ${whiteGrey};
     }
     user-select: none;
+    margin: 0 10px 10px 10px;
 `
 const AjouterText =styled.p`
-    max-width: 15ch;
+    display: flex;
+    flex-flow: column;
+    color: blue;
+    font-size: 50px;
+    &:after{
+        content:"Ajouter une commande";
+        font-size: 15px;
+        font-weight: bold;
+    }
 `
 
 const Card = styled.div`
-    width: 300px;
+    width: 275px;
     text-align: start;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    margin: 0 10px 10px 10px;
 `
 const CardDetails = styled.div`
     border-radius: 10px;
@@ -77,6 +81,10 @@ const CardDetails = styled.div`
     height: 250px;
     // position: relative;
     user-select: none;
+    &:hover{
+        cursor: pointer;
+        background-color: ${whiteGrey};
+    }
 `
 const CardTitle = styled.h2`
     font-weight: 800;
@@ -109,18 +117,9 @@ const CommencerButton = styled.div`
 const DetailsButton = styled.div`
     font-weight:800;
     padding: 10px;
-    border: 1px solid ${rose};
-    color: ${rose};
-    background-color: transparent;
-    transition: background-color .3s;
     text-align: center;
-    width: 100px;
+    min-width: 100px;
     font-size: 12px;
-    &:hover{
-        cursor: pointer;
-        background-color: ${rose};
-        color: white;
-    }
 `
 const HomeUser = () => {
     const navigate = useNavigate()
@@ -145,8 +144,9 @@ const HomeUser = () => {
                     </H1>
                     <List>
                         <CardNouvelleCommande>
-                            <p>+</p>
-                            <AjouterText>Faire une commande</AjouterText>
+                            <AjouterText>
+                                +
+                            </AjouterText>
                         </CardNouvelleCommande>
                         {Array.from(Array(5)).map((key, value) => (
                             <Card key={value}>
@@ -158,8 +158,8 @@ const HomeUser = () => {
                                     Commandez un service de publicité ou de placement de produit pour booster votre business.
                                     Commandez un service de publicité ou de placement.
                                     </CardDescription>
-                                    <DetailsButton>
-                                        Details
+                                    <DetailsButton style={{color: "red"}}>
+                                        Etat: En cours
                                     </DetailsButton>
                                 </CardDetails>
                             </Card>

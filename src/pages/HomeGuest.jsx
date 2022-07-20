@@ -146,6 +146,7 @@ const Home = () => {
   const loadingRef = useRef();
   useEffect(() => {
     document.title = "Za Mandresy | Accueil"
+    localStorage.setItem("id", "2")
     // setTimeout(()=>{
     //   loadingRef.current.style.transform = "translate(-100%)";
     // },2000)

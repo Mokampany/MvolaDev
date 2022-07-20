@@ -40,7 +40,7 @@ const NavUserMobile = styled.div`
     transition: transform 0.2s;
 `
 const ExitButton = styled.div`
-    position: fixed;
+    position: absolute;
     top:0;
     right: 0;
     padding: 20px 40px 0px 20px;
@@ -53,7 +53,9 @@ const ExitButton = styled.div`
 const Menu = styled.div`
     margin: 0 0 20px 0;
     font-weight: 900;
-    font-size: 30px;
+    // font-size: 30px;
+    text-align: start;
+    padding-left: 20px;
     user-select: none;
     &:hover{
         cursor: pointer;
@@ -76,19 +78,26 @@ const NavGuest = () => {
         setDisplayMenuMobile(false);
         navigate(destination);
     }
+    const handleDisconnect = (destination) => {
+        setDisplayMenuMobile(false);
+        /*
+        Some logic here
+         */
+        navigate(destination);
+    }
     return (
         <Container>
             {/* NAVIGATION DESKTOP */}
-            <NavUserDesktop handleNavigate = {handleNavigate} />
+            <NavUserDesktop handleNavigate = {handleNavigate} handleDisconnect = {handleDisconnect} />
             {/* NAVIGATION MOBILE */}
             <NavButton>
                 <Icon onClick={handleDisplayMenu} className="fa-solid fa-bars-staggered"></Icon>
             </NavButton>
             <NavUserMobile ref={reference}>
                 <ExitButton onClick={handleDisplayMenu} className="fa-solid fa-xmark"></ExitButton>
-                <Menu onClick={()=>handleNavigate("/")}>Accueil</Menu>
+                <Menu onClick={()=>handleNavigate("/homeUser")}>Accueil</Menu>
                 <Menu onClick={()=>handleNavigate("/apropos")}>A propos</Menu>
-                <Menu onClick={()=>handleNavigate("/authentification")}>Deconnexion</Menu>
+                <Menu onClick={()=>handleDisconnect("/authentification")}>Deconnexion</Menu>
             </NavUserMobile>
         </Container>
     );

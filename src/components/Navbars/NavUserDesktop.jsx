@@ -55,18 +55,16 @@ const Login = styled.button`
         color: white;
     }
 `
-const NavUserDesktop = ({handleNavigate}) => {
-    const navigate = useNavigate();
-    
+const NavUserDesktop = ({handleNavigate,handleDisconnect}) => {
     return ( 
         <Container>
             <Left>
-                <Logo onClick={() => handleNavigate("/")} src={logo} />
+                <Logo onClick={() => handleNavigate("/homeUser")} src={logo} />
             </Left>
             <Right>
-                <Li onClick={() => handleNavigate("/")}>Accueil</Li>
+                <Li onClick={() => handleNavigate("/homeUser")}>Accueil</Li>
                 <Li onClick={() => handleNavigate("/apropos")}>A propos</Li>
-                <Login onClick={() => handleNavigate("/authentification")}>Deconnexion</Login>
+                <Login onClick={() => handleDisconnect("/authentification")}>Deconnexion</Login>
             </Right>
         </Container>
      );

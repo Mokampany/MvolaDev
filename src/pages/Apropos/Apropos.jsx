@@ -8,7 +8,9 @@ const Container = styled.div`
 const Apropos = () => {
     useEffect(() => {
         document.title = "Za Mandresy | A propos"
+        window.scroll(0,0);
     }, [])
+
     return (
         <Container>
             {/* <Nav /> */}

@@ -91,11 +91,10 @@ const CardDetails = styled.div`
     background-color: white;
     color: black;
     height: 250px;
-    // position: relative;
     user-select: none;
     &:hover{
         cursor: pointer;
-        background-color: ${whiteGrey};
+        opacity: .9;
     }
 `
 const CardTitle = styled.h2`
@@ -134,6 +133,7 @@ const DetailsButton = styled.div`
     font-size: 12px;
 `
 const HomeUser = () => {
+    window.tarif = "normal";
     const navigate = useNavigate()
     const { idUser, isLoading } = useTestAuth()
     useEffect(() => {
@@ -142,6 +142,7 @@ const HomeUser = () => {
         }
     }, [idUser, isLoading, navigate])
     useEffect(() => {
+        window.scroll(0,0);
         document.title = "Za Mandresy"
     }, [])
 

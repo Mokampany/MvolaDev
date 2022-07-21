@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logoMvola from "../../assets/images/Logo_mvola/logoMvola.png";
-import Progression from "../../components/Commander/Progression";
+import Progression from "./Progression";
 const rose = "#F069AB";
 const yellow = "yellow";
 
@@ -13,8 +15,8 @@ const Container = styled.div`
     align-items: center;
 `
 const H1 = styled.h1`
-    font-size: 30px;
-    font-weight: 500;
+    font-size: 25px;
+    font-weight: 800;
     user-select: none;
     margin-bottom: 20px;
     display: flex;
@@ -53,6 +55,7 @@ const DescriptionPaiement = styled.div`
     min-height: 100px;
 `
 const BouttonChoisir = styled.div`
+    user-select: none;
     text-align: center;
     color: green;
     font-weight: 800;
@@ -66,6 +69,23 @@ const BouttonChoisir = styled.div`
     }
 `
 const ChoixTypeDePaiement = () => {
+    const [typeDePaiement, setTypeDePaiement] = useState(null);
+    const navigate = useNavigate();
+    const handleSubmit = (type) => {
+        const tarifId = window?.MyLib?.choixTarif;
+        if(tarifId===null || tarifId === undefined || tarifId < 0){
+            alert("Choisissez un type de tarif");
+            navigate("/commander")
+            return
+        }
+        try{
+            setTypeDePaiement(type);
+            window.MyLib.choixPaiement = type;
+            navigate("/commander/formulaire");    
+        }catch(err){
+
+        }
+    }
     return (
         <Container>
             <Progression numero={2} />
@@ -80,7 +100,7 @@ const ChoixTypeDePaiement = () => {
                         <DescriptionPaiement>
                             Payer via Mvola
                         </DescriptionPaiement>
-                        <BouttonChoisir>
+                        <BouttonChoisir onClick={()=>{handleSubmit("mvola")}}>
                             Choisir
                         </BouttonChoisir>
                     </DetailsPaiement>

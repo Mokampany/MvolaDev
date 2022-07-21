@@ -147,6 +147,7 @@ const Home = () => {
   useEffect(() => {
     document.title = "Za Mandresy | Accueil"
     localStorage.setItem("id", "2")
+    window.scroll(0,0);
     // setTimeout(()=>{
     //   loadingRef.current.style.transform = "translate(-100%)";
     // },2000)
@@ -185,7 +186,6 @@ const Home = () => {
           <Licence>
             Licences et règles d'utilisations.
           </Licence>
-          {/* <a href='https://www.freepik.com/photos/color-overlay'>Color overlay photo created by user3802032 - www.freepik.com</a> */}
         </Left>
         <Right>
           <Gif src={illustration}></Gif>

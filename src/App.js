@@ -14,6 +14,7 @@ import Apropos from "./pages/Apropos/Apropos";
 import Nav from "./components/Nav";
 import styled from "@emotion/styled";
 import ChoixCommande from "./pages/Commande/ChoixCommande";
+import { useEffect } from "react";
 
 const Container = styled.div`
   .App{
@@ -21,6 +22,9 @@ const Container = styled.div`
   }
 `
 function App() {
+  useEffect(()=>{
+    window.MyLib = {};
+  },[]);
   return (
     <Container>
       <div className="App" >

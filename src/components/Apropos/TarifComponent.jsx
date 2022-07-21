@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 const rose = "#F069AB";
-const blue = "#83DDFF";
 const bgColor = "#0E102E";
 const Container = styled.div`
     padding-top: 100px;

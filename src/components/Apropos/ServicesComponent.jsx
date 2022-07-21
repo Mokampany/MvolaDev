@@ -6,6 +6,7 @@ const rose = "#F069AB";
 const gris = "#414141";
 
 const Container = styled.div`
+    padding: 100px 0 100px 0;
     min-height: 100vh;
     color: white;
     display: flex;
@@ -59,6 +60,7 @@ const Service = styled.div`
     @media (max-width: 800px){
         margin: 0px;
         margin-bottom: 50px;
+        flex-flow: column;
     }
     
 `

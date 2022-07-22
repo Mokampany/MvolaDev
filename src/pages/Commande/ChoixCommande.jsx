@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import ChoixTypeDePaiement from "../../components/Commander/ChoixTypeDePaiment";
 import ChoixTarif from "../../components/Commander/ChoixTarif";
-import { useRef } from "react";
 import { Route, Routes } from "react-router-dom";
 import Formulaire from "../../components/Commander/Formulaire";
 const bgColor = "#0E102E";

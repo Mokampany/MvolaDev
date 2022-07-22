@@ -16,7 +16,7 @@ const Container = styled.div`
     color: white;
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
 `;
 const H1 = styled.h1`
@@ -42,13 +42,14 @@ const List = styled.div`
     display: flex;
     flex-flow: row wrap;
     justify-content: start;
-    @media (max-width: 1100px){
-        justify-content: center;
-        // padding: 0px;
-    }
     border-radius: 10px;
     padding-top: 20px;
-    padding: 20px 20px 0 20px;
+    // padding: 20px 20px 0 20px;
+    padding: 20px 150px 0 150px;
+    @media (max-width: 1100px){
+        justify-content: center;
+        padding: 20px 20px 0 20px;
+    }
 `
 const CardNouvelleCommande = styled.div`
     display: flex;
@@ -98,8 +99,8 @@ const CardDetails = styled.div`
     }
 `
 const CardTitle = styled.h2`
-    font-weight: 800;
-    font-size: 25px;
+    font-weight: 700;
+    font-size: 20px;
     margin-bottom: 10px;
     min-height: 75px;
 `
@@ -177,7 +178,7 @@ const HomeUser = () => {
                                     Commandez un service de publicité ou de placement.
                                     </CardDescription>
                                     <DetailsButton style={{color: "red"}}>
-                                        Etat: En cours
+                                        Etat: En attente de validation
                                     </DetailsButton>
                                 </CardDetails>
                             </Card>

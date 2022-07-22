@@ -1,0 +1,129 @@
+﻿####BDD####
+Utilisateur ]] VITA
+	id
+	nom
+	prenom
+	email
+	mot_de_passe
+
+Admin ]] VITA
+	id
+	email
+	mot_de_passe
+
+Tarif ]] VITA
+	id
+	nom
+	prix { montant, unite }
+	conditions { nombrePublication, nombrePhotos, delaisSemaine }
+
+TypeDePaiement ]] VITA
+	id
+	nom (Mvola / Paypal etc...)
+
+Commande ]] VITA
+	id
+	idUtilisateur
+	date
+	informationCommande { titreCommande 
+			            description,
+			            nomEntreprise,
+			           }
+	informationPaiement { idTypeDePaiement,
+			        nomTypeDePaiement, 
+			        idTarif, 
+			        nomTarif 
+			        }
+	estPaye: false 
+	estAnnule: false
+	estApprouve : false
+
+PaiementCommande ]] VITA
+	id
+	idCommande
+	montantPaye
+Produit ]] VITA
+	id
+	idCommande
+	Liens [ ]
+####SERVICES A CREER####
+Admin service ]] VITA
+Commande service ]] VITA ( afatsin'ny paiement )
+Paiement service ]] VITA
+Produit service ]] VITA
+Tarif service ]] VITA
+TypeDePaiement service ]] VITA
+Utilisateur service ]] VITA
+######################
+
+#### APIS ####
+Get Utilisateurs  ]] VITA
+Get Utilisateur By Id  ]] VITA
+Login Utilisateur  ]] VITA
+Inscription Utilisateur  ]] VITA
+
+Create Admin  ]] VITA
+Get Admins  ]] VITA
+Get Admin By Id  ]] VITA
+Login Admin ]] VITA
+
+Get Tarifs ]] VITA
+Get Tarif by Id ]] VITA
+Post Tarif ]] VITA
+Delete Tarif ]] VITA
+
+Get TypeDePaiement ]] VITA
+Get TypeDePaiement By Id ]] VITA
+Post TypeDePaiement ]] VITA
+Delete TypeDePaiement ]] VITA
+
+Get Commandes ]] VITA
+Get Commandes By Id  ]] VITA
+Get Commandes By IdUtilisateur ]] VITA
+Get Commandes estAnnule == false & estApprouve == true (Commandes deja approuv�es) ]] VITA
+Get Commandes estAnnule == false & estApprouve == false (Commandes non approuv�es) ]] VITA
+
+Get Commandes estAnnule == false & estApprouve == true & estPaye == true(Commande approuv�es pay�es) ]] VITA
+###
+Get Commandes estAnnule == false & estApprouve == true & estPaye == false (Commande approuv�es non pay�es) ]] VITA
+
+Update Commande set estApprouve = true (AppouverCommande) ]] VITA
+Update Commande set estPaye = true (PayerCommande) ]] VITA
+Update Commande set estAnnule = true (AnnulerCommande) ]] VITA
+
+Post Commande ]] VITA
+
+Get Produits ]] VITA
+Get Produits By Id]] VITA
+Get Produits By IdCommande]] VITA
+Post Produit ]] VITA
+
+# Validation demande de commande
+Admin
+	Liste des commandes en cours (estApprouve == true) 
+	Liste des commandes en attente d'approbation (estAnnule == false, estApprouve == false)
+	Valider commande (ex: estApprouve = true)
+	Etat de la commande par defaut: (non pay�e)
+	
+Utilisateur
+	Commander
+		
+	Liste des commandes (Titre, nom entreprise/start-up, description ,
+			     Etat: Annul� - en cours d'etude - valid�.
+			     Etat de paiement: Pay� - non pay�)
+		Si la commande est valid�e mais impay� :
+			Bouton pour payer la commande
+				Affichage des d�tails de la commande
+				Entrer le numero de t�l�phone
+				Payer
+# Gestion de la commande
+Admin
+	Poster sur facebook
+	Prendre le lien
+	Inserer dans un formulaire de la commande cible (une commande d�j� pay�e)
+	Valider
+	
+Utilisateur
+	Tableau de bord
+	Cliquer sur la commande
+	Liste des publications faites sur la commande

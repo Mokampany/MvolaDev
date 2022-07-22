@@ -1,0 +1,16 @@
+Deployer nodejs sur heroku
+
+# Api à faire marcher côté admin :
+Liste des commandes (avec filtre) api/v1/admin/commandes
+Get commande by id
+Get commande utilisateur by id
+Approuver une commande by id
+Poster un produit
+
+# Api à faire marcher côté client:
+Login / Inscription
+Liste des commandes (avec filtre) api/v1/utilisateur/commandes
+getCommandesUtilisateurs
+Details commande
+Commander
+Payer commande

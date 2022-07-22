@@ -89,7 +89,7 @@ const ChoixTypeDePaiement = () => {
     return (
         <Container>
             <Progression numero={2} />
-            <H1>Choix de paiement</H1>
+            <H1>Type de paiement</H1>
             <ListePaiement>
                 <Paiement>
                     <ImagePaiement src={logoMvola} alt="Logo mvola" />

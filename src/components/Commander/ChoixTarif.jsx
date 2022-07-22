@@ -122,9 +122,10 @@ const ContinueButton = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 15px 30px 15px 30px;
     background-color: blue;
     color: white;
+    font-size: 14px;
     margin-top: 30px;
     // border-radius: 0 50px 0 50px;
     user-select: none;
@@ -184,7 +185,7 @@ const ChoixTarif = () => {
         setTarifs(elements);
     }, [])
     
-    const handleChoix = (id) => {
+    const handleChoix = (id,nomTarif) => {
         for (let i = 0; i < tarifs.length; i++) {
             tarifReferences.current[tarifs[i].id].style.backgroundColor = tarifs[i].couleur;
             tarifReferences.current[tarifs[i].id].style.color = "black";
@@ -193,8 +194,8 @@ const ChoixTarif = () => {
         tarifReferences.current[id].style.color = "white";
         //Setting the tarif
         try{
-            window.MyLib.choixTarif = id;
-            setSelectedTarif(id);
+            window.MyLib.choixTarif = nomTarif;
+            setSelectedTarif(nomTarif);
         }catch(err){
             console.log(`error : ${err}`)
         }
@@ -215,7 +216,7 @@ const ChoixTarif = () => {
             <Bar></Bar>
             <Tarifs>
                 {tarifs && tarifs.map((tarif) => (
-                    <Tarif onClick={()=>handleChoix(tarif.id)} key={tarif.id} ref={(elem)=> tarifReferences.current[tarif.id] = elem} style={{ backgroundColor: tarif?.couleur }}>
+                    <Tarif onClick={()=>handleChoix(tarif.id, tarif.nom)} key={tarif.id} ref={(elem)=> tarifReferences.current[tarif.id] = elem} style={{ backgroundColor: tarif?.couleur }}>
                         <TarifTitle>
                             {tarif.nom}
                         </TarifTitle>
@@ -235,7 +236,7 @@ const ChoixTarif = () => {
                                 Delais : {tarif.conditions.delaisSemaine} semaines
                             </Condition>
                         </TarifConditions>
-                        <AcheterButton onClick={() => handleChoix(tarif.id)}>
+                        <AcheterButton onClick={() => handleChoix(tarif.id, tarif.nom)}>
                             Choisir
                         </AcheterButton>
                     </Tarif>

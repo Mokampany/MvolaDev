@@ -65,6 +65,9 @@ const Tarif = styled.div`
 const TarifTitle = styled.h2`
     font-size: 30px;
     font-weight: 700;
+    &:after{
+        content: "";
+    }
 `
 const TarifBar = styled.div`
     border-top: 1px solid ${rose};
@@ -85,7 +88,7 @@ const TarifUnite = styled.span`
 const TarifConditions = styled.ul`
     text-align: start;
     list-style: none;
-    margin-bottom: 60px;
+    // margin-bottom: 60px;
 `
 const Condition = styled.li`
     font-size: 15px;
@@ -116,7 +119,7 @@ const AcheterButton = styled.div`
 const TarifComponent = () => {
     const navigate = useNavigate();
     const handleChoix = (id) => {
-        navigate(`/commander/${id}`);
+        navigate(`/`);
     }
     return (
         <Container>
@@ -139,9 +142,9 @@ const TarifComponent = () => {
                         <Condition>4 photos maximum</Condition>
                         <Condition>0 video</Condition>
                     </TarifConditions>
-                    <AcheterButton onClick={()=>handleChoix("1")}>
+                    {/* <AcheterButton onClick={()=>handleChoix("1")}>
                         Choisir
-                    </AcheterButton>
+                    </AcheterButton> */}
                 </Tarif>
                 <Tarif>
                     <TarifTitle>
@@ -157,9 +160,9 @@ const TarifComponent = () => {
                         <Condition>4 photos maximum</Condition>
                         <Condition>0 video</Condition>
                     </TarifConditions>
-                    <AcheterButton onClick={()=>handleChoix("2")}>
+                    {/* <AcheterButton onClick={()=>handleChoix("2")}>
                         Choisir
-                    </AcheterButton>
+                    </AcheterButton> */}
                 </Tarif>
                 <Tarif style={{backgroundColor: "yellow"}}>
                     <TarifTitle>
@@ -175,9 +178,9 @@ const TarifComponent = () => {
                         <Condition>4 photos maximum</Condition>
                         <Condition>0 video</Condition>
                     </TarifConditions>
-                    <AcheterButton onClick={()=>handleChoix("3")}>
+                    {/* <AcheterButton onClick={()=>handleChoix("3")}>
                         Choisir
-                    </AcheterButton>
+                    </AcheterButton> */}
                 </Tarif>
             </Tarifs>
         </Container>

@@ -14,3 +14,7 @@ getCommandesUtilisateurs
 Details commande
 Commander
 Payer commande
+
+
+# additionnels :
+Upload image

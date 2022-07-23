@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/Za_Mandresy_Logos/logo.jpg";
+import bg from "../assets/images/Backgrounds/background1.jpg";
 const width = "350px";
 
 const Container = styled.div`
@@ -10,8 +11,7 @@ const Container = styled.div`
   min-height: 100vh;
   align-items: center;
   padding-top: 50px;
-  background-color: black;
-  background-image: url(${logo});
+  background-image: url(${bg});
 `;
 const Heading = styled.div`
   margin-top: 50px;

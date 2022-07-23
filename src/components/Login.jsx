@@ -10,6 +10,7 @@ const Container = styled.div`
   min-height: 100vh;
   align-items: center;
   padding-top: 50px;
+  background-color: black;
 `;
 const Heading = styled.div`
   margin-top: 50px;

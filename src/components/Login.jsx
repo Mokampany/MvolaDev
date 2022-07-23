@@ -11,6 +11,7 @@ const Container = styled.div`
   align-items: center;
   padding-top: 50px;
   background-color: black;
+  background-image: url(${logo});
 `;
 const Heading = styled.div`
   margin-top: 50px;

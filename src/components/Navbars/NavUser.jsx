@@ -83,7 +83,8 @@ const NavGuest = () => {
         /*
         Some logic here
          */
-        navigate(destination);
+        localStorage.setItem('idUser','')
+        window.location = destination;
     }
     return (
         <Container>

@@ -73,38 +73,60 @@ const ChoixTypeDePaiement = () => {
     const navigate = useNavigate();
     const handleSubmit = (type) => {
         const tarifId = window?.MyLib?.choixTarif;
-        if(tarifId===null || tarifId === undefined || tarifId < 0){
+        if (tarifId === null || tarifId === undefined || tarifId < 0) {
             alert("Choisissez un type de tarif");
             navigate("/commander")
             return
         }
-        try{
+        try {
             setTypeDePaiement(type);
             window.MyLib.choixPaiement = type;
-            navigate("/commander/formulaire");    
-        }catch(err){
-
+            navigate("/commander/formulaire");
+        } catch (err) {
         }
     }
+
+    //Setting type de paiement
+    const URL_LIST_TYPE_PAIEMENT = `${process.env.REACT_APP_NODE_URL}/api/v1/typeDePaiement`
+
+    useEffect(() => {
+        fetch(URL_LIST_TYPE_PAIEMENT, {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json'
+            }
+        }).then(res => {
+            return res.json()
+        }).then(data => {
+            setTypeDePaiement(data)
+        }).catch(err => {
+            console.log(err)
+        }).finally(() => {
+
+        })
+    }, [URL_LIST_TYPE_PAIEMENT])
     return (
         <Container>
             <Progression numero={2} />
             <H1>Type de paiement</H1>
             <ListePaiement>
-                <Paiement>
-                    <ImagePaiement src={logoMvola} alt="Logo mvola" />
-                    <DetailsPaiement>
-                        <TitrePaiement>
-                            Mvola
-                        </TitrePaiement>
-                        <DescriptionPaiement>
-                            Payer via Mvola
-                        </DescriptionPaiement>
-                        <BouttonChoisir onClick={()=>{handleSubmit("mvola")}}>
-                            Choisir
-                        </BouttonChoisir>
-                    </DetailsPaiement>
-                </Paiement>
+                {typeDePaiement &&
+                    typeDePaiement.map((paiement, key) => (
+                        <Paiement key={key}>
+                            <ImagePaiement src={logoMvola} alt="Logo mvola" />
+                            <DetailsPaiement>
+                                <TitrePaiement>
+                                    Mvola
+                                </TitrePaiement>
+                                <DescriptionPaiement>
+                                    Payer via Mvola
+                                </DescriptionPaiement>
+                                <BouttonChoisir onClick={() => { handleSubmit(paiement._id) }}>
+                                    Choisir
+                                </BouttonChoisir>
+                            </DetailsPaiement>
+                        </Paiement>
+                    ))}
             </ListePaiement>
         </Container>
     );

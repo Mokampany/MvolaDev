@@ -147,9 +147,33 @@ const Inscription = () => {
     setConfirmPassword(e.target.value);
     console.log(confirmPassword)
   };
-  const handleInscription = async () => {
-    alert("Fonctionnalité encore en phase de développement !")
-    window.location("/authentification")
+  const handleInscription = () => {
+    const url = `${process.env.REACT_APP_NODE_URL}/api/v1/utilisateur/inscription`
+    fetch(url, {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        nom: nom,
+        prenom: prenom,
+        email: email,
+        motDePasse: password
+      })
+    }).then(res => {
+      return res.json()
+    }).then(data => {
+      if (!data.error) {
+        const id = data._id;
+        console.log(id)
+        localStorage.setItem('idUser', id);
+        window.location = '/homeUser'
+      } else {
+        console.log(data)
+        alert('Make sure you filled all the fields')
+      }
+    })
+
   };
 
   return (
@@ -163,36 +187,30 @@ const Inscription = () => {
           <NomLabel>
             Nom <Star>*</Star>
           </NomLabel>
-          <NomInput />
+          <NomInput onChange={handleChangeNom} />
         </Nom>
         <Prenom>
           <PrenomLabel>
             Prenom <Star>*</Star>
           </PrenomLabel>
-          <PrenomInput />
+          <PrenomInput onChange={handleChangePrenom} />
         </Prenom>
         <Email>
           <EmailLabel>
             Email <Star>*</Star>
           </EmailLabel>
-          <EmailInput />
+          <EmailInput onChange={handleChangeEmail}/>
         </Email>
         <Pass>
           <PassLabel>
             Mot de passe <Star>*</Star>
           </PassLabel>
-          <PassInput />
+          <PassInput onChange={handleChangePassword} type={'password'} />
         </Pass>
-        <ConfirmPass>
-          <ConfirmPassLabel>
-            Confirmer le mot de passe <Star>*</Star>
-          </ConfirmPassLabel>
-          <ConfirmPassInput />
-        </ConfirmPass>
-        <Policies>
+        {/* <Policies>
           <AcceptPolicies type="checkbox"></AcceptPolicies>
           <LabelAcceptPolicies>En vous inscrivant, vous acceptez tous nos règles d'utilisations. <Star>*</Star></LabelAcceptPolicies>
-        </Policies>
+        </Policies> */}
         <InscriptionButton onClick={handleInscription}>Inscription</InscriptionButton>
         <ConnectToAccount>Vous avez déjà un compte ? <Link to="/authentification">Connectez-vous</Link></ConnectToAccount>
       </Form>

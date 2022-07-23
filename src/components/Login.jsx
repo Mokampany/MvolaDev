@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from '../assets/images/Za_Mandresy_Logos/logo.jpg'
-
 const width = '350px';
 
 const Container = styled.div`
@@ -105,8 +104,33 @@ const Login = () => {
   const handleChangeMdp = (e) => {
     setMdp(e.target.value);
   };
+  const [error, setError] = useState(null)
   const handleSubmitLogin = () => {
-    alert("Fonctionnalité encore en phase de développement !")
+    const url = `${process.env.REACT_APP_NODE_URL}/api/v1/utilisateur/login`
+    fetch(url, {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        motDePasse: mdp
+      })
+    }).then(res => {
+      return res.json()
+    }).then(data => {
+      if (!data.error) {
+        setError(null)
+        const id = data._id;
+        console.log(id)
+        localStorage.setItem('idUser', id);
+        window.location = '/homeUser'
+      } else {
+        setError('error')
+        alert('Invalid credentials')
+      }
+    })
+
   };
   return (
     <Container>
@@ -119,13 +143,13 @@ const Login = () => {
           <EmailLabel>
             Email <Star>*</Star>
           </EmailLabel>
-          <EmailInput />
+          <EmailInput onChange={handleChangeEmail} />
         </Email>
         <Pass>
           <PassLabel>
             Mot de passe <Star>*</Star>
           </PassLabel>
-          <PassInput />
+          <PassInput type={`password`} onChange={handleChangeMdp} />
         </Pass>
         <ForgotPassword>Mot de passe oublié ?</ForgotPassword>
         <SeConnecterButton onClick={handleSubmitLogin}>Se connecter</SeConnecterButton>

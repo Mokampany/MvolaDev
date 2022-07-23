@@ -1,21 +1,11 @@
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-
+import { useEffect,useNavigate, useState } from "react"
+import {useCheckId} from './UseUserService'
 const useTestAuth = () => {
-    const[idUser, setIdUser] = useState(null)
-    const[isLoading, setIsLoading] = useState(true)
-
+    const getId = localStorage.getItem("idUser") != null ? localStorage.getItem("idUser") : null
+    const {idUser, isLoading, err} = useCheckId(getId)
     useEffect(() => {
-        const getId = localStorage.getItem("id") != null ? localStorage.getItem("id") : null
-        if (getId) {
-            console.log("hello")
-            setIdUser(getId)
-            setIsLoading(false)
-        }else{
-            setIsLoading(false)
-            // setIdUser(null)
-        }
-    },[])
+        console.log(idUser)
+    },[idUser])
 
     return { idUser,isLoading }
 }

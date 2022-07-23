@@ -144,58 +144,33 @@ const ChoixTarif = () => {
     const [tarifs, setTarifs] = useState(null)
     const tarifReferences = useRef([])
     //Setting tarifs
+    const URL_LIST_TARIF = `${process.env.REACT_APP_NODE_URL}/api/v1/tarif`
     useEffect(() => {
-        const tarif1 = {
-            id: "qwdwqd",
-            nom: "Normal",
-            couleur: BG_COLORS.WHITE,
-            prix: "200 000",
-            unite: "Ar TTC",
-            conditions: {
-                publication: 1,
-                photo: 4,
-                delaisSemaine: 4,
+        fetch(URL_LIST_TARIF,{
+            method: "GET",
+            headers:{
+                'Content-type':'application/json'
             }
-        }
-        const tarif2 = {
-            id: 1,
-            nom: "Avancé",
-            couleur: BG_COLORS.WHITE,
-            prix: "300 000",
-            unite: "Ar TTC",
-            conditions: {
-                publication: 2,
-                photo: 6,
-                delaisSemaine: 3,
+        }).then(res=>{
+            return res.json()
+        }).then(data=>{
+            if(!data.error){
+                setTarifs(data)
             }
-        }
-        const tarif3 = {
-            id: 2,
-            nom: "Premium",
-            couleur: BG_COLORS.WHITE,
-            prix: "500 000",
-            unite: "Ar TTC",
-            conditions: {
-                publication: 4,
-                photo: 10,
-                delaisSemaine: 2,
-            }
-        }
-        let elements = [tarif1, tarif2, tarif3];
-        setTarifs(elements);
-    }, [])
-    
+        })
+    }, [URL_LIST_TARIF])
+    //************************************************************* */
     const handleChoix = (id,nomTarif) => {
         for (let i = 0; i < tarifs.length; i++) {
-            tarifReferences.current[tarifs[i].id].style.backgroundColor = tarifs[i].couleur;
-            tarifReferences.current[tarifs[i].id].style.color = "black";
+            tarifReferences.current[tarifs[i]._id].style.backgroundColor = 'white';
+            tarifReferences.current[tarifs[i]._id].style.color = "black";
         }
         tarifReferences.current[id].style.backgroundColor = "green";
         tarifReferences.current[id].style.color = "white";
         //Setting the tarif
         try{
-            window.MyLib.choixTarif = nomTarif;
-            setSelectedTarif(nomTarif);
+            window.MyLib.choixTarif = id;
+            setSelectedTarif(id);
         }catch(err){
             console.log(`error : ${err}`)
         }
@@ -216,27 +191,27 @@ const ChoixTarif = () => {
             <Bar></Bar>
             <Tarifs>
                 {tarifs && tarifs.map((tarif) => (
-                    <Tarif onClick={()=>handleChoix(tarif.id, tarif.nom)} key={tarif.id} ref={(elem)=> tarifReferences.current[tarif.id] = elem} style={{ backgroundColor: tarif?.couleur }}>
+                    <Tarif onClick={()=>handleChoix(tarif._id, tarif.nom)} key={tarif._id} ref={(elem)=> tarifReferences.current[tarif._id] = elem}>
                         <TarifTitle>
                             {tarif.nom}
                         </TarifTitle>
                         <TarifBar></TarifBar>
                         <TarifPrice>
-                            <TarifMontant>{tarif.prix}</TarifMontant>
-                            <TarifUnite> {tarif.unite}</TarifUnite>
+                            <TarifMontant>{tarif.prix.montant}</TarifMontant>
+                            <TarifUnite> {tarif.prix.unite}</TarifUnite>
                         </TarifPrice>
                         <TarifConditions>
                             <Condition>
-                                {tarif.conditions.publication} publications
+                                {tarif.conditions.nombrePublication} publications
                             </Condition>
                             <Condition>
-                                {tarif.conditions.photo} photos
+                                {tarif.conditions.nombrePhotos} photos
                             </Condition>
                             <Condition>
                                 Delais : {tarif.conditions.delaisSemaine} semaines
                             </Condition>
                         </TarifConditions>
-                        <AcheterButton onClick={() => handleChoix(tarif.id, tarif.nom)}>
+                        <AcheterButton onClick={() => handleChoix(tarif._id, tarif.nom)}>
                             Choisir
                         </AcheterButton>
                     </Tarif>

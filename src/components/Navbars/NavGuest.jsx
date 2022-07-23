@@ -53,7 +53,7 @@ const ExitButton = styled.div`
 const Menu = styled.div`
     margin: 0 0 20px 0;
     font-weight: 900;
-    font-size: 30px;
+    font-size: 15px;
     user-select: none;
     &:hover{
         cursor: pointer;

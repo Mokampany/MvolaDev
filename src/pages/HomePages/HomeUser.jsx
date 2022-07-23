@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { useNavigate } from "react-router-dom";
+import { UseFetch } from "../../services/UseFetch";
 import useTestAuth from "../../services/useTestAuth";
 
 const bgColor = "#0E102E";
@@ -68,7 +69,7 @@ const CardNouvelleCommande = styled.div`
     user-select: none;
     margin: 0 10px 10px 10px;
 `
-const AjouterText =styled.p`
+const AjouterText = styled.p`
     display: flex;
     flex-flow: column;
     color: blue;
@@ -129,22 +130,64 @@ const CommencerButton = styled.div`
 const DetailsButton = styled.div`
     font-weight:800;
     padding: 10px;
-    text-align: center;
+    text-align: start;
     min-width: 100px;
     font-size: 12px;
+    &:after{
+    }
+`
+const Green = styled.span`
+    color: green;
+`
+const Red = styled.span`
+    color: red;
 `
 const HomeUser = () => {
-    console.log(process.env.REACT_APP_NODE_URL)
-    window.tarif = "normal";
-    const navigate = useNavigate()
     const { idUser, isLoading } = useTestAuth()
+    const navigate = useNavigate()
     useEffect(() => {
         if (!idUser && !isLoading) {
             navigate("/homeGuest")
+            return
         }
     }, [idUser, isLoading, navigate])
+
+
+    const URL_LIST_COMMAND = `${process.env.REACT_APP_NODE_URL}/api/v1/utilisateur/commande/${idUser}`
+    const headers = {
+        'content-type': 'application/json'
+    }
+    const [commandes, setCommandes] = useState(null)
+    const [loadingCommandes, setLoadingCommandes] = useState(true)
+
+    /**List of commandes */
     useEffect(() => {
-        window.scroll(0,0);
+        if (idUser && !isLoading) {
+            fetch(URL_LIST_COMMAND, {
+                method: "GET",
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            }).then(res => {
+                return res.json()
+            }).then(data => {
+                if (data.error) {
+                    console.log(data)
+                } else {
+                    setCommandes(data)
+                }
+            }).catch(err => {
+
+            }).finally(() => {
+                setLoadingCommandes(false)
+            })
+        }
+    }, [idUser, isLoading, URL_LIST_COMMAND])
+    /** */
+    window.tarif = "bronze";
+
+    useEffect(() => {
+        window.scroll(0, 0);
         document.title = "Za Mandresy"
     }, [])
 
@@ -163,27 +206,31 @@ const HomeUser = () => {
                     </H1>
                     <Bar></Bar>
                     <List>
-                        <CardNouvelleCommande onClick={()=>handleNavigate("/commander")}>
+                        <CardNouvelleCommande onClick={() => handleNavigate("/commander")}>
                             <AjouterText>
                                 +
                             </AjouterText>
                         </CardNouvelleCommande>
-                        {Array.from(Array(5)).map((key, value) => (
-                            <Card key={value}>
-                                <CardDetails>
-                                    <CardTitle>
-                                        Bal de fin d'année
-                                    </CardTitle>
-                                    <CardDescription>
-                                    Commandez un service de publicité ou de placement de produit pour booster votre business.
-                                    Commandez un service de publicité ou de placement.
-                                    </CardDescription>
-                                    <DetailsButton style={{color: "red"}}>
-                                        Etat: En attente de validation
-                                    </DetailsButton>
-                                </CardDetails>
-                            </Card>
-                        ))}
+                        {commandes &&
+                            commandes.map((commande, value) => (
+                                <Card key={value}>
+                                    <CardDetails>
+                                        <CardTitle>
+                                            {commande.informationCommande.titreCommande}
+                                        </CardTitle>
+                                        <CardDescription>
+                                            {commande.informationCommande.description}
+                                        </CardDescription>
+                                        <DetailsButton>
+                                            {commande.estApprouve ? <Green>Approuvé</Green> : <Red>En attente d'approbation</Red>}
+                                            <br />{commande.estPaye ? <Green>Payé</Green> : <Red>Non Payé</Red>}
+                                        </DetailsButton>
+                                        <DetailsButton>
+                                        </DetailsButton>
+                                    </CardDetails>
+                                </Card>
+                            ))
+                        }
                     </List>
                 </Container>
             }

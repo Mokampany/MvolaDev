@@ -8,8 +8,50 @@ const bgColor = "#0E102E";
 
 const Formulaire = () => {
     const navigate = useNavigate();
-    const [tarif, setTarif] = useState(null);
-    const [paiement, setPaiement] = useState(null);
+
+    useEffect(() => {
+        if (!window.MyLib?.choixTarif || !window.MyLib?.choixPaiement) {
+            alert("An error occured")
+            navigate("/")
+        }
+    })
+
+    //Getting tarif By Id
+    const url = `${process.env.REACT_APP_NODE_URL}/api/v1/tarif/${window.MyLib?.choixTarif}`
+    const [tarifById, setTarifById] = useState(null)
+    useEffect(() => {
+        fetch(url, {
+            method: "GET",
+            headers: {
+                "content-type": "application/json"
+            }
+        }).then(res => {
+            return res.json()
+        }).then(data => {
+            setTarifById(data)
+        })
+    }, [url])
+    // ********************************************************************
+    //Getting method de paiement
+    const urlTypePaiement = `${process.env.REACT_APP_NODE_URL}/api/v1/typeDePaiement/${window.MyLib?.choixPaiement}`
+    const [typeDePaiement, setTypeDePaiement] = useState(null)
+    useEffect(() => {
+        fetch(urlTypePaiement, {
+            method: "GET",
+            headers: {
+                "content-type": "application/json"
+            }
+        }).then(res => {
+            return res.json()
+        }).then(data => {
+            setTypeDePaiement(data)
+        }).catch(err => {
+            console.log(err)
+        }).finally(() => {
+
+        })
+    }, [urlTypePaiement])
+    //**************************************************************** */
     const [nom, setNom] = useState(null);
     const [prenom, setPrenom] = useState(null);
     const [titreCommande, setTitreCommande] = useState(null);
@@ -36,36 +78,43 @@ const Formulaire = () => {
 
     }
     const handleSubmit = () => {
+        const URL_COMMANDER = `${process.env.REACT_APP_NODE_URL}/api/v1/utilisateur/commande`
         const commande = {
-            tarif: tarif,
-            paiement: paiement,
-            infoPerso: {
-                nom: nom,
-                prenom: prenom,
-            },
-            informationsCommande: {
+            idUtilisateur: localStorage.getItem('idUser'),
+            informationCommande: {
                 titreCommande: titreCommande,
                 nomEntreprise: nomEntreprise,
                 description: descriptionCommande
             },
-            images: [images]
+            informationPaiement: {
+                idTypeDePaiement: typeDePaiement._id,
+                nomTypeDePaiement: typeDePaiement.nom,
+                idTarif: tarifById._id,
+                nomTarif: tarifById.nom
+            }
         }
-        console.log(commande);
+        fetch(URL_COMMANDER,{
+            method:"POST",
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(commande)
+        }).then(res=>{
+            return res.json()
+        }).then(data=>{
+            if(!data.error){
+                alert('Demande de commande envoyée')
+                window.location = "/"
+            }else{
+                alert('Veuillez remplir tous les champs')
+            }
+        })
+        console.log(JSON.stringify(commande));
     }
-    useEffect(() => {
-        try {
-            const tarif = window.MyLib.choixTarif;
-            const paiement = window.MyLib.choixPaiement;
-            setTarif(tarif);
-            setPaiement(paiement);
-        } catch (err) {
-            console.log(err)
-            // navigate("/");
-            return;
-        }
-    }, [])
-
     //Render
+    useEffect(() => {
+        console.log(tarifById)
+    }, [tarifById])
 
     return (
         <Container>
@@ -82,19 +131,19 @@ const Formulaire = () => {
                             <SousForm>
                                 <SectionSousForm>
                                     <Label>Tarif</Label>
-                                    <TextValue>{tarif}</TextValue>
+                                    <TextValue>{tarifById && <>{tarifById.nom}</>}</TextValue>
                                 </SectionSousForm>
                                 <SectionSousForm>
                                     <Label>Montant</Label>
-                                    <TextValue>5000 Ar</TextValue>
+                                    <TextValue>{tarifById && <>{tarifById.prix.montant} {tarifById.prix.unite}</>}</TextValue>
                                 </SectionSousForm>
                                 <SectionSousForm>
                                     <Label>Methode de paiement</Label>
-                                    <TextValue style={{ color: "yellow" }}>Mvola</TextValue>
+                                    <TextValue style={{ color: "yellow" }}>{typeDePaiement ? <>{typeDePaiement.nom}</> : <>Loading ...</>}</TextValue>
                                 </SectionSousForm>
                             </SousForm>
                         </Section>
-                        <Section>
+                        {/* <Section>
                             <H2>
                                 Informations personnels :
                             </H2>
@@ -108,7 +157,7 @@ const Formulaire = () => {
                                     <Input onChange={handleChangePrenom}></Input>
                                 </SectionSousForm>
                             </SousForm>
-                        </Section>
+                        </Section> */}
                         <Section>
                             <H2>
                                 Commande :
@@ -126,10 +175,10 @@ const Formulaire = () => {
                                     <Label>Description de la commande </Label>
                                     <TextArea onChange={handleChangeDescriptionCommande}></TextArea>
                                 </SectionSousForm>
-                                <Images>
+                                {/* <Images>
                                     <Label>Choisissez des images à inserer </Label>
                                     <Input type="file" multiple="multiple"></Input>
-                                </Images>
+                                </Images> */}
                             </SousForm>
                         </Section>
                         <Section>

@@ -101,9 +101,9 @@ const CardDetails = styled.div`
 `
 const CardTitle = styled.h2`
     font-weight: 700;
-    font-size: 20px;
+    font-size: 15px;
     margin-bottom: 10px;
-    min-height: 75px;
+    min-height: 50px;
 `
 const CardDescription = styled.div`
     color: ${grey};
@@ -197,7 +197,7 @@ const HomeUser = () => {
     return (
         <>
             {isLoading &&
-                <div></div>
+                <Container></Container>
             }
             {idUser &&
                 <Container>
@@ -211,12 +211,15 @@ const HomeUser = () => {
                                 +
                             </AjouterText>
                         </CardNouvelleCommande>
+                        {loadingCommandes && <div> Loading ...</div>}
                         {commandes &&
                             commandes.map((commande, value) => (
                                 <Card key={value}>
                                     <CardDetails>
                                         <CardTitle>
                                             {commande.informationCommande.titreCommande}
+                                            <br />
+                                            <span style={{fontSize: '10px' ,color: grey}}>{commande.informationCommande.nomEntreprise}</span>
                                         </CardTitle>
                                         <CardDescription>
                                             {commande.informationCommande.description}

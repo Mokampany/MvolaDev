@@ -15,6 +15,8 @@ import Nav from "./components/Nav";
 import styled from "@emotion/styled";
 import ChoixCommande from "./pages/Commande/ChoixCommande";
 import { useEffect } from "react";
+import IndexAdmin from "./pages/Admin/IndexAdmin";
+import NavbarAdmin from "./components/Admin/NavbarAdmin";
 
 const Container = styled.div`
   .App{
@@ -22,6 +24,8 @@ const Container = styled.div`
   }
 `
 function App() {
+  const idAdmin = localStorage.getItem('idAdmin')
+
   useEffect(()=>{
     window.MyLib = {};
   },[]);
@@ -29,7 +33,8 @@ function App() {
     <Container>
       <div className="App" >
         <Router>
-          <Nav />
+          {!idAdmin && <Nav />}
+          {idAdmin && <NavbarAdmin />}
           <Routes>
             {/* <Route path="/" element={<Home />}></Route> */}
             <Route path="/" element={<HomeGuest />}></Route>
@@ -38,6 +43,8 @@ function App() {
             <Route path="/authentification/*" element={<Authentification />} />
             <Route path="/apropos" element={<Apropos />} />
             <Route path="/commander/*" element={<ChoixCommande />}/>
+            <Route path="/authentificationAdmin" element={<IndexAdmin />} />
+            <Route path="/admin/*" element={<IndexAdmin />} />
             <Route path="/*" element={<FourOhFour />} />
           </Routes>
           {/* <Footer /> */}

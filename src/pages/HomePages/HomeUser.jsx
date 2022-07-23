@@ -2,8 +2,10 @@ import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { useNavigate } from "react-router-dom";
-import { UseFetch } from "../../services/UseFetch";
+import { UseFetchGet } from "../../services/UseFetchGet";
 import useTestAuth from "../../services/useTestAuth";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const bgColor = "#0E102E";
 const rose = "#F069AB";
@@ -142,7 +144,38 @@ const Green = styled.span`
 const Red = styled.span`
     color: red;
 `
+const Approuve = styled.span`
+    color: green;
+`
+const NonApprouve = styled.span`
+    color: red;
+`
+const ContentModal = styled.div`
+    
+`
+const PrixTarif = styled.div`
+    display:flex;
+    flex-flow: column;
+    &:after{
+        content: "";
+        width: 50%;
+    }
+    margin-bottom: 20px;
+`
+const H2 = styled.h2`
+display:flex;
+flex-flow: column;
+    &:before{
+        content: "";
+        width: 100%;
+        border-bottom: 1px solid black;
+    }
+    font-size: 20px;
+    font-weight: 800;
+`
 const HomeUser = () => {
+
+    //Checking user
     const { idUser, isLoading } = useTestAuth()
     const navigate = useNavigate()
     useEffect(() => {
@@ -151,16 +184,14 @@ const HomeUser = () => {
             return
         }
     }, [idUser, isLoading, navigate])
-
-
+    //***** */
+    //Liste des commandes
     const URL_LIST_COMMAND = `${process.env.REACT_APP_NODE_URL}/api/v1/utilisateur/commande/${idUser}`
     const headers = {
         'content-type': 'application/json'
     }
     const [commandes, setCommandes] = useState(null)
     const [loadingCommandes, setLoadingCommandes] = useState(true)
-
-    /**List of commandes */
     useEffect(() => {
         if (idUser && !isLoading) {
             fetch(URL_LIST_COMMAND, {
@@ -183,9 +214,8 @@ const HomeUser = () => {
             })
         }
     }, [idUser, isLoading, URL_LIST_COMMAND])
-    /** */
-    window.tarif = "bronze";
-
+    /** ***********************************/
+    //Title
     useEffect(() => {
         window.scroll(0, 0);
         document.title = "Za Mandresy"
@@ -193,6 +223,70 @@ const HomeUser = () => {
 
     const handleNavigate = (path) => {
         navigate(path)
+    }
+    //Modal ***********************************
+    const [idCurrentCommand, setIdCurrentCommand] = useState(null)
+    const [currentCommand, setCurrentCommand] = useState(null);
+    const [show, setShow] = useState(false);
+    const [tarif, setTarif] = useState(null)
+    const handleClose = () => setShow(false);
+    const handleShow = (id) => {
+        setShowInputPaiement(false)
+        setIdCurrentCommand(id)
+        setShow(true);
+    }
+    useEffect(() => {
+        // console.log(idCurrentCommand)
+        const url = `${process.env.REACT_APP_NODE_URL}/api/v1/commande/${idCurrentCommand}`
+        fetch(url, {
+            method: "GET",
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(res => {
+            return res.json()
+        }).then(data => {
+            if (!data.error) {
+                setCurrentCommand(data)
+            }
+        })
+        // const newCommand = commandes.filter(obj => {
+        //     return obj._id == 
+        // })
+    }, [idCurrentCommand])
+
+    //GET TARIF
+    useEffect(() => {
+        const urlTarif = `${process.env.REACT_APP_NODE_URL}/api/v1/tarif/${currentCommand?.informationPaiement.idTarif}`
+        fetch(urlTarif, {
+            method: "GET",
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(res => {
+            return res.json()
+        }).then(data => {
+            if(!data.error){
+                setTarif(data)
+            }
+        }).catch(err => {
+            console.log(err)
+        })
+    }, [currentCommand])
+    const [showInputPaiement, setShowInputPaiement] = useState(false)
+    const handlePaiement = (idCommand) => {
+        setShowInputPaiement(true)
+    }
+
+   
+
+    const [numero, setNumero] = useState(null)
+    const handleChangeNumero = (e) => {
+        setNumero(e.target.value);
+    }
+
+    const handleValiderPaiement = (idCommand) => {
+        console.log(idCommand, numero, tarif.prix.montant)
     }
     return (
         <>
@@ -214,12 +308,12 @@ const HomeUser = () => {
                         {loadingCommandes && <div> Loading ...</div>}
                         {commandes &&
                             commandes.map((commande, value) => (
-                                <Card key={value}>
+                                <Card key={value} onClick={() => { handleShow(commande._id) }} >
                                     <CardDetails>
                                         <CardTitle>
                                             {commande.informationCommande.titreCommande}
                                             <br />
-                                            <span style={{fontSize: '10px' ,color: grey}}>{commande.informationCommande.nomEntreprise}</span>
+                                            <span style={{ fontSize: '10px', color: grey }}>{commande.informationCommande.nomEntreprise}</span>
                                         </CardTitle>
                                         <CardDescription>
                                             {commande.informationCommande.description}
@@ -234,6 +328,32 @@ const HomeUser = () => {
                                 </Card>
                             ))
                         }
+                        <Modal size="lg"
+                            aria-labelledby="contained-modal-title-vcenter"
+                            centered show={show} onHide={handleClose}>
+                            {currentCommand &&
+                                <>
+                                    <Modal.Header style={{ flexFlow: 'column', alignItems: "start" }} closeButton>
+                                        <Modal.Title>{currentCommand.informationCommande.titreCommande}</Modal.Title>
+                                        {currentCommand.estApprouve === true ? <Approuve>Commande approuvée</Approuve> : <NonApprouve>En attente d'approbation</NonApprouve>}
+                                        {currentCommand.estApprouve === true && currentCommand.estPaye === true ? <span style={{ color: 'green' }} className="">Déjà payée</span> : <></>}
+                                        {currentCommand.estApprouve === true && currentCommand.estPaye === false ? <span style={{ color: 'red' }} className="">Non payée</span> : <></>}
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <ContentModal>
+                                            <PrixTarif>
+                                                <span><b>Tarif</b> : {tarif && tarif.nom}</span> <span><b>Prix</b> : {tarif && tarif.prix.montant} {tarif && tarif.prix.unite}</span>
+                                            </PrixTarif>
+                                            <H2>Description</H2>
+                                            <div>{currentCommand.informationCommande.description}</div>
+                                        </ContentModal>
+                                    </Modal.Body>
+                                    <Modal.Footer style={{ justifyContent: 'start' }}>
+                                        {currentCommand.estApprouve === true && currentCommand.estPaye === false ? <button onClick={() => { handlePaiement(currentCommand._id) }} className="btn btn-success">Proceder au paiement</button> : <></>}
+                                        {showInputPaiement && <>Entrez votre numero :<input onChange={handleChangeNumero}></input> <button onClick={()=>{ handleValiderPaiement(currentCommand._id) }} className="btn btn-primary">Valider</button></>}
+                                    </Modal.Footer>
+                                </>}
+                        </Modal>
                     </List>
                 </Container>
             }

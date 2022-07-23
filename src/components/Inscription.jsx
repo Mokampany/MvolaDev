@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/Za_Mandresy_Logos/logo.jpg";
+import bg from "../assets/images/Backgrounds/background1.jpg";
 
 const grey = "#F1F1F1";
 

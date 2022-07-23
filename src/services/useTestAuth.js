@@ -8,6 +8,7 @@ const useTestAuth = () => {
     useEffect(() => {
         const getId = localStorage.getItem("id") != null ? localStorage.getItem("id") : null
         if (getId) {
+            console.log("hello")
             setIdUser(getId)
             setIsLoading(false)
         }else{

@@ -134,6 +134,7 @@ const DetailsButton = styled.div`
     font-size: 12px;
 `
 const HomeUser = () => {
+    console.log(process.env.REACT_APP_NODE_URL)
     window.tarif = "normal";
     const navigate = useNavigate()
     const { idUser, isLoading } = useTestAuth()

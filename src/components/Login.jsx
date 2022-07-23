@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import bg from "../assets/images/Backgrounds/background1.jpg";
 import logo from "../assets/images/Za_Mandresy_Logos/logo.jpg";
 const width = "350px";
 
@@ -11,24 +10,6 @@ const Container = styled.div`
   min-height: 100vh;
   align-items: center;
   padding-top: 50px;
-
-  // color: ${rose};
-  color: white;
-  padding-top: 150px;
-  padding-bottom: 100px;
-  min-height: 100vh;
-  background-image: url(${bg});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: left;
-  @media (max-width: 1100px) {
-    padding-top: 100px;
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    background-size: auto;
-  }
 `;
 const Heading = styled.div`
   margin-top: 50px;

@@ -52,7 +52,7 @@ const HomePageAdmin = () => {
         <Li>Paiements</Li>
         <Li>Produits</Li>
       </Left>
-      <Right className="bg bg-dark">
+      <Right>
         <Routes>
           <Route
             path="/"

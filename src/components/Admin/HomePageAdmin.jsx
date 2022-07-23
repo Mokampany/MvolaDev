@@ -10,14 +10,15 @@ const Container = styled.div`
   grid-template-columns: 15% auto;
   // background-color: #1C1D1E;
   padding-bottom: 50px;
-`;
-const Left = styled.div`
-  // margin: 20px 20px 0 20px;
   background-image: url(${bg});
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: left;
+`;
+const Left = styled.div`
+  // margin: 20px 20px 0 20px;
+  background-color: black;
   // border-radius: 10px;
   padding: 10px;
   text-align: start;

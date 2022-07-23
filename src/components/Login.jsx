@@ -12,6 +12,10 @@ const Container = styled.div`
   align-items: center;
   padding-top: 50px;
   background-image: url(${bg});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: left;
 `;
 const Heading = styled.div`
   margin-top: 50px;

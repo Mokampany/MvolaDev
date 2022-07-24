@@ -82,10 +82,7 @@ const CommandesEnAttente = () => {
                 </Li>
             ))} */}
 
-      <table
-        style={{ textAlign: "start" }}
-        className="table-warning table-striped-columns"
-      >
+      <table style={{ textAlign: "start" }} className="table table-bordered ">
         <thead className="thead-dark" style={{ fontSize: "15px" }}>
           <th>Titre</th>
           <th>Entreprise</th>

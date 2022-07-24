@@ -129,10 +129,12 @@ const ValidationPaiement = () => {
             if (stat === 'completed') {
                 // alert('Transaction completed')
                 setShowCompletedTransaction(true)
+                setShowFailedTransaction(false)
                 window.location = '/homeUser'
             } else {
                 // alert('Transaction failed')
                 setShowFailedTransaction(true)
+                setShowCompletedTransaction(false)
                 console.log('anaty useffect ato')
             }
         }
@@ -184,14 +186,14 @@ const ValidationPaiement = () => {
             headers: {
                 'Content-type': 'application/json',
                 'Authorization': 'Basic czg4dl82NEZyRmlBZVpIbDY3ZlYxMHVlalFjYTpISnMzQnNsQnVxUmZjcG5mQ0RXOHdCQ1BHNHNh',
-                'useraccountidentifier': '0343500004',
+                'useraccountidentifier': '0343500003',
                 'partnername': 'zaandresy'
             },
             body: JSON.stringify({
                 'amount': `${state.tarif.prix.montant}`,
                 'description': `Paiement commande`,
                 'debitMsisdn': `${state.numero}`,
-                'creditMsisdn': '0343500003'
+                'creditMsisdn': '0343500004'
             })
         }).then(res => {
             return res.json()
@@ -201,6 +203,7 @@ const ValidationPaiement = () => {
                     setTransaction(false)
                     // alert(`Transaction failed`)
                     setShowFailedTransaction(true)
+                    setShowCompletedTransaction(false)
                     console.log('tsisy data.status')
                     return
                 }
@@ -219,26 +222,30 @@ const ValidationPaiement = () => {
             } else {
                 setTransaction(false)
                 setShowFailedTransaction(true)
+                setShowCompletedTransaction(false)
                 // alert('Transaction failed')
                 console.log(data.error)
+                return
             }
         }).catch(err => {
             setTransaction(false)
             setShowFailedTransaction(true)
+            setShowCompletedTransaction(false)
             // alert('Transaction failed')
             console.log(err)
+            return
         }).finally(() => {
         })
     }
     useEffect(()=>{
         setTimeout(()=>{
             setShowCompletedTransaction(false)
-        },1000)
+        },2000)
     },[showCompletedTransaction])
     useEffect(()=>{
         setTimeout(()=>{
             setShowFailedTransaction(false)
-        },1000)
+        },2000)
     },[showFailedTransaction])
     return (
         <Container>

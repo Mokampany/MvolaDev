@@ -374,7 +374,7 @@ const HomeUser = () => {
                                     </Modal.Body>
                                     <Modal.Footer style={{ justifyContent: 'start' }}>
                                         {currentCommand.estApprouve === true && currentCommand.estPaye === false ? <button onClick={() => { handlePaiement(currentCommand._id) }} className="btn btn-success">Proceder au paiement</button> : <></>}
-                                        {showInputPaiement && <>Entrez votre numero (0343500004) :<input onChange={handleChangeNumero}></input> <button onClick={() => { handleValiderPaiement(currentCommand._id) }} className="btn btn-primary">Continuer</button></>}
+                                        {showInputPaiement && <>Entrez votre numero (0343500003) :<input onChange={handleChangeNumero}></input> <button onClick={() => { handleValiderPaiement(currentCommand._id) }} className="btn btn-primary">Continuer</button></>}
                                     </Modal.Footer>
                                 </>}
                         </Modal>

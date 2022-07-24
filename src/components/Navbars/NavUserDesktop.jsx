@@ -64,6 +64,7 @@ const NavUserDesktop = ({handleNavigate,handleDisconnect}) => {
             <Right>
                 <Li onClick={() => handleNavigate("/homeUser")}>Accueil</Li>
                 <Li onClick={() => handleNavigate("/apropos")}>A propos</Li>
+                {/* <Li onClick={() => handleNavigate("/tickets")}>A propos</Li> */}
                 <Login onClick={() => handleDisconnect("/authentification")}>Deconnexion</Login>
             </Right>
         </Container>

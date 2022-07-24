@@ -10,7 +10,7 @@ const Container = styled.div`
     left: 0;
     right: 0;
     color: white;
-    background-color: hsla(66, 100%, 1%, .6) ;
+    background-color: #1C1D1E ;
     display: flex;
     justify-content: space-between;
     align-items: start;

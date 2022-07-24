@@ -201,7 +201,6 @@ const Formulaire = () => {
 const Container = styled.div`
     padding-top : 100px;
     min-height: 100vh;
-    background-color: ${bgColor};
     color: white;
     display: flex;
     flex-flow: column;
@@ -297,9 +296,9 @@ const ValiderButton = styled.div`
     }
 `
 const Right = styled.div`
-    
+    // background-color: ;
 `
 const Img = styled.img`
-    width: 80%;
+    width: 70%;
 `
 export default Formulaire;

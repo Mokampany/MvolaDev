@@ -17,6 +17,7 @@ import ChoixCommande from "./pages/Commande/ChoixCommande";
 import { useEffect } from "react";
 import IndexAdmin from "./pages/Admin/IndexAdmin";
 import NavbarAdmin from "./components/Admin/NavbarAdmin";
+import ValidationPaiement from "./pages/Paiement/ValidationPaiement";
 
 const Container = styled.div`
   .App{
@@ -39,6 +40,7 @@ function App() {
             {/* <Route path="/" element={<Home />}></Route> */}
             <Route path="/" element={<HomeGuest />}></Route>
             <Route path="/homeUser" element={<HomeUser />}></Route>
+            <Route path="/homeUser/ValidationPaiement" element={<ValidationPaiement />}></Route>
             <Route path="/homeGuest" element={<HomeGuest />}></Route>
             <Route path="/authentification/*" element={<Authentification />} />
             <Route path="/apropos" element={<Apropos />} />

@@ -6,7 +6,8 @@ import { UseFetchGet } from "../../services/UseFetchGet";
 import useTestAuth from "../../services/useTestAuth";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
+import bg from '../../assets/images/Backgrounds/bg.png'
+import spinner from '../../assets/images/Gifs/spinner.png'
 const bgColor = "#0E102E";
 const rose = "#F069AB";
 const grey = "#2E2E2E";
@@ -15,7 +16,11 @@ const whiteGrey = "#E7E7E7";
 const Container = styled.div`
     padding-top : 100px;
     min-height: 100vh;
-    background-color: ${bgColor};
+    background-image: url(${bg});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left;
     color: white;
     display: flex;
     flex-flow: column;
@@ -100,6 +105,8 @@ const CardDetails = styled.div`
         cursor: pointer;
         opacity: .9;
     }
+    display: flex;
+    flex-flow: column;
 `
 const CardTitle = styled.h2`
     font-weight: 700;
@@ -135,19 +142,22 @@ const DetailsButton = styled.div`
     text-align: start;
     min-width: 100px;
     font-size: 12px;
+    display: flex;
     &:after{
     }
 `
-const Green = styled.span`
+const Green = styled.div`
+flex:1;
     color: green;
 `
-const Red = styled.span`
+const Red = styled.div`
+    flex:1;
     color: red;
 `
-const Approuve = styled.span`
+const Approuve = styled.div`
     color: green;
 `
-const NonApprouve = styled.span`
+const NonApprouve = styled.div`
     color: red;
 `
 const ContentModal = styled.div`
@@ -266,7 +276,7 @@ const HomeUser = () => {
         }).then(res => {
             return res.json()
         }).then(data => {
-            if(!data.error){
+            if (!data.error) {
                 setTarif(data)
             }
         }).catch(err => {
@@ -278,7 +288,7 @@ const HomeUser = () => {
         setShowInputPaiement(true)
     }
 
-   
+
 
     const [numero, setNumero] = useState(null)
     const handleChangeNumero = (e) => {
@@ -286,26 +296,40 @@ const HomeUser = () => {
     }
 
     const handleValiderPaiement = (idCommand) => {
-        console.log(idCommand, numero, tarif.prix.montant)
+        navigate('/homeUser/ValidationPaiement', {
+            state: {
+                idCommand: idCommand,
+                numero: numero,
+                tarif: tarif
+            }
+        })
     }
     return (
         <>
             {isLoading &&
-                <Container></Container>
+                <Container style={{ justifyContent: 'center', flexFlow: 'row' }}>
+                    <div className="spinner-grow text-primary" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                    <div className="spinner-grow text-secondary" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                    <div className="spinner-grow text-success" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </Container>
             }
             {idUser &&
                 <Container>
                     <H1>
                         Vos commandes
                     </H1>
-                    <Bar></Bar>
                     <List>
                         <CardNouvelleCommande onClick={() => handleNavigate("/commander")}>
                             <AjouterText>
                                 +
                             </AjouterText>
                         </CardNouvelleCommande>
-                        {loadingCommandes && <div> Loading ...</div>}
                         {commandes &&
                             commandes.map((commande, value) => (
                                 <Card key={value} onClick={() => { handleShow(commande._id) }} >
@@ -320,7 +344,7 @@ const HomeUser = () => {
                                         </CardDescription>
                                         <DetailsButton>
                                             {commande.estApprouve ? <Green>Approuvé</Green> : <Red>En attente d'approbation</Red>}
-                                            <br />{commande.estPaye ? <Green>Payé</Green> : <Red>Non Payé</Red>}
+                                            {commande.estPaye ? <Green>Payé</Green> : <Red>Non Payé</Red>}
                                         </DetailsButton>
                                         <DetailsButton>
                                         </DetailsButton>
@@ -328,7 +352,7 @@ const HomeUser = () => {
                                 </Card>
                             ))
                         }
-                        <Modal size="lg"
+                        <Modal size="xl"
                             aria-labelledby="contained-modal-title-vcenter"
                             centered show={show} onHide={handleClose}>
                             {currentCommand &&
@@ -350,7 +374,7 @@ const HomeUser = () => {
                                     </Modal.Body>
                                     <Modal.Footer style={{ justifyContent: 'start' }}>
                                         {currentCommand.estApprouve === true && currentCommand.estPaye === false ? <button onClick={() => { handlePaiement(currentCommand._id) }} className="btn btn-success">Proceder au paiement</button> : <></>}
-                                        {showInputPaiement && <>Entrez votre numero :<input onChange={handleChangeNumero}></input> <button onClick={()=>{ handleValiderPaiement(currentCommand._id) }} className="btn btn-primary">Valider</button></>}
+                                        {showInputPaiement && <>Entrez votre numero :<input onChange={handleChangeNumero}></input> <button onClick={() => { handleValiderPaiement(currentCommand._id) }} className="btn btn-primary">Continuer</button></>}
                                     </Modal.Footer>
                                 </>}
                         </Modal>

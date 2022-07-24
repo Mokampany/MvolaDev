@@ -9,7 +9,6 @@ const Container = styled.div`
     display: flex;
     flex-flow: column;
     align-items: center;
-    background-color: ${bgColor};
     // color: white;
     min-height: 100vh;
     @media (max-width: 800px){
@@ -138,6 +137,19 @@ const BG_COLORS = {
     WHITE: "white",
     YELLOW: "yellow"
 };
+const formatNumber = (number) => {
+    let res = ``
+    let n = number.toString();
+    for(let i=0;i<n.length;i++){
+        if(i%3===0){
+            res = `${res} ${n[i]}`
+        }
+        else{
+            res= `${res}${n[i]}`
+        }
+    }
+    return res;
+}
 const ChoixTarif = () => {
     const navigate = useNavigate();
     const [selectedTarif, setSelectedTarif] = useState(null);
@@ -197,7 +209,7 @@ const ChoixTarif = () => {
                         </TarifTitle>
                         <TarifBar></TarifBar>
                         <TarifPrice>
-                            <TarifMontant>{tarif.prix.montant}</TarifMontant>
+                            <TarifMontant>{formatNumber(tarif.prix.montant)}</TarifMontant>
                             <TarifUnite> {tarif.prix.unite}</TarifUnite>
                         </TarifPrice>
                         <TarifConditions>

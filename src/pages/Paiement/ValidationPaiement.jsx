@@ -217,7 +217,7 @@ const ValidationPaiement = () => {
                 'partnername': 'zaandresy'
             },
             body: JSON.stringify({
-                'amount': `${state.tarif.prix.montant}`,
+                'amount': `4567`,
                 'description': `Paiement commande`,
                 'debitMsisdn': `${state.numero}`,
                 'creditMsisdn': '0343500004'

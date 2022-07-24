@@ -380,6 +380,33 @@ const HomeUser = () => {
                                             </PrixTarif>
                                             <H2>Description</H2>
                                             <div>{currentCommand.informationCommande.description}</div>
+                                            <br />
+                                            {currentCommand.estApprouve && currentCommand.estPaye && <>
+                                                <iframe
+                                                    title={'title'}
+                                                    src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FZaMandresy.Prod%2Fposts%2F1002017807314778&show_text=true&width=500"
+                                                    width={500}
+                                                    height={500}
+                                                    style={{ border: "none", overflow: "hidden" }}
+                                                    scrolling="no"
+                                                    frameBorder={0}
+                                                    allowFullScreen="true"
+                                                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                                />
+                                                <iframe
+                                                    title={'title2'}
+                                                    src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FZaMandresy.Prod%2Fposts%2F1002475767268982&show_text=true&width=500"
+                                                    width={500}
+                                                    height={500}
+                                                    style={{ border: "none", overflow: "hidden" }}
+                                                    scrolling="no"
+                                                    frameBorder={0}
+                                                    allowFullScreen="true"
+                                                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                                />
+                                            </>}
+                                            <br />
+                                            <br />
                                         </ContentModal>
                                     </Modal.Body>
                                     <Modal.Footer style={{ justifyContent: 'start' }}>

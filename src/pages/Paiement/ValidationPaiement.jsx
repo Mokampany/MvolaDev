@@ -128,11 +128,13 @@ const ValidationPaiement = () => {
             const stat = status.status;
             if (stat === 'completed') {
                 // alert('Transaction completed')
+                setTransaction(false)
                 setShowCompletedTransaction(true)
                 setShowFailedTransaction(false)
                 window.location = '/homeUser'
             } else {
                 // alert('Transaction failed')
+                setTransaction(false)
                 setShowFailedTransaction(true)
                 setShowCompletedTransaction(false)
                 console.log('anaty useffect ato')
@@ -179,7 +181,8 @@ const ValidationPaiement = () => {
     const handlePaiement = () => {
         setTransaction(true)
         console.log(state)
-        // const urlPaiementCommande = `${process.env.REACT_APP_NODE_URL}/api/v1/utilisateur/payerCommande/${state.idCommand}`
+        const urlPaiementCommande = `${process.env.REACT_APP_NODE_URL}/api/v1/utilisateur/payerCommande/${state.idCommand}`
+
         const url = `${process.env.REACT_APP_NODE_URL}/api/v1/mvola/initiateRequest`
         fetch(url, {
             method: "POST",
@@ -240,12 +243,12 @@ const ValidationPaiement = () => {
     useEffect(()=>{
         setTimeout(()=>{
             setShowCompletedTransaction(false)
-        },2000)
+        },2500)
     },[showCompletedTransaction])
     useEffect(()=>{
         setTimeout(()=>{
             setShowFailedTransaction(false)
-        },2000)
+        },2500)
     },[showFailedTransaction])
     return (
         <Container>

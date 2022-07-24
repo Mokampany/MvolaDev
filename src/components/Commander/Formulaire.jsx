@@ -55,9 +55,9 @@ const Formulaire = () => {
     //**************************************************************** */
     const [nom, setNom] = useState(null);
     const [prenom, setPrenom] = useState(null);
-    const [titreCommande, setTitreCommande] = useState(null);
-    const [nomEntreprise, setNomEntreprise] = useState(null);
-    const [descriptionCommande, setDescriptionCommande] = useState(null);
+    const [titreCommande, setTitreCommande] = useState("Publicité pour ma marque de chaussure");
+    const [nomEntreprise, setNomEntreprise] = useState("Chaussure d'entreprise");
+    const [descriptionCommande, setDescriptionCommande] = useState("Donc voilà , j'ai besoin d'une publicité pour ma marque de chaussure donc je fais appel à vous!");
     const [images, setImages] = useState([]);
 
     const handleChangeNom = (e) => {
@@ -166,15 +166,15 @@ const Formulaire = () => {
                             <SousForm>
                                 <SectionSousForm>
                                     <Label>Titre de la commande </Label>
-                                    <Input onChange={handleChangeTitreCommande}></Input>
+                                    <Input value={"Publicité pour ma marque de chaussure"} onChange={handleChangeTitreCommande}></Input>
                                 </SectionSousForm>
                                 <SectionSousForm>
                                     <Label>Nom de l'entreprise </Label>
-                                    <Input onChange={handleChangeNomEntreprise}></Input>
+                                    <Input value={"Chaussure d'entreprise"} onChange={handleChangeNomEntreprise}></Input>
                                 </SectionSousForm>
                                 <SectionSousForm>
                                     <Label>Description de la commande </Label>
-                                    <TextArea onChange={handleChangeDescriptionCommande}></TextArea>
+                                    <TextArea value={"Donc voilà , j'ai besoin d'une publicité pour ma marque de chaussure donc je fais appel à vous!"} onChange={handleChangeDescriptionCommande}></TextArea>
                                 </SectionSousForm>
                                 {/* <Images>
                                     <Label>Choisissez des images à inserer </Label>
@@ -207,8 +207,8 @@ const Container = styled.div`
     flex-flow: column;
 `
 const H1 = styled.h1`
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 30px;
+    font-weight: 800;
     user-select: none;
     margin-bottom: 10px;
     display: flex;
@@ -273,6 +273,8 @@ const Label = styled.label`
     &:after{
         content: " : ";
     }
+    font-size: 16px;
+    text-decoration: underline;
 `
 const TextValue = styled.label`
     font-weight: 500;
@@ -295,6 +297,7 @@ const ValiderButton = styled.div`
         cursor: pointer;
         background-color: transparent;
     }
+    font-size: 20px;
 `
 const Right = styled.div`
     // background-color: ;

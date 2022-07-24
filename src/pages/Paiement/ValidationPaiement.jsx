@@ -109,11 +109,17 @@ const ValidationPaiement = () => {
                 console.log('mbola pending')
                 doRecursiveRequest(url, method, headers)
             } else {
-                console.log('tsy pending tsony')
-                setTransaction(false)
-                setStatus(data)
-                setShowCompletedTransaction(true)
-                return data;
+                if (data.status === "completed") {
+                    setTransaction(false)
+                    setStatus(data)
+                    setShowCompletedTransaction(true)
+                    return data;
+                } else {
+                    setTransaction(false)
+                    setStatus(data)
+                    setShowFailedTransaction(true)
+                    return data;
+                }
             }
         }).catch(err => {
             setTransaction(false)
@@ -131,7 +137,9 @@ const ValidationPaiement = () => {
                 setTransaction(false)
                 setShowCompletedTransaction(true)
                 setShowFailedTransaction(false)
-                window.location = '/homeUser'
+                setTimeout(()=>{
+                    window.location = '/homeUser'
+                },2000)
             } else {
                 // alert('Transaction failed')
                 setTransaction(false)
@@ -182,7 +190,23 @@ const ValidationPaiement = () => {
         setTransaction(true)
         console.log(state)
         const urlPaiementCommande = `${process.env.REACT_APP_NODE_URL}/api/v1/utilisateur/payerCommande/${state.idCommand}`
-
+        fetch(urlPaiementCommande, {
+            method:"POST",
+            headers:{
+                'Content-type':'application/json'
+            },
+            body:JSON.stringify({
+                montant: `${state.tarif.prix.montant}`
+            })
+        }).then(res => {
+            return res.json()
+        }).then(data=>{
+            if(!data.error){
+                console.log(data)
+            }else{
+                console.log(`Can't change payment status`)
+            }
+        })
         const url = `${process.env.REACT_APP_NODE_URL}/api/v1/mvola/initiateRequest`
         fetch(url, {
             method: "POST",
@@ -240,16 +264,16 @@ const ValidationPaiement = () => {
         }).finally(() => {
         })
     }
-    useEffect(()=>{
-        setTimeout(()=>{
+    useEffect(() => {
+        setTimeout(() => {
             setShowCompletedTransaction(false)
-        },2500)
-    },[showCompletedTransaction])
-    useEffect(()=>{
-        setTimeout(()=>{
+        }, 2500)
+    }, [showCompletedTransaction])
+    useEffect(() => {
+        setTimeout(() => {
             setShowFailedTransaction(false)
-        },2500)
-    },[showFailedTransaction])
+        }, 2500)
+    }, [showFailedTransaction])
     return (
         <Container>
             {transaction &&
@@ -261,14 +285,14 @@ const ValidationPaiement = () => {
                 </Loader>
             }
             {showCompletedTransaction &&
-                <Loader style={{backgroundColor: 'transparent'}}>
+                <Loader style={{ backgroundColor: 'transparent' }}>
                     <button class="btn btn-success" type="button" disabled>
                         Transaction succeeded
                     </button>
                 </Loader>
             }
             {showFailedTransaction &&
-                <Loader style={{backgroundColor: 'transparent'}}>
+                <Loader style={{ backgroundColor: 'transparent' }}>
                     <button class="btn btn-danger" type="button" disabled>
                         Transaction failed
                     </button>

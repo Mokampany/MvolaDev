@@ -8,7 +8,6 @@ const Container = styled.div`
   padding-top: 100px;
   display: grid;
   grid-template-columns: 15% auto;
-  // background-color: #1C1D1E;
   padding-bottom: 50px;
   background-image: url(${bg});
   background-size: cover;
@@ -17,20 +16,22 @@ const Container = styled.div`
   background-position: left;
 `;
 const Left = styled.div`
-  // margin: 20px 20px 0 20px;
+  margin: -100px 0px 0px 0px;
   background-color: black;
+  background-color: #1C1D1E;
   // border-radius: 10px;
   padding: 10px;
+  padding-top: 100px;
   text-align: start;
   font-weight: 700;
-  height: 100%;
+  height: 200%;
   color: white;
 `;
 const Right = styled.div`
-  margin: 0px 20px 0 20px;
   background-color: white;
-  border-radius: 20px;
   padding: 10px;
+  margin: -35px 0 0 0;
+  height: 125%;
 `;
 const Li = styled.div`
   font-size: 14px;

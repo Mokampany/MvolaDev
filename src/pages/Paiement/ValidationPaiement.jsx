@@ -98,7 +98,7 @@ const ValidationPaiement = () => {
         }).finally(() => {
             setIsLoadingUser(false)
         })
-        const urlCommand = `${process.env.REACT_APP_NODE_URL}/api/v1/utilisateur/${state?.idCommande}`
+        const urlCommand = `${process.env.REACT_APP_NODE_URL}/api/v1/commande/${state?.idCommand}`
         fetch(urlCommand, {
             method: "GET",
             headers: {
@@ -117,7 +117,7 @@ const ValidationPaiement = () => {
         })
     }, [])
     const handlePaiement =() =>{
-
+        console.log(state)
     }
     return (
         <Container>
@@ -129,7 +129,7 @@ const ValidationPaiement = () => {
             </Left>
             <Right>
                 <ContentRight>
-                    <CommandeNum>Commande n° {state.idCommande}</CommandeNum>
+                    <CommandeNum>Commande n° {state && state.idCommand}</CommandeNum>
                     <NomDestinataire className='row'>
                         <div style={{ fontWeight: 'bold' }} className="col-md-6">
                             Nom du destinataire
@@ -163,7 +163,7 @@ const ValidationPaiement = () => {
                         </div>
                     </div>
                     <br />
-                    {/* <div className="row">
+                    <div className="row">
                         <div className="col-md-12">
                             <QRCode
                                 title={`Commande ${command && command._id}`}
@@ -177,7 +177,7 @@ const ValidationPaiement = () => {
                                 size={200}
                             />
                         </div>
-                    </div> */}
+                    </div>
                     <br />
                     <br />
                     <div className="row">

@@ -84,6 +84,9 @@ const formatNumber = (number) => {
 
 const ValidationPaiement = () => {
     const [transaction, setTransaction] = useState(false);
+    const [showCompletedTransaction, setShowCompletedTransaction] = useState(false)
+    const [showFailedTransaction, setShowFailedTransaction] = useState(false)
+
     const location = useLocation()
     const state = location.state
 
@@ -109,10 +112,12 @@ const ValidationPaiement = () => {
                 console.log('tsy pending tsony')
                 setTransaction(false)
                 setStatus(data)
+                setShowCompletedTransaction(true)
                 return data;
             }
         }).catch(err => {
             setTransaction(false)
+            setShowFailedTransaction(true)
             console.log('misy erreur')
             console.log(err)
             return err
@@ -122,10 +127,12 @@ const ValidationPaiement = () => {
         if (status) {
             const stat = status.status;
             if (stat === 'completed') {
-                alert('Transaction completed')
+                // alert('Transaction completed')
+                setShowCompletedTransaction(true)
                 window.location = '/homeUser'
             } else {
-                alert('Transaction failed')
+                // alert('Transaction failed')
+                setShowFailedTransaction(true)
                 console.log('anaty useffect ato')
             }
         }
@@ -169,7 +176,8 @@ const ValidationPaiement = () => {
     }, [])
     const handlePaiement = () => {
         setTransaction(true)
-        console.log(state.numero)
+        console.log(state)
+        // const urlPaiementCommande = `${process.env.REACT_APP_NODE_URL}/api/v1/utilisateur/payerCommande/${state.idCommand}`
         const url = `${process.env.REACT_APP_NODE_URL}/api/v1/mvola/initiateRequest`
         fetch(url, {
             method: "POST",
@@ -182,7 +190,7 @@ const ValidationPaiement = () => {
             body: JSON.stringify({
                 'amount': `${state.tarif.prix.montant}`,
                 'description': `Paiement commande`,
-                'debitMsisdn': `0343500004`,
+                'debitMsisdn': `${state.numero}`,
                 'creditMsisdn': '0343500003'
             })
         }).then(res => {
@@ -191,7 +199,8 @@ const ValidationPaiement = () => {
             if (!data.error) {
                 if (!data.status) {
                     setTransaction(false)
-                    alert(`Transaction failed`)
+                    // alert(`Transaction failed`)
+                    setShowFailedTransaction(true)
                     console.log('tsisy data.status')
                     return
                 }
@@ -209,24 +218,52 @@ const ValidationPaiement = () => {
                 }
             } else {
                 setTransaction(false)
-                alert('Transaction failed')
+                setShowFailedTransaction(true)
+                // alert('Transaction failed')
                 console.log(data.error)
             }
         }).catch(err => {
             setTransaction(false)
-            alert('Transaction failed')
+            setShowFailedTransaction(true)
+            // alert('Transaction failed')
             console.log(err)
         }).finally(() => {
         })
     }
+    useEffect(()=>{
+        setTimeout(()=>{
+            setShowCompletedTransaction(false)
+        },1000)
+    },[showCompletedTransaction])
+    useEffect(()=>{
+        setTimeout(()=>{
+            setShowFailedTransaction(false)
+        },1000)
+    },[showFailedTransaction])
     return (
         <Container>
-            {transaction && <Loader>
-                <button class="btn btn-primary" type="button" disabled>
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    Transaction en cours...
-                </button>
-            </Loader>}
+            {transaction &&
+                <Loader>
+                    <button class="btn btn-primary" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Transaction en cours...
+                    </button>
+                </Loader>
+            }
+            {showCompletedTransaction &&
+                <Loader style={{backgroundColor: 'transparent'}}>
+                    <button class="btn btn-success" type="button" disabled>
+                        Transaction succeeded
+                    </button>
+                </Loader>
+            }
+            {showFailedTransaction &&
+                <Loader style={{backgroundColor: 'transparent'}}>
+                    <button class="btn btn-danger" type="button" disabled>
+                        Transaction failed
+                    </button>
+                </Loader>
+            }
             <Left>
                 <ContentLeft>
                     <H1>Vous êtes sur le point de procéder à un paiement</H1>

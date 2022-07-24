@@ -116,8 +116,33 @@ const ValidationPaiement = () => {
             setIsLoadingCommand(false)
         })
     }, [])
-    const handlePaiement =() =>{
-        console.log(state)
+    const handlePaiement = () =>{
+        console.log(state.numero)
+        const url = `${process.env.REACT_APP_NODE_URL}/api/v1/mvola/initiateRequest`
+        fetch(url,{
+            method:"POST",
+            headers:{
+                'authorization':'Basic czg4dl82NEZyRmlBZVpIbDY3ZlYxMHVlalFjYTpISnMzQnNsQnVxUmZjcG5mQ0RXOHdCQ1BHNHNh',
+                'useraccountidentifier':'0343500004',
+                'partnername':'Za Mandresy'
+            },
+            body:JSON.stringify({
+                amount:state.tarif.prix.montant,
+                description:`Paiement commande`,
+                debitMsisdn:'0343500004',
+                creditMsisdn:'0343500003'
+            })
+        }).then(res=>{
+            return res.json()
+        }).then(data=>{
+            if(!data.error){
+                console.log(data)
+            }else{
+                console.log(data.error)
+            }
+        }).catch(err=>{
+            console.log(err)
+        })
     }
     return (
         <Container>

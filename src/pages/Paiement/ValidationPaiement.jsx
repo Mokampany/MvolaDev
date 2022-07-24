@@ -72,6 +72,7 @@ const formatNumber = (number) => {
     return res;
 }
 const ValidationPaiement = () => {
+    const [transaction, setTransaction] = useState(false);
     const location = useLocation()
     const state = location.state
 
@@ -109,9 +110,10 @@ const ValidationPaiement = () => {
             const stat = status.status;
             if (stat === 'completed') {
                 alert('Transaction completed')
-                window.location = '/'
+                window.location = '/homeUser'
             } else {
                 alert('Transaction failed')
+                console.log('anaty useffect ato')
             }
         }
     }, [status])
@@ -153,6 +155,7 @@ const ValidationPaiement = () => {
         })
     }, [])
     const handlePaiement = () => {
+        setTransaction(true)
         console.log(state.numero)
         const url = `${process.env.REACT_APP_NODE_URL}/api/v1/mvola/initiateRequest`
         fetch(url, {
@@ -164,16 +167,20 @@ const ValidationPaiement = () => {
                 'partnername': 'zaandresy'
             },
             body: JSON.stringify({
-                'amount': '30000',
+                'amount': `${state.tarif.prix.montant}`,
                 'description': `Paiement commande`,
-                'debitMsisdn': '0343500004',
+                'debitMsisdn': `0343500004`,
                 'creditMsisdn': '0343500003'
             })
         }).then(res => {
             return res.json()
         }).then(data => {
             if (!data.error) {
-                console.log(data)
+                if(!data.status){
+                    alert(`Transaction failed`)
+                    console.log('tsisy data.status')
+                    return
+                }
                 if (data.status === 'pending') {
                     const serverCorrelationId = data.serverCorrelationId
                     const urlStatus = `${process.env.REACT_APP_NODE_URL}/api/v1/mvola/transactionStatus/${serverCorrelationId}`
@@ -187,12 +194,13 @@ const ValidationPaiement = () => {
                     const dataFromRecursive = doRecursiveRequest(urlStatus, method, headers)
                 }
             } else {
+                alert('Transaction failed')
                 console.log(data.error)
             }
         }).catch(err => {
+            alert('Transaction failed')
             console.log(err)
         })
-        console.log(state.tarif.prix.montant)
     }
     return (
         <Container>

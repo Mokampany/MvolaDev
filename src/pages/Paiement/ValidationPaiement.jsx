@@ -58,6 +58,16 @@ const Prenom = styled.div`
 const Tarif = styled.div`
     margin-bottom: 10px;
 `
+const Loader = styled.div`
+    position: fixed;
+    inset:0;
+    background-color: black;
+    opacity: .8;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
 const formatNumber = (number) => {
     let res = ``
     let n = number.toString();
@@ -71,6 +81,7 @@ const formatNumber = (number) => {
     }
     return res;
 }
+
 const ValidationPaiement = () => {
     const [transaction, setTransaction] = useState(false);
     const location = useLocation()
@@ -96,10 +107,12 @@ const ValidationPaiement = () => {
                 doRecursiveRequest(url, method, headers)
             } else {
                 console.log('tsy pending tsony')
+                setTransaction(false)
                 setStatus(data)
                 return data;
             }
         }).catch(err => {
+            setTransaction(false)
             console.log('misy erreur')
             console.log(err)
             return err
@@ -176,7 +189,8 @@ const ValidationPaiement = () => {
             return res.json()
         }).then(data => {
             if (!data.error) {
-                if(!data.status){
+                if (!data.status) {
+                    setTransaction(false)
                     alert(`Transaction failed`)
                     console.log('tsisy data.status')
                     return
@@ -194,16 +208,25 @@ const ValidationPaiement = () => {
                     const dataFromRecursive = doRecursiveRequest(urlStatus, method, headers)
                 }
             } else {
+                setTransaction(false)
                 alert('Transaction failed')
                 console.log(data.error)
             }
         }).catch(err => {
+            setTransaction(false)
             alert('Transaction failed')
             console.log(err)
+        }).finally(() => {
         })
     }
     return (
         <Container>
+            {transaction && <Loader>
+                <button class="btn btn-primary" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Transaction en cours...
+                </button>
+            </Loader>}
             <Left>
                 <ContentLeft>
                     <H1>Vous êtes sur le point de procéder à un paiement</H1>

@@ -80,6 +80,42 @@ const ValidationPaiement = () => {
 
     const [isLoadingCommand, setIsLoadingCommand] = useState(true)
     const [command, setCommand] = useState(null)
+
+    const [status, setStatus] = useState(null)
+
+    const doRecursiveRequest = (url, method, headers) => {
+        fetch(url, {
+            method: method,
+            headers: headers
+        }).then(res => {
+            return res.json()
+        }).then(data => {
+            if (data.status === 'pending') {
+                console.log('mbola pending')
+                doRecursiveRequest(url, method, headers)
+            } else {
+                console.log('tsy pending tsony')
+                setStatus(data)
+                return data;
+            }
+        }).catch(err => {
+            console.log('misy erreur')
+            console.log(err)
+            return err
+        })
+    }
+    useEffect(() => {
+        if (status) {
+            const stat = status.status;
+            if (stat === 'completed') {
+                alert('Transaction completed')
+                window.location = '/'
+            } else {
+                alert('Transaction failed')
+            }
+        }
+    }, [status])
+
     useEffect(() => {
         const url = `${process.env.REACT_APP_NODE_URL}/api/v1/utilisateur/${localStorage.getItem('idUser')}`
         fetch(url, {
@@ -116,33 +152,47 @@ const ValidationPaiement = () => {
             setIsLoadingCommand(false)
         })
     }, [])
-    const handlePaiement = () =>{
+    const handlePaiement = () => {
         console.log(state.numero)
         const url = `${process.env.REACT_APP_NODE_URL}/api/v1/mvola/initiateRequest`
-        fetch(url,{
-            method:"POST",
-            headers:{
-                'authorization':'Basic czg4dl82NEZyRmlBZVpIbDY3ZlYxMHVlalFjYTpISnMzQnNsQnVxUmZjcG5mQ0RXOHdCQ1BHNHNh',
-                'useraccountidentifier':'0343500004',
-                'partnername':'Za Mandresy'
+        fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Basic czg4dl82NEZyRmlBZVpIbDY3ZlYxMHVlalFjYTpISnMzQnNsQnVxUmZjcG5mQ0RXOHdCQ1BHNHNh',
+                'useraccountidentifier': '0343500004',
+                'partnername': 'zaandresy'
             },
-            body:JSON.stringify({
-                amount:state.tarif.prix.montant,
-                description:`Paiement commande`,
-                debitMsisdn:'0343500004',
-                creditMsisdn:'0343500003'
+            body: JSON.stringify({
+                'amount': '30000',
+                'description': `Paiement commande`,
+                'debitMsisdn': '0343500004',
+                'creditMsisdn': '0343500003'
             })
-        }).then(res=>{
+        }).then(res => {
             return res.json()
-        }).then(data=>{
-            if(!data.error){
+        }).then(data => {
+            if (!data.error) {
                 console.log(data)
-            }else{
+                if (data.status === 'pending') {
+                    const serverCorrelationId = data.serverCorrelationId
+                    const urlStatus = `${process.env.REACT_APP_NODE_URL}/api/v1/mvola/transactionStatus/${serverCorrelationId}`
+                    const method = "GET"
+                    const headers = {
+                        'Content-type': 'application/json',
+                        'Authorization': 'Basic czg4dl82NEZyRmlBZVpIbDY3ZlYxMHVlalFjYTpISnMzQnNsQnVxUmZjcG5mQ0RXOHdCQ1BHNHNh',
+                        'useraccountidentifier': '0343500004',
+                        'partnername': 'zaandresy'
+                    }
+                    const dataFromRecursive = doRecursiveRequest(urlStatus, method, headers)
+                }
+            } else {
                 console.log(data.error)
             }
-        }).catch(err=>{
+        }).catch(err => {
             console.log(err)
         })
+        console.log(state.tarif.prix.montant)
     }
     return (
         <Container>

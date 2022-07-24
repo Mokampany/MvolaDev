@@ -84,7 +84,7 @@ const CommandesEnAttente = () => {
 
       <table
         style={{ textAlign: "start" }}
-        className="table table-striped-columns"
+        className="table-dark table-striped-columns"
       >
         <thead className="thead-dark" style={{ fontSize: "15px" }}>
           <th>Titre</th>

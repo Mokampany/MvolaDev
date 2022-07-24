@@ -10,6 +10,7 @@ const Formulaire = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        window.MyLib.choixPaiement = '62d9d6d507a38024d0b90281'
         if (!window.MyLib?.choixTarif || !window.MyLib?.choixPaiement) {
             alert("An error occured")
             navigate("/")

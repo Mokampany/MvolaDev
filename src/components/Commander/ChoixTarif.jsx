@@ -192,7 +192,7 @@ const ChoixTarif = () => {
     },[selectedTarif])
 
     const handleContinue = () => {
-        navigate("choixPaiement")
+        navigate("formulaire")
     }
     
     return (

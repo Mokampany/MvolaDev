@@ -97,8 +97,8 @@ const Star = styled.span`
   color: red;
 `;
 const Login = () => {
-  const [email, setEmail] = useState(null);
-  const [mdp, setMdp] = useState(null);
+  const [email, setEmail] = useState('cedric@gmail.com');
+  const [mdp, setMdp] = useState('1234');
   useEffect(() => {
     document.title = "Login | Za Mandresy";
   }, []);
@@ -149,13 +149,13 @@ const Login = () => {
           <EmailLabel>
             Email <Star>*</Star>
           </EmailLabel>
-          <EmailInput onChange={handleChangeEmail} />
+          <EmailInput value={'cedric@gmail.com'} onChange={handleChangeEmail} />
         </Email>
         <Pass>
           <PassLabel>
             Mot de passe <Star>*</Star>
           </PassLabel>
-          <PassInput type={`password`} onChange={handleChangeMdp} />
+          <PassInput value={'1234'} type={`password`} onChange={handleChangeMdp} />
         </Pass>
         <ForgotPassword>Mot de passe oublié ?</ForgotPassword>
         <SeConnecterButton onClick={handleSubmitLogin}>

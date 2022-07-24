@@ -166,15 +166,15 @@ const Formulaire = () => {
                             <SousForm>
                                 <SectionSousForm>
                                     <Label>Titre de la commande </Label>
-                                    <Input value={"Publicité pour ma marque de chaussure"} onChange={handleChangeTitreCommande}></Input>
+                                    <Input value={titreCommande} onChange={handleChangeTitreCommande}></Input>
                                 </SectionSousForm>
                                 <SectionSousForm>
                                     <Label>Nom de l'entreprise </Label>
-                                    <Input value={"Chaussure d'entreprise"} onChange={handleChangeNomEntreprise}></Input>
+                                    <Input value={nomEntreprise} onChange={handleChangeNomEntreprise}></Input>
                                 </SectionSousForm>
                                 <SectionSousForm>
                                     <Label>Description de la commande </Label>
-                                    <TextArea value={"Donc voilà , j'ai besoin d'une publicité pour ma marque de chaussure donc je fais appel à vous!"} onChange={handleChangeDescriptionCommande}></TextArea>
+                                    <TextArea value={descriptionCommande} onChange={handleChangeDescriptionCommande}></TextArea>
                                 </SectionSousForm>
                                 {/* <Images>
                                     <Label>Choisissez des images à inserer </Label>

@@ -94,9 +94,10 @@ const Card = styled.div`
     margin: 0 10px 10px 10px;
 `
 const CardDetails = styled.div`
+    position: relative;
     border-radius: 10px;
     border: 1px solid white;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     background-color: white;
     color: black;
     height: 250px;
@@ -137,23 +138,30 @@ const CommencerButton = styled.div`
     }
 `
 const DetailsButton = styled.div`
+    position: absolute;
     font-weight:800;
-    padding: 10px;
+    // padding: 10px;
     text-align: start;
     min-width: 100px;
     font-size: 12px;
     display: flex;
-    &:after{
-    }
+    justify-content: center;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    height: 60px;
 `
 const Green = styled.div`
-flex:1;
-    color: green;
+    // background-color: green;
+    color : green;
 `
 const Red = styled.div`
-    flex:1;
     color: red;
 `
+const Yellow = styled.div`
+    color :yellow;
+`
+
 const Approuve = styled.div`
     color: green;
 `
@@ -343,8 +351,10 @@ const HomeUser = () => {
                                             {commande.informationCommande.description}
                                         </CardDescription>
                                         <DetailsButton>
-                                            {commande.estApprouve ? <Green>Approuvé</Green> : <Red>En attente d'approbation</Red>}
-                                            {commande.estPaye ? <Green>Payé</Green> : <Red>Non Payé</Red>}
+                                            {commande.estApprouve && !commande.estPaye && <Yellow>En attente de paiement...</Yellow>}
+                                            {!commande.estApprouve && <Red>En attente d'approbation</Red>}
+                                            {commande.estApprouve && commande.estPaye && <Green>Commande payée</Green>}
+
                                         </DetailsButton>
                                         <DetailsButton>
                                         </DetailsButton>
